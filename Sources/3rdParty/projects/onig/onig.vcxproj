@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{3E5F5751-BAA0-4D82-B144-A465D26A99C1}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>onig</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;NOT_RUBY;EXPORT;WIN32;ONIG_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdparty\onig-5.9.2\win32;$(SolutionDir)3rdparty\onig-5.9.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;ONIG_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;NOT_RUBY;EXPORT;WIN32;ONIG_EXPORTS;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdparty\onig-5.9.2\win32;$(SolutionDir)3rdparty\onig-5.9.2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;ONIG_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\onig-5.9.2\enc\ascii.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\big5.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\cp1251.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\euc_jp.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\euc_kr.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\euc_tw.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\gb18030.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_1.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_10.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_11.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_13.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_14.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_15.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_16.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_2.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_3.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_4.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_5.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_6.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_7.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_8.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\iso8859_9.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\koi8.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\koi8_r.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\mktable.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\sjis.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\unicode.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\utf16_be.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\utf16_le.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\utf32_be.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\utf32_le.c" />
+    <ClCompile Include="..\..\onig-5.9.2\enc\utf8.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regcomp.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regenc.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regerror.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regexec.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regext.c" />
+    <ClCompile Include="..\..\onig-5.9.2\reggnu.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regparse.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regposerr.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regposix.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regsyntax.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regtrav.c" />
+    <ClCompile Include="..\..\onig-5.9.2\regversion.c" />
+    <ClCompile Include="..\..\onig-5.9.2\st.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\onig-5.9.2\oniggnu.h" />
+    <ClInclude Include="..\..\onig-5.9.2\onigposix.h" />
+    <ClInclude Include="..\..\onig-5.9.2\oniguruma.h" />
+    <ClInclude Include="..\..\onig-5.9.2\regenc.h" />
+    <ClInclude Include="..\..\onig-5.9.2\regint.h" />
+    <ClInclude Include="..\..\onig-5.9.2\regparse.h" />
+    <ClInclude Include="..\..\onig-5.9.2\st.h" />
+    <ClInclude Include="..\..\onig-5.9.2\win32\config.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

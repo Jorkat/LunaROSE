@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (ASAN)|Win32">
+      <Configuration>Debug (ASAN)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{782AF9C9-40B2-4844-BE58-D73710823F16}</ProjectGuid>
+    <RootNamespace>SHO_GS_LIB</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <EnableASAN>true</EnableASAN>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <OutDir>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Client\Util;$(SolutionDir)LIB_Util;$(SolutionDir)LIB_Server;$(ProjectDir)Common;$(ProjectDir)Network;$(ProjectDir)srv_COMMON;$(ProjectDir)Ai_lib;$(SolutionDir)Common;$(SolutionDir)Client\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>__SERVER;__USE_CHEAT;WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <CompileAs>Default</CompileAs>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <OmitFramePointers>true</OmitFramePointers>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Client\Util;$(SolutionDir)LIB_Util;$(SolutionDir)LIB_Server;$(ProjectDir)Common;$(ProjectDir)Network;$(ProjectDir)srv_COMMON;$(ProjectDir)Ai_lib;$(SolutionDir)Common;$(SolutionDir)Client\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>__SERVER;__USE_CHEAT;WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)Client\Util;$(SolutionDir)LIB_Util;$(SolutionDir)LIB_Server;$(ProjectDir)Common;$(ProjectDir)Network;$(ProjectDir)srv_COMMON;$(ProjectDir)Ai_lib;$(SolutionDir)Common;$(SolutionDir)Client\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>__SERVER;__USE_CHEAT;WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Common\CAssertNew.cpp" />
+    <ClCompile Include="..\..\..\Common\MiniDumper.cpp" />
+    <ClCompile Include="Ai_lib\AI_Action.cpp" />
+    <ClCompile Include="Ai_lib\AI_Condition.cpp" />
+    <ClCompile Include="Ai_lib\Cai_file.cpp" />
+    <ClCompile Include="AlphabetCvt\AlphabetCvt.cpp" />
+    <ClCompile Include="CCharDATA.cpp" />
+    <ClCompile Include="CGameOBJ.cpp" />
+    <ClCompile Include="CheatCMD.cpp" />
+    <ClCompile Include="CIngSTATUS.cpp" />
+    <ClCompile Include="CObjAVT.cpp" />
+    <ClCompile Include="CObjCHAR.cpp" />
+    <ClCompile Include="CObjEVENT.cpp" />
+    <ClCompile Include="CObjITEM.cpp" />
+    <ClCompile Include="CObjNPC.cpp" />
+    <ClCompile Include="Common\Calculation.cpp" />
+    <ClCompile Include="Common\CEconomy.cpp" />
+    <ClCompile Include="Common\CHotICON.cpp" />
+    <ClCompile Include="Common\CInventory.cpp" />
+    <ClCompile Include="Common\CItem.cpp" />
+    <ClCompile Include="Common\CObjAI.cpp" />
+    <ClCompile Include="Common\CQuest.cpp" />
+    <ClCompile Include="Common\CRegenAREA.cpp" />
+    <ClCompile Include="Common\CUserDATA.cpp" />
+    <ClCompile Include="Common\Io_ai.cpp" />
+    <ClCompile Include="Common\IO_Motion.cpp" />
+    <ClCompile Include="Common\IO_PAT.cpp" />
+    <ClCompile Include="Common\IO_Quest.cpp" />
+    <ClCompile Include="Common\IO_Skill.cpp" />
+    <ClCompile Include="Common\IO_STB.cpp" />
+    <ClCompile Include="ETC_Math.cpp" />
+    <ClCompile Include="GS_ListUSER.cpp" />
+    <ClCompile Include="GS_ObjPOOL.cpp" />
+    <ClCompile Include="GS_PARTY.CPP" />
+    <ClCompile Include="GS_SocketASV.cpp" />
+    <ClCompile Include="GS_SocketLSV.cpp" />
+    <ClCompile Include="GS_ThreadLOG.cpp" />
+    <ClCompile Include="GS_ThreadMALL.cpp" />
+    <ClCompile Include="GS_ThreadSQL.cpp" />
+    <ClCompile Include="GS_ThreadZONE.cpp" />
+    <ClCompile Include="GS_USER.cpp" />
+    <ClCompile Include="LIB_gsMAIN.cpp" />
+    <ClCompile Include="md5.cpp" />
+    <ClCompile Include="OBJECT.cpp" />
+    <ClCompile Include="srv_COMMON\CChatROOM.cpp" />
+    <ClCompile Include="srv_COMMON\CThreadGUILD.CPP" />
+    <ClCompile Include="srv_COMMON\CThreadLOG.cpp" />
+    <ClCompile Include="srv_COMMON\CThreadMSGR.cpp" />
+    <ClCompile Include="ZoneFILE.cpp" />
+    <ClCompile Include="ZoneLIST.cpp" />
+    <ClCompile Include="ZoneSECTOR.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Common\CAssertNew.h" />
+    <ClInclude Include="..\..\..\Common\MiniDumper.h" />
+    <ClInclude Include="..\..\..\Common\net_prototype.h" />
+    <ClInclude Include="..\..\..\Common\SRV_Prototype.h" />
+    <ClInclude Include="Ai_lib\Cai_file.h" />
+    <ClInclude Include="Ai_lib\Cai_lib.h" />
+    <ClInclude Include="AlphabetCvt\AlphabetCvt.h" />
+    <ClInclude Include="CCharDATA.h" />
+    <ClInclude Include="CGameOBJ.h" />
+    <ClInclude Include="CGS_API.h" />
+    <ClInclude Include="CIngSTATUS.h" />
+    <ClInclude Include="CObjAVT.h" />
+    <ClInclude Include="CObjCHAR.h" />
+    <ClInclude Include="CObjEVENT.h" />
+    <ClInclude Include="CObjITEM.h" />
+    <ClInclude Include="CObjNPC.h" />
+    <ClInclude Include="Common\Calculation.h" />
+    <ClInclude Include="Common\CEconomy.h" />
+    <ClInclude Include="Common\CHotICON.h" />
+    <ClInclude Include="Common\CInventory.h" />
+    <ClInclude Include="Common\CItem.h" />
+    <ClInclude Include="Common\CObjAI.h" />
+    <ClInclude Include="Common\CQuest.h" />
+    <ClInclude Include="Common\CRegenAREA.h" />
+    <ClInclude Include="Common\CUserDATA.h" />
+    <ClInclude Include="Common\DataTYPE.h" />
+    <ClInclude Include="Common\Io_ai.h" />
+    <ClInclude Include="Common\IO_Motion.h" />
+    <ClInclude Include="Common\Io_pat.h" />
+    <ClInclude Include="Common\IO_Quest.h" />
+    <ClInclude Include="Common\IO_Skill.h" />
+    <ClInclude Include="Common\IO_STB.h" />
+    <ClInclude Include="DEF_STB.h" />
+    <ClInclude Include="ETC_Math.h" />
+    <ClInclude Include="GS_ListUSER.h" />
+    <ClInclude Include="GS_ObjPOOL.h" />
+    <ClInclude Include="GS_PARTY.H" />
+    <ClInclude Include="GS_SocketASV.h" />
+    <ClInclude Include="GS_SocketLSV.h" />
+    <ClInclude Include="GS_ThreadLOG.h" />
+    <ClInclude Include="GS_ThreadMALL.h" />
+    <ClInclude Include="GS_ThreadSQL.h" />
+    <ClInclude Include="GS_ThreadZONE.h" />
+    <ClInclude Include="GS_USER.h" />
+    <ClInclude Include="LIB_gsMAIN.H" />
+    <ClInclude Include="md5.h" />
+    <ClInclude Include="OBJECT.h" />
+    <ClInclude Include="srv_COMMON\CChatROOM.h" />
+    <ClInclude Include="srv_COMMON\CObjVAR.h" />
+    <ClInclude Include="srv_COMMON\CThreadGUILD.H" />
+    <ClInclude Include="srv_COMMON\CThreadLOG.h" />
+    <ClInclude Include="srv_COMMON\CThreadMSGR.h" />
+    <ClInclude Include="srv_COMMON\CWorldVAR.h" />
+    <ClInclude Include="stdAFX.h" />
+    <ClInclude Include="ZoneFILE.h" />
+    <ClInclude Include="ZoneLIST.h" />
+    <ClInclude Include="ZoneSECTOR.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DB구조.TXT" />
+    <Text Include="구조설정서.txt" />
+    <Text Include="버그수정사항.txt" />
+    <Text Include="사용안하는 소스.txt" />
+    <Text Include="서버정보.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

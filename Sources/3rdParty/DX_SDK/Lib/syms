@@ -1,0 +1,1736 @@
+Microsoft (R) COFF/PE Dumper Version 14.16.27034.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file dxguid.lib
+
+File Type: LIBRARY
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    ..\d3d9guid.cpp
+002 001D23DA ABS    notype       Static       | @comp.id
+003 00000000 SECT1  notype       Static       | .drectve
+    Section length   2E, #relocs    0, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .debug$S
+    Section length   96, #relocs    0, #linenums    0, checksum        0
+007 00000000 SECT3  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F0CC7D8D, selection    2 (pick any)
+009 00000000 SECT3  notype       External     | _IID_IDirect3DQuery9
+00A 00000000 SECT4  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 99A5C1CF, selection    2 (pick any)
+00C 00000000 SECT4  notype       External     | _IID_IDirect3DStateBlock9
+00D 00000000 SECT5  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 88E2CF4C, selection    2 (pick any)
+00F 00000000 SECT5  notype       External     | _IID_IDirect3DPixelShader9
+010 00000000 SECT6  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4FCBAC51, selection    2 (pick any)
+012 00000000 SECT6  notype       External     | _IID_IDirect3DVertexShader9
+013 00000000 SECT7  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2F145EDC, selection    2 (pick any)
+015 00000000 SECT7  notype       External     | _IID_IDirect3DVertexDeclaration9
+016 00000000 SECT8  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 847F240D, selection    2 (pick any)
+018 00000000 SECT8  notype       External     | _IID_IDirect3DSwapChain9
+019 00000000 SECT9  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E2BFD503, selection    2 (pick any)
+01B 00000000 SECT9  notype       External     | _IID_IDirect3DVolume9
+01C 00000000 SECTA  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C984C2CE, selection    2 (pick any)
+01E 00000000 SECTA  notype       External     | _IID_IDirect3DSurface9
+01F 00000000 SECTB  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D1812B55, selection    2 (pick any)
+021 00000000 SECTB  notype       External     | _IID_IDirect3DIndexBuffer9
+022 00000000 SECTC  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6E9B886D, selection    2 (pick any)
+024 00000000 SECTC  notype       External     | _IID_IDirect3DVertexBuffer9
+025 00000000 SECTD  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 87D6FF8D, selection    2 (pick any)
+027 00000000 SECTD  notype       External     | _IID_IDirect3DVolumeTexture9
+028 00000000 SECTE  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8FA377ED, selection    2 (pick any)
+02A 00000000 SECTE  notype       External     | _IID_IDirect3DCubeTexture9
+02B 00000000 SECTF  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  88FD35D, selection    2 (pick any)
+02D 00000000 SECTF  notype       External     | _IID_IDirect3DTexture9
+02E 00000000 SECT10 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  8C935C7, selection    2 (pick any)
+030 00000000 SECT10 notype       External     | _IID_IDirect3DBaseTexture9
+031 00000000 SECT11 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BE8E08DF, selection    2 (pick any)
+033 00000000 SECT11 notype       External     | _IID_IDirect3DResource9
+034 00000000 SECT12 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 142EB638, selection    2 (pick any)
+036 00000000 SECT12 notype       External     | _IID_IDirect3DDevice9
+037 00000000 SECT13 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9723A5D3, selection    2 (pick any)
+039 00000000 SECT13 notype       External     | _IID_IDirect3D9
+
+String Table Size = 0x1B0 bytes
+
+COFF SYMBOL TABLE
+000 00000000 DEBUG  notype       Filename     | .file
+    ..\dxguid.cpp
+002 001D23DA ABS    notype       Static       | @comp.id
+003 00000000 SECT1  notype       Static       | .drectve
+    Section length   2E, #relocs    0, #linenums    0, checksum        0
+005 00000000 SECT2  notype       Static       | .debug$S
+    Section length   94, #relocs    0, #linenums    0, checksum        0
+007 00000000 SECT3  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 62BAAA1A, selection    2 (pick any)
+009 00000000 SECT3  notype       External     | _IID_IDxDiagContainer
+00A 00000000 SECT4  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D8FED587, selection    2 (pick any)
+00C 00000000 SECT4  notype       External     | _IID_IDxDiagProvider
+00D 00000000 SECT5  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 492F7A91, selection    2 (pick any)
+00F 00000000 SECT5  notype       External     | _CLSID_DxDiagProvider
+010 00000000 SECT6  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 650C6392, selection    2 (pick any)
+012 00000000 SECT6  notype       External     | _KSDATAFORMAT_SUBTYPE_DIRECTMUSIC
+013 00000000 SECT7  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EAF719D2, selection    2 (pick any)
+015 00000000 SECT7  notype       External     | _KSDATAFORMAT_SUBTYPE_MIDI
+016 00000000 SECT8  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5BFEDA28, selection    2 (pick any)
+018 00000000 SECT8  notype       External     | _IID_IKsControl
+019 00000000 SECT9  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B39FC3D9, selection    2 (pick any)
+01B 00000000 SECT9  notype       External     | _IID_IDirectMusicAudioPath
+01C 00000000 SECTA  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 97E7B5EE, selection    2 (pick any)
+01E 00000000 SECTA  notype       External     | _IID_IDirectMusicContainer
+01F 00000000 SECTB  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D1D4A5B6, selection    2 (pick any)
+021 00000000 SECTB  notype       External     | _IID_IDirectMusicScript
+022 00000000 SECTC  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 569653BA, selection    2 (pick any)
+024 00000000 SECTC  notype       External     | _IID_IDirectMusicPatternTrack
+025 00000000 SECTD  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4E9440B2, selection    2 (pick any)
+027 00000000 SECTD  notype       External     | _IID_IDirectMusicStyle8
+028 00000000 SECTE  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 89202217, selection    2 (pick any)
+02A 00000000 SECTE  notype       External     | _IID_IDirectMusicSegmentState8
+02B 00000000 SECTF  notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 43FFA743, selection    2 (pick any)
+02D 00000000 SECTF  notype       External     | _IID_IDirectMusicSegment8
+02E 00000000 SECT10 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 401A464C, selection    2 (pick any)
+030 00000000 SECT10 notype       External     | _IID_IDirectMusicPerformance8
+031 00000000 SECT11 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4DD84432, selection    2 (pick any)
+033 00000000 SECT11 notype       External     | _IID_IDirectMusicLoader8
+034 00000000 SECT12 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  4351C3A, selection    2 (pick any)
+036 00000000 SECT12 notype       External     | _IID_IDirectMusicSegment2
+037 00000000 SECT13 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 224674AF, selection    2 (pick any)
+039 00000000 SECT13 notype       External     | _IID_IDirectMusicPerformance2
+03A 00000000 SECT14 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  EB165EB, selection    2 (pick any)
+03C 00000000 SECT14 notype       External     | _IID_IDirectMusicBand
+03D 00000000 SECT15 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5F3DB1C8, selection    2 (pick any)
+03F 00000000 SECT15 notype       External     | _IID_IDirectMusicComposer
+040 00000000 SECT16 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F1552059, selection    2 (pick any)
+042 00000000 SECT16 notype       External     | _IID_IDirectMusicChordMap
+043 00000000 SECT17 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D89D94AB, selection    2 (pick any)
+045 00000000 SECT17 notype       External     | _IID_IDirectMusicStyle
+046 00000000 SECT18 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  38356B4, selection    2 (pick any)
+048 00000000 SECT18 notype       External     | _IID_IDirectMusicGraph
+049 00000000 SECT19 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C39F8829, selection    2 (pick any)
+04B 00000000 SECT19 notype       External     | _IID_IDirectMusicPerformance
+04C 00000000 SECT1A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9772182B, selection    2 (pick any)
+04E 00000000 SECT1A notype       External     | _IID_IDirectMusicSegmentState
+04F 00000000 SECT1B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D1DE391E, selection    2 (pick any)
+051 00000000 SECT1B notype       External     | _IID_IDirectMusicSegment
+052 00000000 SECT1C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AB8E0BE4, selection    2 (pick any)
+054 00000000 SECT1C notype       External     | _IID_IDirectMusicObject
+055 00000000 SECT1D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 93C3028B, selection    2 (pick any)
+057 00000000 SECT1D notype       External     | _IID_IDirectMusicGetLoader
+058 00000000 SECT1E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B0304612, selection    2 (pick any)
+05A 00000000 SECT1E notype       External     | _IID_IDirectMusicLoader
+05B 00000000 SECT1F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 186346D0, selection    2 (pick any)
+05D 00000000 SECT1F notype       External     | _GUID_Buffer_Mono
+05E 00000000 SECT20 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B60BD741, selection    2 (pick any)
+060 00000000 SECT20 notype       External     | _GUID_Buffer_3D_Dry
+061 00000000 SECT21 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9FC363B3, selection    2 (pick any)
+063 00000000 SECT21 notype       External     | _GUID_Buffer_Stereo
+064 00000000 SECT22 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 623A9BC6, selection    2 (pick any)
+066 00000000 SECT22 notype       External     | _GUID_Buffer_EnvReverb
+067 00000000 SECT23 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4BF22F34, selection    2 (pick any)
+069 00000000 SECT23 notype       External     | _GUID_Buffer_Reverb
+06A 00000000 SECT24 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2386ABE9, selection    2 (pick any)
+06C 00000000 SECT24 notype       External     | _GUID_Synth_Default
+06D 00000000 SECT25 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 88C00E24, selection    2 (pick any)
+06F 00000000 SECT25 notype       External     | _GUID_DefaultGMCollection
+070 00000000 SECT26 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2F78393A, selection    2 (pick any)
+072 00000000 SECT26 notype       External     | _GUID_PerfAutoDownload
+073 00000000 SECT27 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5677F391, selection    2 (pick any)
+075 00000000 SECT27 notype       External     | _GUID_PerfMasterGrooveLevel
+076 00000000 SECT28 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7FBF4763, selection    2 (pick any)
+078 00000000 SECT28 notype       External     | _GUID_PerfMasterVolume
+079 00000000 SECT29 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D1D7D6F2, selection    2 (pick any)
+07B 00000000 SECT29 notype       External     | _GUID_PerfMasterTempo
+07C 00000000 SECT2A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 29671EFD, selection    2 (pick any)
+07E 00000000 SECT2A notype       External     | _GUID_UnloadFromAudioPath
+07F 00000000 SECT2B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum   AFAA0F, selection    2 (pick any)
+081 00000000 SECT2B notype       External     | _GUID_DownloadToAudioPath
+082 00000000 SECT2C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 50EE36C0, selection    2 (pick any)
+084 00000000 SECT2C notype       External     | _GUID_Variations
+085 00000000 SECT2D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  77BB75B, selection    2 (pick any)
+087 00000000 SECT2D notype       External     | _GUID_SeedVariations
+088 00000000 SECT2E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 96232BC1, selection    2 (pick any)
+08A 00000000 SECT2E notype       External     | _GUID_EnableTempo
+08B 00000000 SECT2F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BFEB9F33, selection    2 (pick any)
+08D 00000000 SECT2F notype       External     | _GUID_DisableTempo
+08E 00000000 SECT30 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 11830EA2, selection    2 (pick any)
+090 00000000 SECT30 notype       External     | _GUID_EnableTimeSig
+091 00000000 SECT31 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EC7AF6D7, selection    2 (pick any)
+093 00000000 SECT31 notype       External     | _GUID_DisableTimeSig
+094 00000000 SECT32 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2BC91A2F, selection    2 (pick any)
+096 00000000 SECT32 notype       External     | _GUID_StandardMIDIFile
+097 00000000 SECT33 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6D2BC3D1, selection    2 (pick any)
+099 00000000 SECT33 notype       External     | _GUID_Clear_All_Bands
+09A 00000000 SECT34 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C3435240, selection    2 (pick any)
+09C 00000000 SECT34 notype       External     | _GUID_Disable_Auto_Download
+09D 00000000 SECT35 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EA8BE6B2, selection    2 (pick any)
+09F 00000000 SECT35 notype       External     | _GUID_Enable_Auto_Download
+0A0 00000000 SECT36 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  9E883D8, selection    2 (pick any)
+0A2 00000000 SECT36 notype       External     | _GUID_ConnectToDLSCollection
+0A3 00000000 SECT37 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 44E37723, selection    2 (pick any)
+0A5 00000000 SECT37 notype       External     | _GUID_Unload
+0A6 00000000 SECT38 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CA091019, selection    2 (pick any)
+0A8 00000000 SECT38 notype       External     | _GUID_Download
+0A9 00000000 SECT39 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B91A8F56, selection    2 (pick any)
+0AB 00000000 SECT39 notype       External     | _GUID_MuteParam
+0AC 00000000 SECT3A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3EBAAA35, selection    2 (pick any)
+0AE 00000000 SECT3A notype       External     | _GUID_IDirectMusicChordMap
+0AF 00000000 SECT3B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 90D23BA4, selection    2 (pick any)
+0B1 00000000 SECT3B notype       External     | _GUID_IDirectMusicBand
+0B2 00000000 SECT3C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  3EB5D54, selection    2 (pick any)
+0B4 00000000 SECT3C notype       External     | _GUID_BandParam
+0B5 00000000 SECT3D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7FF64804, selection    2 (pick any)
+0B7 00000000 SECT3D notype       External     | _GUID_Play_Marker
+0B8 00000000 SECT3E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AC5AF452, selection    2 (pick any)
+0BA 00000000 SECT3E notype       External     | _GUID_Valid_Start_Time
+0BB 00000000 SECT3F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4DA9357A, selection    2 (pick any)
+0BD 00000000 SECT3F notype       External     | _GUID_TempoParam
+0BE 00000000 SECT40 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E3C1A4EB, selection    2 (pick any)
+0C0 00000000 SECT40 notype       External     | _GUID_TimeSignature
+0C1 00000000 SECT41 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 999879FD, selection    2 (pick any)
+0C3 00000000 SECT41 notype       External     | _GUID_IDirectMusicStyle
+0C4 00000000 SECT42 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4802CAB5, selection    2 (pick any)
+0C6 00000000 SECT42 notype       External     | _GUID_RhythmParam
+0C7 00000000 SECT43 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E66A5B24, selection    2 (pick any)
+0C9 00000000 SECT43 notype       External     | _GUID_ChordParam
+0CA 00000000 SECT44 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6224A336, selection    2 (pick any)
+0CC 00000000 SECT44 notype       External     | _GUID_CommandParamNext
+0CD 00000000 SECT45 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 79A4BCA7, selection    2 (pick any)
+0CF 00000000 SECT45 notype       External     | _GUID_CommandParam2
+0D0 00000000 SECT46 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CFA2EFD6, selection    2 (pick any)
+0D2 00000000 SECT46 notype       External     | _GUID_CommandParam
+0D3 00000000 SECT47 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7FDBF0A4, selection    2 (pick any)
+0D5 00000000 SECT47 notype       External     | _GUID_NOTIFICATION_RECOMPOSE
+0D6 00000000 SECT48 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 61CA7E47, selection    2 (pick any)
+0D8 00000000 SECT48 notype       External     | _GUID_NOTIFICATION_COMMAND
+0D9 00000000 SECT49 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9C338632, selection    2 (pick any)
+0DB 00000000 SECT49 notype       External     | _GUID_NOTIFICATION_CHORD
+0DC 00000000 SECT4A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 325B17A3, selection    2 (pick any)
+0DE 00000000 SECT4A notype       External     | _GUID_NOTIFICATION_MEASUREANDBEAT
+0DF 00000000 SECT4B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 189B4F8F, selection    2 (pick any)
+0E1 00000000 SECT4B notype       External     | _GUID_NOTIFICATION_PERFORMANCE
+0E2 00000000 SECT4C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1B93A351, selection    2 (pick any)
+0E4 00000000 SECT4C notype       External     | _GUID_NOTIFICATION_SEGMENT
+0E5 00000000 SECT4D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EF20197D, selection    2 (pick any)
+0E7 00000000 SECT4D notype       External     | _GUID_DirectMusicAllTypes
+0E8 00000000 SECT4E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2CD76555, selection    2 (pick any)
+0EA 00000000 SECT4E notype       External     | _CLSID_DirectMusicAudioPathConfig
+0EB 00000000 SECT4F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  C1C22C2, selection    2 (pick any)
+0ED 00000000 SECT4F notype       External     | _CLSID_DirectSoundWave
+0EE 00000000 SECT50 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C476DC0A, selection    2 (pick any)
+0F0 00000000 SECT50 notype       External     | _CLSID_DirectMusicContainer
+0F1 00000000 SECT51 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E8475173, selection    2 (pick any)
+0F3 00000000 SECT51 notype       External     | _CLSID_DirectMusicScript
+0F4 00000000 SECT52 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3B1155FA, selection    2 (pick any)
+0F6 00000000 SECT52 notype       External     | _CLSID_DirectMusicPatternTrack
+0F7 00000000 SECT53 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B0477C03, selection    2 (pick any)
+0F9 00000000 SECT53 notype       External     | _CLSID_DirectMusicBand
+0FA 00000000 SECT54 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 414888EC, selection    2 (pick any)
+0FC 00000000 SECT54 notype       External     | _CLSID_DirectMusicLoader
+0FD 00000000 SECT55 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C6E8AD8F, selection    2 (pick any)
+0FF 00000000 SECT55 notype       External     | _CLSID_DirectMusicComposer
+100 00000000 SECT56 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AE25F42B, selection    2 (pick any)
+102 00000000 SECT56 notype       External     | _CLSID_DirectMusicChordMap
+103 00000000 SECT57 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D47C293D, selection    2 (pick any)
+105 00000000 SECT57 notype       External     | _CLSID_DirectMusicStyle
+106 00000000 SECT58 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F4FEDF96, selection    2 (pick any)
+108 00000000 SECT58 notype       External     | _CLSID_DirectMusicGraph
+109 00000000 SECT59 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  90727E3, selection    2 (pick any)
+10B 00000000 SECT59 notype       External     | _CLSID_DirectMusicSegmentState
+10C 00000000 SECT5A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A76FB672, selection    2 (pick any)
+10E 00000000 SECT5A notype       External     | _CLSID_DirectMusicSegment
+10F 00000000 SECT5B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8EA70280, selection    2 (pick any)
+111 00000000 SECT5B notype       External     | _CLSID_DirectMusicPerformance
+112 00000000 SECT5C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F01266E8, selection    2 (pick any)
+114 00000000 SECT5C notype       External     | _IID_IDirectMusicTrack8
+115 00000000 SECT5D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  DEB9E9D, selection    2 (pick any)
+117 00000000 SECT5D notype       External     | _IID_IDirectMusicTool8
+118 00000000 SECT5E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 25646CDE, selection    2 (pick any)
+11A 00000000 SECT5E notype       External     | _IID_IDirectMusicTool
+11B 00000000 SECT5F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F8168DEC, selection    2 (pick any)
+11D 00000000 SECT5F notype       External     | _IID_IDirectMusicTrack
+11E 00000000 SECT60 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 25EC4FA6, selection    2 (pick any)
+120 00000000 SECT60 notype       External     | _CLSID_DirectMusicWaveTrack
+121 00000000 SECT61 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BD06822C, selection    2 (pick any)
+123 00000000 SECT61 notype       External     | _CLSID_DirectMusicParamControlTrack
+124 00000000 SECT62 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EA5DCEB2, selection    2 (pick any)
+126 00000000 SECT62 notype       External     | _CLSID_DirectMusicLyricsTrack
+127 00000000 SECT63 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3FAF6C0E, selection    2 (pick any)
+129 00000000 SECT63 notype       External     | _CLSID_DirectMusicSegmentTriggerTrack
+12A 00000000 SECT64 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BB665C9A, selection    2 (pick any)
+12C 00000000 SECT64 notype       External     | _CLSID_DirectMusicMarkerTrack
+12D 00000000 SECT65 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9F520AD1, selection    2 (pick any)
+12F 00000000 SECT65 notype       External     | _CLSID_DirectMusicScriptTrack
+130 00000000 SECT66 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B5FB32C0, selection    2 (pick any)
+132 00000000 SECT66 notype       External     | _CLSID_DirectMusicMuteTrack
+133 00000000 SECT67 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9579C46B, selection    2 (pick any)
+135 00000000 SECT67 notype       External     | _CLSID_DirectMusicChordMapTrack
+136 00000000 SECT68 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 12D9E108, selection    2 (pick any)
+138 00000000 SECT68 notype       External     | _CLSID_DirectMusicBandTrack
+139 00000000 SECT69 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 26A89FB5, selection    2 (pick any)
+13B 00000000 SECT69 notype       External     | _CLSID_DirectMusicSignPostTrack
+13C 00000000 SECT6A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum   4D65BA, selection    2 (pick any)
+13E 00000000 SECT6A notype       External     | _CLSID_DirectMusicMotifTrack
+13F 00000000 SECT6B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2985D148, selection    2 (pick any)
+141 00000000 SECT6B notype       External     | _CLSID_DirectMusicStyleTrack
+142 00000000 SECT6C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 87ED40D9, selection    2 (pick any)
+144 00000000 SECT6C notype       External     | _CLSID_DirectMusicCommandTrack
+145 00000000 SECT6D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7A14B8AC, selection    2 (pick any)
+147 00000000 SECT6D notype       External     | _CLSID_DirectMusicChordTrack
+148 00000000 SECT6E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 53DC0C5E, selection    2 (pick any)
+14A 00000000 SECT6E notype       External     | _CLSID_DirectMusicTimeSigTrack
+14B 00000000 SECT6F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DD366B64, selection    2 (pick any)
+14D 00000000 SECT6F notype       External     | _CLSID_DirectMusicSysExTrack
+14E 00000000 SECT70 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 735EFAF5, selection    2 (pick any)
+150 00000000 SECT70 notype       External     | _CLSID_DirectMusicSeqTrack
+151 00000000 SECT71 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5A964E07, selection    2 (pick any)
+153 00000000 SECT71 notype       External     | _CLSID_DirectMusicTempoTrack
+154 00000000 SECT72 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4E68612B, selection    2 (pick any)
+156 00000000 SECT72 notype       External     | _GUID_DMUS_PROP_Volume
+157 00000000 SECT73 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BD85AB1D, selection    2 (pick any)
+159 00000000 SECT73 notype       External     | _GUID_DMUS_PROP_LegacyCaps
+15A 00000000 SECT74 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D8F07183, selection    2 (pick any)
+15C 00000000 SECT74 notype       External     | _GUID_DMUS_PROP_Effects
+15D 00000000 SECT75 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  8FE8B04, selection    2 (pick any)
+15F 00000000 SECT75 notype       External     | _GUID_DMUS_PROP_WavesReverb
+160 00000000 SECT76 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7758F9CA, selection    2 (pick any)
+162 00000000 SECT76 notype       External     | _GUID_DMUS_PROP_MemorySize
+163 00000000 SECT77 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D2E6A9F0, selection    2 (pick any)
+165 00000000 SECT77 notype       External     | _GUID_DMUS_PROP_WritePeriod
+166 00000000 SECT78 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7C8E3861, selection    2 (pick any)
+168 00000000 SECT78 notype       External     | _GUID_DMUS_PROP_WriteLatency
+169 00000000 SECT79 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  C234D57, selection    2 (pick any)
+16B 00000000 SECT79 notype       External     | _GUID_DMUS_PROP_SamplePlaybackRate
+16C 00000000 SECT7A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7758F9CA, selection    2 (pick any)
+16E 00000000 SECT7A notype       External     | _GUID_DMUS_PROP_SampleMemorySize
+16F 00000000 SECT7B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 72BFCBE4, selection    2 (pick any)
+171 00000000 SECT7B notype       External     | _GUID_DMUS_PROP_SynthSink_WAVE
+172 00000000 SECT7C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DCD75A75, selection    2 (pick any)
+174 00000000 SECT7C notype       External     | _GUID_DMUS_PROP_SynthSink_DSOUND
+175 00000000 SECT7D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D72107AA, selection    2 (pick any)
+177 00000000 SECT7D notype       External     | _GUID_DMUS_PROP_INSTRUMENT2
+178 00000000 SECT7E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7B8A703E, selection    2 (pick any)
+17A 00000000 SECT7E notype       External     | _GUID_DMUS_PROP_DLS2
+17B 00000000 SECT7F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F9B29EF0, selection    2 (pick any)
+17D 00000000 SECT7F notype       External     | _GUID_DMUS_PROP_DLS1
+17E 00000000 SECT80 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3B50C94A, selection    2 (pick any)
+180 00000000 SECT80 notype       External     | _GUID_DMUS_PROP_GS_Capable
+181 00000000 SECT81 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 12987DB8, selection    2 (pick any)
+183 00000000 SECT81 notype       External     | _GUID_DMUS_PROP_XG_Capable
+184 00000000 SECT82 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 57DA0F61, selection    2 (pick any)
+186 00000000 SECT82 notype       External     | _GUID_DMUS_PROP_XG_Hardware
+187 00000000 SECT83 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7E12BB93, selection    2 (pick any)
+189 00000000 SECT83 notype       External     | _GUID_DMUS_PROP_GS_Hardware
+18A 00000000 SECT84 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D07A2A02, selection    2 (pick any)
+18C 00000000 SECT84 notype       External     | _GUID_DMUS_PROP_GM_Hardware
+18D 00000000 SECT85 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4C8CD75F, selection    2 (pick any)
+18F 00000000 SECT85 notype       External     | _IID_IDirectMusic8
+190 00000000 SECT86 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8C2EE53E, selection    2 (pick any)
+192 00000000 SECT86 notype       External     | _IID_IDirectMusic2
+193 00000000 SECT87 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 83D63B57, selection    2 (pick any)
+195 00000000 SECT87 notype       External     | _IID_IDirectMusicDownloadedInstrument
+196 00000000 SECT88 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AA1E8FA5, selection    2 (pick any)
+198 00000000 SECT88 notype       External     | _IID_IDirectMusicInstrument
+199 00000000 SECT89 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  4761E34, selection    2 (pick any)
+19B 00000000 SECT89 notype       External     | _IID_IDirectMusicCollection
+19C 00000000 SECT8A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F98FE641, selection    2 (pick any)
+19E 00000000 SECT8A notype       External     | _IID_IDirectMusicDownload
+19F 00000000 SECT8B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 57E777D0, selection    2 (pick any)
+1A1 00000000 SECT8B notype       External     | _IID_IDirectMusicPortDownload
+1A2 00000000 SECT8C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CED6E269, selection    2 (pick any)
+1A4 00000000 SECT8C notype       External     | _IID_IDirectMusicThru
+1A5 00000000 SECT8D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F7333337, selection    2 (pick any)
+1A7 00000000 SECT8D notype       External     | _IID_IDirectMusicPort
+1A8 00000000 SECT8E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D04752B3, selection    2 (pick any)
+1AA 00000000 SECT8E notype       External     | _IID_IDirectMusicBuffer
+1AB 00000000 SECT8F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C99D58DF, selection    2 (pick any)
+1AD 00000000 SECT8F notype       External     | _IID_IDirectMusic
+1AE 00000000 SECT90 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FF4B9F87, selection    2 (pick any)
+1B0 00000000 SECT90 notype       External     | _CLSID_DirectMusicSynth
+1B1 00000000 SECT91 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7BD1A8CD, selection    2 (pick any)
+1B3 00000000 SECT91 notype       External     | _CLSID_DirectMusicCollection
+1B4 00000000 SECT92 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F4EB9288, selection    2 (pick any)
+1B6 00000000 SECT92 notype       External     | _CLSID_DirectMusic
+1B7 00000000 SECT93 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2F87558C, selection    2 (pick any)
+1B9 00000000 SECT93 notype       External     | _IID_IDirectPlay8LobbyClient
+1BA 00000000 SECT94 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 81EFC41D, selection    2 (pick any)
+1BC 00000000 SECT94 notype       External     | _IID_IDirectPlay8LobbiedApplication
+1BD 00000000 SECT95 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6652B910, selection    2 (pick any)
+1BF 00000000 SECT95 notype       External     | _CLSID_DirectPlay8LobbyClient
+1C0 00000000 SECT96 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DB8E8A96, selection    2 (pick any)
+1C2 00000000 SECT96 notype       External     | _CLSID_DirectPlay8LobbiedApplication
+1C3 00000000 SECT97 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 30507D10, selection    2 (pick any)
+1C5 00000000 SECT97 notype       External     | _CLSID_DP8SP_BLUETOOTH
+1C6 00000000 SECT98 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1F58C917, selection    2 (pick any)
+1C8 00000000 SECT98 notype       External     | _CLSID_DP8SP_TCPIP
+1C9 00000000 SECT99 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B29018F3, selection    2 (pick any)
+1CB 00000000 SECT99 notype       External     | _CLSID_DP8SP_SERIAL
+1CC 00000000 SECT9A notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9BB0400C, selection    2 (pick any)
+1CE 00000000 SECT9A notype       External     | _CLSID_DP8SP_MODEM
+1CF 00000000 SECT9B notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 92A2DE6D, selection    2 (pick any)
+1D1 00000000 SECT9B notype       External     | _CLSID_DP8SP_IPX
+1D2 00000000 SECT9C notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CAE13C4D, selection    2 (pick any)
+1D4 00000000 SECT9C notype       External     | _IID_IDirectPlay8NATResolver
+1D5 00000000 SECT9D notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 69C416BD, selection    2 (pick any)
+1D7 00000000 SECT9D notype       External     | _IID_IDirectPlay8ThreadPool
+1D8 00000000 SECT9E notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2F765794, selection    2 (pick any)
+1DA 00000000 SECT9E notype       External     | _IID_IDirectPlay8Peer
+1DB 00000000 SECT9F notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 811EC605, selection    2 (pick any)
+1DD 00000000 SECT9F notype       External     | _IID_IDirectPlay8Server
+1DE 00000000 SECTA0 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A8D672F7, selection    2 (pick any)
+1E0 00000000 SECTA0 notype       External     | _IID_IDirectPlay8Client
+1E1 00000000 SECTA1 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A8E69C1B, selection    2 (pick any)
+1E3 00000000 SECTA1 notype       External     | _CLSID_DirectPlay8NATResolver
+1E4 00000000 SECTA2 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4D793969, selection    2 (pick any)
+1E6 00000000 SECTA2 notype       External     | _CLSID_DirectPlay8ThreadPool
+1E7 00000000 SECTA3 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AFA53A57, selection    2 (pick any)
+1E9 00000000 SECTA3 notype       External     | _CLSID_DirectPlay8Peer
+1EA 00000000 SECTA4 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  DCFA508, selection    2 (pick any)
+1EC 00000000 SECTA4 notype       External     | _CLSID_DirectPlay8Server
+1ED 00000000 SECTA5 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5B508C21, selection    2 (pick any)
+1EF 00000000 SECTA5 notype       External     | _CLSID_DirectPlay8Client
+1F0 00000000 SECTA6 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C18AAF7B, selection    2 (pick any)
+1F2 00000000 SECTA6 notype       External     | _IID_IDirectPlay8AddressIP
+1F3 00000000 SECTA7 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 852B8F56, selection    2 (pick any)
+1F5 00000000 SECTA7 notype       External     | _IID_IDirectPlay8Address
+1F6 00000000 SECTA8 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 83FF8DFD, selection    2 (pick any)
+1F8 00000000 SECTA8 notype       External     | _CLSID_DirectPlay8Address
+1F9 00000000 SECTA9 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B07999E7, selection    2 (pick any)
+1FB 00000000 SECTA9 notype       External     | _DPVCTGUID_VR12
+1FC 00000000 SECTAA notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EE521827, selection    2 (pick any)
+1FE 00000000 SECTAA notype       External     | _DPVCTGUID_TRUESPEECH
+1FF 00000000 SECTAB notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 704A8871, selection    2 (pick any)
+201 00000000 SECTAB notype       External     | _DPVCTGUID_SC06
+202 00000000 SECTAC notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B570D093, selection    2 (pick any)
+204 00000000 SECTAC notype       External     | _DPVCTGUID_SC03
+205 00000000 SECTAD notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F2282CF3, selection    2 (pick any)
+207 00000000 SECTAD notype       External     | _DPVCTGUID_NONE
+208 00000000 SECTAE notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AB681440, selection    2 (pick any)
+20A 00000000 SECTAE notype       External     | _DPVCTGUID_GSM
+20B 00000000 SECTAF notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9A3662FC, selection    2 (pick any)
+20D 00000000 SECTAF notype       External     | _DPVCTGUID_ADPCM
+20E 00000000 SECTB0 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DF02D59F, selection    2 (pick any)
+210 00000000 SECTB0 notype       External     | _IID_IDirectPlayVoiceTest
+211 00000000 SECTB1 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 47D8760C, selection    2 (pick any)
+213 00000000 SECTB1 notype       External     | _IID_IDirectPlayVoiceServer
+214 00000000 SECTB2 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EB0AC73D, selection    2 (pick any)
+216 00000000 SECTB2 notype       External     | _IID_IDirectPlayVoiceClient
+217 00000000 SECTB3 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D0D3B2A0, selection    2 (pick any)
+219 00000000 SECTB3 notype       External     | _CLSID_DirectPlayVoiceTest
+21A 00000000 SECTB4 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1F1DFC54, selection    2 (pick any)
+21C 00000000 SECTB4 notype       External     | _CLSID_DirectPlayVoiceServer
+21D 00000000 SECTB5 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 68713D7F, selection    2 (pick any)
+21F 00000000 SECTB5 notype       External     | _CLSID_DirectPlayVoiceClient
+220 00000000 SECTB6 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1D30D6C9, selection    2 (pick any)
+222 00000000 SECTB6 notype       External     | _GUID_DSCFX_SYSTEM_NS
+223 00000000 SECTB7 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 48064B08, selection    2 (pick any)
+225 00000000 SECTB7 notype       External     | _GUID_DSCFX_MS_NS
+226 00000000 SECTB8 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  BB70A5B, selection    2 (pick any)
+228 00000000 SECTB8 notype       External     | _GUID_DSCFX_CLASS_NS
+229 00000000 SECTB9 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum ED69213F, selection    2 (pick any)
+22B 00000000 SECTB9 notype       External     | _GUID_DSCFX_SYSTEM_AEC
+22C 00000000 SECTBA notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5AF43961, selection    2 (pick any)
+22E 00000000 SECTBA notype       External     | _GUID_DSCFX_MS_AEC
+22F 00000000 SECTBB notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 82208B55, selection    2 (pick any)
+231 00000000 SECTBB notype       External     | _GUID_DSCFX_CLASS_AEC
+232 00000000 SECTBC notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3CB09C43, selection    2 (pick any)
+234 00000000 SECTBC notype       External     | _GUID_DSFX_WAVES_REVERB
+235 00000000 SECTBD notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 652BA310, selection    2 (pick any)
+237 00000000 SECTBD notype       External     | _GUID_DSFX_STANDARD_I3DL2REVERB
+238 00000000 SECTBE notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DB1A76AF, selection    2 (pick any)
+23A 00000000 SECTBE notype       External     | _GUID_DSFX_STANDARD_PARAMEQ
+23B 00000000 SECTBF notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1CF6A071, selection    2 (pick any)
+23D 00000000 SECTBF notype       External     | _GUID_DSFX_STANDARD_COMPRESSOR
+23E 00000000 SECTC0 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 64D5F01A, selection    2 (pick any)
+240 00000000 SECTC0 notype       External     | _GUID_DSFX_STANDARD_DISTORTION
+241 00000000 SECTC1 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D866AC1B, selection    2 (pick any)
+243 00000000 SECTC1 notype       External     | _GUID_DSFX_STANDARD_ECHO
+244 00000000 SECTC2 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  8BF6B60, selection    2 (pick any)
+246 00000000 SECTC2 notype       External     | _GUID_DSFX_STANDARD_FLANGER
+247 00000000 SECTC3 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8F43399F, selection    2 (pick any)
+249 00000000 SECTC3 notype       External     | _GUID_DSFX_STANDARD_CHORUS
+24A 00000000 SECTC4 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7192D509, selection    2 (pick any)
+24C 00000000 SECTC4 notype       External     | _GUID_DSFX_STANDARD_GARGLE
+24D 00000000 SECTC5 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 73280F7D, selection    2 (pick any)
+24F 00000000 SECTC5 notype       External     | _DS3DALG_HRTF_LIGHT
+250 00000000 SECTC6 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F4882A1E, selection    2 (pick any)
+252 00000000 SECTC6 notype       External     | _DS3DALG_HRTF_FULL
+253 00000000 SECTC7 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A504FE3D, selection    2 (pick any)
+255 00000000 SECTC7 notype       External     | _DS3DALG_NO_VIRTUALIZATION
+256 00000000 SECTC8 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B0FD48AE, selection    2 (pick any)
+258 00000000 SECTC8 notype       External     | _IID_IDirectSoundFullDuplex
+259 00000000 SECTC9 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 29508C14, selection    2 (pick any)
+25B 00000000 SECTC9 notype       External     | _IID_IDirectSoundCaptureFXNoiseSuppress
+25C 00000000 SECTCA notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BD19086D, selection    2 (pick any)
+25E 00000000 SECTCA notype       External     | _IID_IDirectSoundCaptureFXAec
+25F 00000000 SECTCB notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9A8977C2, selection    2 (pick any)
+261 00000000 SECTCB notype       External     | _IID_IDirectSoundFXWavesReverb
+262 00000000 SECTCC notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6E37B6E9, selection    2 (pick any)
+264 00000000 SECTCC notype       External     | _IID_IDirectSoundFXI3DL2Reverb
+265 00000000 SECTCD notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A3BC55CE, selection    2 (pick any)
+267 00000000 SECTCD notype       External     | _IID_IDirectSoundFXParamEq
+268 00000000 SECTCE notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 20018555, selection    2 (pick any)
+26A 00000000 SECTCE notype       External     | _IID_IDirectSoundFXCompressor
+26B 00000000 SECTCF notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 45316183, selection    2 (pick any)
+26D 00000000 SECTCF notype       External     | _IID_IDirectSoundFXDistortion
+26E 00000000 SECTD0 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1AA59FAB, selection    2 (pick any)
+270 00000000 SECTD0 notype       External     | _IID_IDirectSoundFXEcho
+271 00000000 SECTD1 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9D10A2BA, selection    2 (pick any)
+273 00000000 SECTD1 notype       External     | _IID_IDirectSoundFXFlanger
+274 00000000 SECTD2 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C8302BF3, selection    2 (pick any)
+276 00000000 SECTD2 notype       External     | _IID_IDirectSoundFXChorus
+277 00000000 SECTD3 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DD6F5968, selection    2 (pick any)
+279 00000000 SECTD3 notype       External     | _IID_IDirectSoundFXGargle
+27A 00000000 SECTD4 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A38A19C8, selection    2 (pick any)
+27C 00000000 SECTD4 notype       External     | _IID_IKsPropertySet
+27D 00000000 SECTD5 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B0A71111, selection    2 (pick any)
+27F 00000000 SECTD5 notype       External     | _IID_IDirectSoundNotify
+280 00000000 SECTD6 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6AC9E307, selection    2 (pick any)
+282 00000000 SECTD6 notype       External     | _IID_IDirectSoundCaptureBuffer8
+283 00000000 SECTD7 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1ECF8080, selection    2 (pick any)
+285 00000000 SECTD7 notype       External     | _IID_IDirectSoundCaptureBuffer
+286 00000000 SECTD8 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 37073472, selection    2 (pick any)
+288 00000000 SECTD8 notype       External     | _IID_IDirectSoundCapture
+289 00000000 SECTD9 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6FA98FEB, selection    2 (pick any)
+28B 00000000 SECTD9 notype       External     | _IID_IDirectSound3DBuffer
+28C 00000000 SECTDA notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E809AA88, selection    2 (pick any)
+28E 00000000 SECTDA notype       External     | _IID_IDirectSound3DListener
+28F 00000000 SECTDB notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 63913ED4, selection    2 (pick any)
+291 00000000 SECTDB notype       External     | _GUID_All_Objects
+292 00000000 SECTDC notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 270B164C, selection    2 (pick any)
+294 00000000 SECTDC notype       External     | _IID_IDirectSoundBuffer8
+295 00000000 SECTDD notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 46613B19, selection    2 (pick any)
+297 00000000 SECTDD notype       External     | _IID_IDirectSoundBuffer
+298 00000000 SECTDE notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 653AB08C, selection    2 (pick any)
+29A 00000000 SECTDE notype       External     | _IID_IDirectSound8
+29B 00000000 SECTDF notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 15F052FD, selection    2 (pick any)
+29D 00000000 SECTDF notype       External     | _IID_IDirectSound
+29E 00000000 SECTE0 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CD5743F3, selection    2 (pick any)
+2A0 00000000 SECTE0 notype       External     | _IID_IReferenceClock
+2A1 00000000 SECTE1 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 89EFE814, selection    2 (pick any)
+2A3 00000000 SECTE1 notype       External     | _DSDEVID_DefaultVoiceCapture
+2A4 00000000 SECTE2 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 27877985, selection    2 (pick any)
+2A6 00000000 SECTE2 notype       External     | _DSDEVID_DefaultVoicePlayback
+2A7 00000000 SECTE3 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  E4FCD77, selection    2 (pick any)
+2A9 00000000 SECTE3 notype       External     | _DSDEVID_DefaultCapture
+2AA 00000000 SECTE4 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A0275CE6, selection    2 (pick any)
+2AC 00000000 SECTE4 notype       External     | _DSDEVID_DefaultPlayback
+2AD 00000000 SECTE5 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum ECBF1D17, selection    2 (pick any)
+2AF 00000000 SECTE5 notype       External     | _CLSID_DirectSoundFullDuplex
+2B0 00000000 SECTE6 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5B0B0977, selection    2 (pick any)
+2B2 00000000 SECTE6 notype       External     | _CLSID_DirectSoundCapture8
+2B3 00000000 SECTE7 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 996FA5E3, selection    2 (pick any)
+2B5 00000000 SECTE7 notype       External     | _CLSID_DirectSoundCapture
+2B6 00000000 SECTE8 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 63B8D274, selection    2 (pick any)
+2B8 00000000 SECTE8 notype       External     | _CLSID_DirectSound8
+2B9 00000000 SECTE9 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 328AD63B, selection    2 (pick any)
+2BB 00000000 SECTE9 notype       External     | _CLSID_DirectSound
+2BC 00000000 SECTEA notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3AA7AA03, selection    2 (pick any)
+2BE 00000000 SECTEA notype       External     | _DPAID_ComPort
+2BF 00000000 SECTEB notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 69832A55, selection    2 (pick any)
+2C1 00000000 SECTEB notype       External     | _DPAID_INetPort
+2C2 00000000 SECTEC notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BA041DFD, selection    2 (pick any)
+2C4 00000000 SECTEC notype       External     | _DPAID_INetW
+2C5 00000000 SECTED notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2AAB314A, selection    2 (pick any)
+2C7 00000000 SECTED notype       External     | _DPAID_INet
+2C8 00000000 SECTEE notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4654E953, selection    2 (pick any)
+2CA 00000000 SECTEE notype       External     | _DPAID_ModemW
+2CB 00000000 SECTEF notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  152E718, selection    2 (pick any)
+2CD 00000000 SECTEF notype       External     | _DPAID_Modem
+2CE 00000000 SECTF0 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  7669002, selection    2 (pick any)
+2D0 00000000 SECTF0 notype       External     | _DPAID_PhoneW
+2D1 00000000 SECTF1 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F6EDA69D, selection    2 (pick any)
+2D3 00000000 SECTF1 notype       External     | _DPAID_Phone
+2D4 00000000 SECTF2 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9668CC24, selection    2 (pick any)
+2D6 00000000 SECTF2 notype       External     | _DPAID_LobbyProvider
+2D7 00000000 SECTF3 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2330041B, selection    2 (pick any)
+2D9 00000000 SECTF3 notype       External     | _DPAID_ServiceProvider
+2DA 00000000 SECTF4 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  97A01F1, selection    2 (pick any)
+2DC 00000000 SECTF4 notype       External     | _DPAID_TotalSize
+2DD 00000000 SECTF5 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 36041B15, selection    2 (pick any)
+2DF 00000000 SECTF5 notype       External     | _DPLPROPERTY_PlayerScore
+2E0 00000000 SECTF6 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 172D05A1, selection    2 (pick any)
+2E2 00000000 SECTF6 notype       External     | _DPLPROPERTY_PlayerGuid
+2E3 00000000 SECTF7 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BFDFF14C, selection    2 (pick any)
+2E5 00000000 SECTF7 notype       External     | _DPLPROPERTY_LobbyGuid
+2E6 00000000 SECTF8 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F3AA2396, selection    2 (pick any)
+2E8 00000000 SECTF8 notype       External     | _DPLPROPERTY_MessagesSupported
+2E9 00000000 SECTF9 notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9FC184EF, selection    2 (pick any)
+2EB 00000000 SECTF9 notype       External     | _CLSID_DirectPlayLobby
+2EC 00000000 SECTFA notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F44105C5, selection    2 (pick any)
+2EE 00000000 SECTFA notype       External     | _IID_IDirectPlayLobby3A
+2EF 00000000 SECTFB notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5A299454, selection    2 (pick any)
+2F1 00000000 SECTFB notype       External     | _IID_IDirectPlayLobby3
+2F2 00000000 SECTFC notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AE020311, selection    2 (pick any)
+2F4 00000000 SECTFC notype       External     | _IID_IDirectPlayLobby2A
+2F5 00000000 SECTFD notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 18CC1A53, selection    2 (pick any)
+2F7 00000000 SECTFD notype       External     | _IID_IDirectPlayLobby2
+2F8 00000000 SECTFE notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B3CF2A09, selection    2 (pick any)
+2FA 00000000 SECTFE notype       External     | _IID_IDirectPlayLobbyA
+2FB 00000000 SECTFF notype       Static       | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F711F3B8, selection    2 (pick any)
+2FD 00000000 SECTFF notype       External     | _IID_IDirectPlayLobby
+2FE 00000000 SECT100 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AEEE2501, selection    2 (pick any)
+300 00000000 SECT100 notype       External    | _IID_IDirectPlay
+301 00000000 SECT101 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  558BD16, selection    2 (pick any)
+303 00000000 SECT101 notype       External    | _DPSPGUID_MODEM
+304 00000000 SECT102 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 23D84747, selection    2 (pick any)
+306 00000000 SECT102 notype       External    | _DPSPGUID_SERIAL
+307 00000000 SECT103 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 13DC62B4, selection    2 (pick any)
+309 00000000 SECT103 notype       External    | _DPSPGUID_TCPIP
+30A 00000000 SECT104 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3F35AD9E, selection    2 (pick any)
+30C 00000000 SECT104 notype       External    | _DPSPGUID_IPX
+30D 00000000 SECT105 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 25BB529E, selection    2 (pick any)
+30F 00000000 SECT105 notype       External    | _CLSID_DirectPlay
+310 00000000 SECT106 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C29DDEBB, selection    2 (pick any)
+312 00000000 SECT106 notype       External    | _IID_IDirectPlay4A
+313 00000000 SECT107 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6CF54F2A, selection    2 (pick any)
+315 00000000 SECT107 notype       External    | _IID_IDirectPlay4
+316 00000000 SECT108 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3E65AE4D, selection    2 (pick any)
+318 00000000 SECT108 notype       External    | _IID_IDirectPlay3A
+319 00000000 SECT109 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 900D3FDC, selection    2 (pick any)
+31B 00000000 SECT109 notype       External    | _IID_IDirectPlay3
+31C 00000000 SECT10A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7F7EB0BE, selection    2 (pick any)
+31E 00000000 SECT10A notype       External    | _IID_IDirectPlay2A
+31F 00000000 SECT10B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 238729BE, selection    2 (pick any)
+321 00000000 SECT10B notype       External    | _IID_IDirectPlay2
+322 00000000 SECT10C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5DB90904, selection    2 (pick any)
+324 00000000 SECT10C notype       External    | _GUID_HIDClass
+325 00000000 SECT10D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E9E03C57, selection    2 (pick any)
+327 00000000 SECT10D notype       External    | _GUID_MouseClass
+328 00000000 SECT10E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C02888A5, selection    2 (pick any)
+32A 00000000 SECT10E notype       External    | _GUID_MediaClass
+32B 00000000 SECT10F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3DD170D0, selection    2 (pick any)
+32D 00000000 SECT10F notype       External    | _GUID_KeyboardClass
+32E 00000000 SECT110 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7198497F, selection    2 (pick any)
+330 00000000 SECT110 notype       External    | _IID_IDirectInputJoyConfig8
+331 00000000 SECT111 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FF656E19, selection    2 (pick any)
+333 00000000 SECT111 notype       External    | _IID_IDirectInputPIDDriver
+334 00000000 SECT112 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  9B36995, selection    2 (pick any)
+336 00000000 SECT112 notype       External    | _IID_IDirectInputJoyConfig
+337 00000000 SECT113 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DD535D41, selection    2 (pick any)
+339 00000000 SECT113 notype       External    | _IID_IDirectInputEffectDriver
+33A 00000000 SECT114 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C3C781E3, selection    2 (pick any)
+33C 00000000 SECT114 notype       External    | _GUID_CustomForce
+33D 00000000 SECT115 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6DAF1072, selection    2 (pick any)
+33F 00000000 SECT115 notype       External    | _GUID_Friction
+340 00000000 SECT116 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4467A480, selection    2 (pick any)
+342 00000000 SECT116 notype       External    | _GUID_Inertia
+343 00000000 SECT117 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EA0F3511, selection    2 (pick any)
+345 00000000 SECT117 notype       External    | _GUID_Damper
+346 00000000 SECT118 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 64E5522B, selection    2 (pick any)
+348 00000000 SECT118 notype       External    | _GUID_Spring
+349 00000000 SECT119 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CA8DC3BA, selection    2 (pick any)
+34B 00000000 SECT119 notype       External    | _GUID_SawtoothDown
+34C 00000000 SECT11A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E3457748, selection    2 (pick any)
+34E 00000000 SECT11A notype       External    | _GUID_SawtoothUp
+34F 00000000 SECT11B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4D2DE6D9, selection    2 (pick any)
+351 00000000 SECT11B notype       External    | _GUID_Triangle
+352 00000000 SECT11C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B0D41EAC, selection    2 (pick any)
+354 00000000 SECT11C notype       External    | _GUID_Sine
+355 00000000 SECT11D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1EBC8F3D, selection    2 (pick any)
+357 00000000 SECT11D notype       External    | _GUID_Square
+358 00000000 SECT11E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 37743BCF, selection    2 (pick any)
+35A 00000000 SECT11E notype       External    | _GUID_RampForce
+35B 00000000 SECT11F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 991CAA5E, selection    2 (pick any)
+35D 00000000 SECT11F notype       External    | _GUID_ConstantForce
+35E 00000000 SECT120 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5F85ADA8, selection    2 (pick any)
+360 00000000 SECT120 notype       External    | _GUID_SysKeyboardEm2
+361 00000000 SECT121 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F1ED3C39, selection    2 (pick any)
+363 00000000 SECT121 notype       External    | _GUID_SysKeyboardEm
+364 00000000 SECT122 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D82588CB, selection    2 (pick any)
+366 00000000 SECT122 notype       External    | _GUID_SysMouseEm2
+367 00000000 SECT123 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 764D195A, selection    2 (pick any)
+369 00000000 SECT123 notype       External    | _GUID_SysMouseEm
+36A 00000000 SECT124 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F5D647B7, selection    2 (pick any)
+36C 00000000 SECT124 notype       External    | _GUID_Joystick
+36D 00000000 SECT125 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BD99E8B8, selection    2 (pick any)
+36F 00000000 SECT125 notype       External    | _GUID_SysKeyboard
+370 00000000 SECT126 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 13F17929, selection    2 (pick any)
+372 00000000 SECT126 notype       External    | _GUID_SysMouse
+373 00000000 SECT127 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FC6F57B2, selection    2 (pick any)
+375 00000000 SECT127 notype       External    | _GUID_Unknown
+376 00000000 SECT128 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5207C623, selection    2 (pick any)
+378 00000000 SECT128 notype       External    | _GUID_POV
+379 00000000 SECT129 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EBB0E391, selection    2 (pick any)
+37B 00000000 SECT129 notype       External    | _GUID_Key
+37C 00000000 SECT12A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D5A7E340, selection    2 (pick any)
+37E 00000000 SECT12A notype       External    | _GUID_Button
+37F 00000000 SECT12B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E7B19159, selection    2 (pick any)
+381 00000000 SECT12B notype       External    | _GUID_Slider
+382 00000000 SECT12C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1A48692C, selection    2 (pick any)
+384 00000000 SECT12C notype       External    | _GUID_RzAxis
+385 00000000 SECT12D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AFFE3E56, selection    2 (pick any)
+387 00000000 SECT12D notype       External    | _GUID_RyAxis
+388 00000000 SECT12E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  196AFC7, selection    2 (pick any)
+38A 00000000 SECT12E notype       External    | _GUID_RxAxis
+38B 00000000 SECT12F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B420F8BD, selection    2 (pick any)
+38D 00000000 SECT12F notype       External    | _GUID_ZAxis
+38E 00000000 SECT130 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9DE84C4F, selection    2 (pick any)
+390 00000000 SECT130 notype       External    | _GUID_YAxis
+391 00000000 SECT131 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3380DDDE, selection    2 (pick any)
+393 00000000 SECT131 notype       External    | _GUID_XAxis
+394 00000000 SECT132 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6349AA71, selection    2 (pick any)
+396 00000000 SECT132 notype       External    | _IID_IDirectInputEffect
+397 00000000 SECT133 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F44EA812, selection    2 (pick any)
+399 00000000 SECT133 notype       External    | _IID_IDirectInputDevice8W
+39A 00000000 SECT134 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5A263983, selection    2 (pick any)
+39C 00000000 SECT134 notype       External    | _IID_IDirectInputDevice8A
+39D 00000000 SECT135 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 75B3C07C, selection    2 (pick any)
+39F 00000000 SECT135 notype       External    | _IID_IDirectInputDevice7W
+3A0 00000000 SECT136 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DBDB51ED, selection    2 (pick any)
+3A2 00000000 SECT136 notype       External    | _IID_IDirectInputDevice7A
+3A3 00000000 SECT137 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 242CB8BF, selection    2 (pick any)
+3A5 00000000 SECT137 notype       External    | _IID_IDirectInputDevice2W
+3A6 00000000 SECT138 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8A44292E, selection    2 (pick any)
+3A8 00000000 SECT138 notype       External    | _IID_IDirectInputDevice2A
+3A9 00000000 SECT139 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A38C9DDC, selection    2 (pick any)
+3AB 00000000 SECT139 notype       External    | _IID_IDirectInputDeviceW
+3AC 00000000 SECT13A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  DE40C4D, selection    2 (pick any)
+3AE 00000000 SECT13A notype       External    | _IID_IDirectInputDeviceA
+3AF 00000000 SECT13B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 62C473A7, selection    2 (pick any)
+3B1 00000000 SECT13B notype       External    | _IID_IDirectInput8W
+3B2 00000000 SECT13C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CCACE236, selection    2 (pick any)
+3B4 00000000 SECT13C notype       External    | _IID_IDirectInput8A
+3B5 00000000 SECT13D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 646D6ED7, selection    2 (pick any)
+3B7 00000000 SECT13D notype       External    | _IID_IDirectInput7W
+3B8 00000000 SECT13E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CA05FF46, selection    2 (pick any)
+3BA 00000000 SECT13E notype       External    | _IID_IDirectInput7A
+3BB 00000000 SECT13F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F356A792, selection    2 (pick any)
+3BD 00000000 SECT13F notype       External    | _IID_IDirectInput2W
+3BE 00000000 SECT140 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5D3E3603, selection    2 (pick any)
+3C0 00000000 SECT140 notype       External    | _IID_IDirectInput2A
+3C1 00000000 SECT141 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 383A73D1, selection    2 (pick any)
+3C3 00000000 SECT141 notype       External    | _IID_IDirectInputW
+3C4 00000000 SECT142 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9652E240, selection    2 (pick any)
+3C6 00000000 SECT142 notype       External    | _IID_IDirectInputA
+3C7 00000000 SECT143 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 142B013D, selection    2 (pick any)
+3C9 00000000 SECT143 notype       External    | _CLSID_DirectInputDevice8
+3CA 00000000 SECT144 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BA4390AC, selection    2 (pick any)
+3CC 00000000 SECT144 notype       External    | _CLSID_DirectInput8
+3CD 00000000 SECT145 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C01A4DBA, selection    2 (pick any)
+3CF 00000000 SECT145 notype       External    | _CLSID_DirectInputDevice
+3D0 00000000 SECT146 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6E72DC2B, selection    2 (pick any)
+3D2 00000000 SECT146 notype       External    | _CLSID_DirectInput
+3D3 00000000 SECT147 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7F901532, selection    2 (pick any)
+3D5 00000000 SECT147 notype       External    | _TID_DXFILEHeader
+3D6 00000000 SECT148 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  5C9C824, selection    2 (pick any)
+3D8 00000000 SECT148 notype       External    | _IID_IDirectXFileBinary
+3D9 00000000 SECT149 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2C017CD6, selection    2 (pick any)
+3DB 00000000 SECT149 notype       External    | _IID_IDirectXFileDataReference
+3DC 00000000 SECT14A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8269ED47, selection    2 (pick any)
+3DE 00000000 SECT14A notype       External    | _IID_IDirectXFileData
+3DF 00000000 SECT14B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7F901532, selection    2 (pick any)
+3E1 00000000 SECT14B notype       External    | _IID_IDirectXFileObject
+3E2 00000000 SECT14C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D1F884A3, selection    2 (pick any)
+3E4 00000000 SECT14C notype       External    | _IID_IDirectXFileSaveObject
+3E5 00000000 SECT14D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F8303051, selection    2 (pick any)
+3E7 00000000 SECT14D notype       External    | _IID_IDirectXFileEnumObject
+3E8 00000000 SECT14E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5658A1C0, selection    2 (pick any)
+3EA 00000000 SECT14E notype       External    | _IID_IDirectXFile
+3EB 00000000 SECT14F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 77D5C2F0, selection    2 (pick any)
+3ED 00000000 SECT14F notype       External    | _CLSID_CDirectXFile
+3EE 00000000 SECT150 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 754FD927, selection    2 (pick any)
+3F0 00000000 SECT150 notype       External    | _TID_D3DRMRightHanded
+3F1 00000000 SECT151 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FEBDF713, selection    2 (pick any)
+3F3 00000000 SECT151 notype       External    | _TID_D3DRMPropertyBag
+3F4 00000000 SECT152 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 50D56682, selection    2 (pick any)
+3F6 00000000 SECT152 notype       External    | _TID_D3DRMStringProperty
+3F7 00000000 SECT153 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  1E29AC5, selection    2 (pick any)
+3F9 00000000 SECT153 notype       External    | _TID_D3DRMExternalVisual
+3FA 00000000 SECT154 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 13E97166, selection    2 (pick any)
+3FC 00000000 SECT154 notype       External    | _TID_D3DRMProgressiveMesh
+3FD 00000000 SECT155 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 24885A8C, selection    2 (pick any)
+3FF 00000000 SECT155 notype       External    | _TID_D3DRMUrl
+400 00000000 SECT156 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8AE0CB1D, selection    2 (pick any)
+402 00000000 SECT156 notype       External    | _TID_D3DRMInlineData
+403 00000000 SECT157 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 49647F30, selection    2 (pick any)
+405 00000000 SECT157 notype       External    | _TID_D3DRMLightAttenuation
+406 00000000 SECT158 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  5FE3BEC, selection    2 (pick any)
+408 00000000 SECT158 notype       External    | _TID_D3DRMLightPenumbra
+409 00000000 SECT159 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2C368F1E, selection    2 (pick any)
+40B 00000000 SECT159 notype       External    | _TID_D3DRMLightRange
+40C 00000000 SECT15A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AB96AA7D, selection    2 (pick any)
+40E 00000000 SECT15A notype       External    | _TID_D3DRMLightUmbra
+40F 00000000 SECT15B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FDAAA21C, selection    2 (pick any)
+411 00000000 SECT15B notype       External    | _TID_D3DRMAppData
+412 00000000 SECT15C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1E170ECF, selection    2 (pick any)
+414 00000000 SECT15C notype       External    | _TID_D3DRMCamera
+415 00000000 SECT15D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A2EB1BEC, selection    2 (pick any)
+417 00000000 SECT15D notype       External    | _TID_D3DRMLight
+418 00000000 SECT15E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3C11EA35, selection    2 (pick any)
+41A 00000000 SECT15E notype       External    | _TID_D3DRMFrameRotation
+41B 00000000 SECT15F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 92797BA4, selection    2 (pick any)
+41D 00000000 SECT15F notype       External    | _TID_D3DRMFrameVelocity
+41E 00000000 SECT160 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BBB1CF56, selection    2 (pick any)
+420 00000000 SECT160 notype       External    | _TID_D3DRMFramePosition
+421 00000000 SECT161 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 15D95EC7, selection    2 (pick any)
+423 00000000 SECT161 notype       External    | _TID_D3DRMAnimationOptions
+424 00000000 SECT162 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 331AA1BF, selection    2 (pick any)
+426 00000000 SECT162 notype       External    | _TID_D3DRMTimedFloatKeys
+427 00000000 SECT163 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1FFF130B, selection    2 (pick any)
+429 00000000 SECT163 notype       External    | _TID_D3DRMBoolean2d
+42A 00000000 SECT164 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 93288D58, selection    2 (pick any)
+42C 00000000 SECT164 notype       External    | _TID_D3DRMMeshFaceWraps
+42D 00000000 SECT165 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A88704D6, selection    2 (pick any)
+42F 00000000 SECT165 notype       External    | _TID_D3DRMBoolean
+430 00000000 SECT166 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3637A7F9, selection    2 (pick any)
+432 00000000 SECT166 notype       External    | _TID_D3DRMMaterialWrap
+433 00000000 SECT167 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1D1229AC, selection    2 (pick any)
+435 00000000 SECT167 notype       External    | _TID_D3DRMMeshVertexColors
+436 00000000 SECT168 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B37AB83D, selection    2 (pick any)
+438 00000000 SECT168 notype       External    | _TID_D3DRMIndexedColor
+439 00000000 SECT169 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 15655B05, selection    2 (pick any)
+43B 00000000 SECT169 notype       External    | _TID_D3DRMTextureReference
+43C 00000000 SECT16A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3CADEFF7, selection    2 (pick any)
+43E 00000000 SECT16A notype       External    | _TID_D3DRMTextureFilename
+43F 00000000 SECT16B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 92C57E66, selection    2 (pick any)
+441 00000000 SECT16B notype       External    | _TID_D3DRMGuid
+442 00000000 SECT16C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DD59D583, selection    2 (pick any)
+444 00000000 SECT16C notype       External    | _TID_D3DRMColorRGB
+445 00000000 SECT16D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B50AF94D, selection    2 (pick any)
+447 00000000 SECT16D notype       External    | _TID_D3DRMColorRGBA
+448 00000000 SECT16E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1BFFAA75, selection    2 (pick any)
+44A 00000000 SECT16E notype       External    | _TID_D3DRMMaterialPower
+44B 00000000 SECT16F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 73314412, selection    2 (pick any)
+44D 00000000 SECT16F notype       External    | _TID_D3DRMMaterialEmissiveColor
+44E 00000000 SECT170 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B5973BE4, selection    2 (pick any)
+450 00000000 SECT170 notype       External    | _TID_D3DRMMaterialSpecularColor
+451 00000000 SECT171 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9C5F8F16, selection    2 (pick any)
+453 00000000 SECT171 notype       External    | _TID_D3DRMMaterialDiffuseColor
+454 00000000 SECT172 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 32371E87, selection    2 (pick any)
+456 00000000 SECT172 notype       External    | _TID_D3DRMMaterialAmbientColor
+457 00000000 SECT173 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8DAC8593, selection    2 (pick any)
+459 00000000 SECT173 notype       External    | _TID_D3DRMFloatKeys
+45A 00000000 SECT174 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 23C41402, selection    2 (pick any)
+45C 00000000 SECT174 notype       External    | _TID_D3DRMAnimationKey
+45D 00000000 SECT175 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B07F9F5E, selection    2 (pick any)
+45F 00000000 SECT175 notype       External    | _TID_D3DRMAnimationSet
+460 00000000 SECT176 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D8B2C6FA, selection    2 (pick any)
+462 00000000 SECT176 notype       External    | _TID_D3DRMAnimation
+463 00000000 SECT177 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A90DFC93, selection    2 (pick any)
+465 00000000 SECT177 notype       External    | _TID_D3DRMMatrix4x4
+466 00000000 SECT178 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  7656D02, selection    2 (pick any)
+468 00000000 SECT178 notype       External    | _TID_D3DRMCoords2d
+469 00000000 SECT179 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FA9C9577, selection    2 (pick any)
+46B 00000000 SECT179 notype       External    | _TID_D3DRMMeshNormals
+46C 00000000 SECT17A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D3542185, selection    2 (pick any)
+46E 00000000 SECT17A notype       External    | _TID_D3DRMMeshTextureCoords
+46F 00000000 SECT17B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 54F404E6, selection    2 (pick any)
+471 00000000 SECT17B notype       External    | _TID_D3DRMMeshMaterialList
+472 00000000 SECT17C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7D3CB014, selection    2 (pick any)
+474 00000000 SECT17C notype       External    | _TID_D3DRMFrameTransformMatrix
+475 00000000 SECT17D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  5C9C824, selection    2 (pick any)
+477 00000000 SECT17D notype       External    | _TID_D3DRMFrame
+478 00000000 SECT17E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1B6268DC, selection    2 (pick any)
+47A 00000000 SECT17E notype       External    | _TID_D3DRMMaterialArray
+47B 00000000 SECT17F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5F12E399, selection    2 (pick any)
+47D 00000000 SECT17F notype       External    | _TID_D3DRMMaterial
+47E 00000000 SECT180 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3E95F864, selection    2 (pick any)
+480 00000000 SECT180 notype       External    | _TID_D3DRMMeshFace
+481 00000000 SECT181 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 90FD69F5, selection    2 (pick any)
+483 00000000 SECT181 notype       External    | _TID_D3DRMVector
+484 00000000 SECT182 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8269ED47, selection    2 (pick any)
+486 00000000 SECT182 notype       External    | _TID_D3DRMMesh
+487 00000000 SECT183 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7B109355, selection    2 (pick any)
+489 00000000 SECT183 notype       External    | _TID_D3DRMInfo
+48A 00000000 SECT184 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AEB4ABE4, selection    2 (pick any)
+48C 00000000 SECT184 notype       External    | _IID_IDirect3DRMWinDevice
+48D 00000000 SECT185 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F075E793, selection    2 (pick any)
+48F 00000000 SECT185 notype       External    | _CLSID_CDirect3DRM
+490 00000000 SECT186 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  556D9FE, selection    2 (pick any)
+492 00000000 SECT186 notype       External    | _IID_IDirect3DRM3
+493 00000000 SECT187 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 71F304B9, selection    2 (pick any)
+495 00000000 SECT187 notype       External    | _IID_IDirect3DRM2
+496 00000000 SECT188 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BB4BD971, selection    2 (pick any)
+498 00000000 SECT188 notype       External    | _IID_IDirect3DRM
+499 00000000 SECT189 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1D72F056, selection    2 (pick any)
+49B 00000000 SECT189 notype       External    | _IID_IDirect3DRMClippedVisual
+49C 00000000 SECT18A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F5DE185C, selection    2 (pick any)
+49E 00000000 SECT18A notype       External    | _IID_IDirect3DRMPicked2Array
+49F 00000000 SECT18B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 727E3D3F, selection    2 (pick any)
+4A1 00000000 SECT18B notype       External    | _IID_IDirect3DRMProgressiveMesh
+4A2 00000000 SECT18C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6CA07070, selection    2 (pick any)
+4A4 00000000 SECT18C notype       External    | _IID_IDirect3DRMInterpolator
+4A5 00000000 SECT18D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AC4D50DF, selection    2 (pick any)
+4A7 00000000 SECT18D notype       External    | _IID_IDirect3DRMShadow2
+4A8 00000000 SECT18E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9014A9DD, selection    2 (pick any)
+4AA 00000000 SECT18E notype       External    | _IID_IDirect3DRMShadow
+4AB 00000000 SECT18F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A346858F, selection    2 (pick any)
+4AD 00000000 SECT18F notype       External    | _IID_IDirect3DRMUserVisual
+4AE 00000000 SECT190 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1A61CCE0, selection    2 (pick any)
+4B0 00000000 SECT190 notype       External    | _IID_IDirect3DRMAnimationArray
+4B1 00000000 SECT191 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3C76F848, selection    2 (pick any)
+4B3 00000000 SECT191 notype       External    | _IID_IDirect3DRMFaceArray
+4B4 00000000 SECT192 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 921E69D9, selection    2 (pick any)
+4B6 00000000 SECT192 notype       External    | _IID_IDirect3DRMPickedArray
+4B7 00000000 SECT193 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 15BE4CBA, selection    2 (pick any)
+4B9 00000000 SECT193 notype       External    | _IID_IDirect3DRMLightArray
+4BA 00000000 SECT194 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E847B4CF, selection    2 (pick any)
+4BC 00000000 SECT194 notype       External    | _IID_IDirect3DRMVisualArray
+4BD 00000000 SECT195 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 462F255E, selection    2 (pick any)
+4BF 00000000 SECT195 notype       External    | _IID_IDirect3DRMFrameArray
+4C0 00000000 SECT196 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6FE791AC, selection    2 (pick any)
+4C2 00000000 SECT196 notype       External    | _IID_IDirect3DRMViewportArray
+4C3 00000000 SECT197 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C18F003D, selection    2 (pick any)
+4C5 00000000 SECT197 notype       External    | _IID_IDirect3DRMDeviceArray
+4C6 00000000 SECT198 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4568C482, selection    2 (pick any)
+4C8 00000000 SECT198 notype       External    | _IID_IDirect3DRMObjectArray
+4C9 00000000 SECT199 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  FCA1A3B, selection    2 (pick any)
+4CB 00000000 SECT199 notype       External    | _IID_IDirect3DRMAnimationSet2
+4CC 00000000 SECT19A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  72AC808, selection    2 (pick any)
+4CE 00000000 SECT19A notype       External    | _IID_IDirect3DRMAnimationSet
+4CF 00000000 SECT19B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2F48EC90, selection    2 (pick any)
+4D1 00000000 SECT19B notype       External    | _IID_IDirect3DRMAnimation2
+4D2 00000000 SECT19C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2EE27CFA, selection    2 (pick any)
+4D4 00000000 SECT19C notype       External    | _IID_IDirect3DRMAnimation
+4D5 00000000 SECT19D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A8E8C9F3, selection    2 (pick any)
+4D7 00000000 SECT19D notype       External    | _IID_IDirect3DRMMaterial2
+4D8 00000000 SECT19E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7D73151E, selection    2 (pick any)
+4DA 00000000 SECT19E notype       External    | _IID_IDirect3DRMMaterial
+4DB 00000000 SECT19F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D31B848F, selection    2 (pick any)
+4DD 00000000 SECT19F notype       External    | _IID_IDirect3DRMWrap
+4DE 00000000 SECT1A0 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FB79A017, selection    2 (pick any)
+4E0 00000000 SECT1A0 notype       External    | _IID_IDirect3DRMTexture3
+4E1 00000000 SECT1A1 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 32AF490F, selection    2 (pick any)
+4E3 00000000 SECT1A1 notype       External    | _IID_IDirect3DRMTexture2
+4E4 00000000 SECT1A2 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FAD3307D, selection    2 (pick any)
+4E6 00000000 SECT1A2 notype       External    | _IID_IDirect3DRMTexture
+4E7 00000000 SECT1A3 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 54BBA1EC, selection    2 (pick any)
+4E9 00000000 SECT1A3 notype       External    | _IID_IDirect3DRMLight
+4EA 00000000 SECT1A4 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 82F6FC9D, selection    2 (pick any)
+4EC 00000000 SECT1A4 notype       External    | _IID_IDirect3DRMFace2
+4ED 00000000 SECT1A5 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DA51C6D6, selection    2 (pick any)
+4EF 00000000 SECT1A5 notype       External    | _IID_IDirect3DRMFace
+4F0 00000000 SECT1A6 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AB3E486F, selection    2 (pick any)
+4F2 00000000 SECT1A6 notype       External    | _IID_IDirect3DRMMeshBuilder3
+4F3 00000000 SECT1A7 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 52FCCB94, selection    2 (pick any)
+4F5 00000000 SECT1A7 notype       External    | _IID_IDirect3DRMMeshBuilder2
+4F6 00000000 SECT1A8 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 703ED04F, selection    2 (pick any)
+4F8 00000000 SECT1A8 notype       External    | _IID_IDirect3DRMMeshBuilder
+4F9 00000000 SECT1A9 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 59F664BD, selection    2 (pick any)
+4FB 00000000 SECT1A9 notype       External    | _IID_IDirect3DRMMesh
+4FC 00000000 SECT1AA notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F3997224, selection    2 (pick any)
+4FE 00000000 SECT1AA notype       External    | _IID_IDirect3DRMVisual
+4FF 00000000 SECT1AB notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D2B114E5, selection    2 (pick any)
+501 00000000 SECT1AB notype       External    | _IID_IDirect3DRMFrame3
+502 00000000 SECT1AC notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 56F1813F, selection    2 (pick any)
+504 00000000 SECT1AC notype       External    | _IID_IDirect3DRMFrame2
+505 00000000 SECT1AD notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  E608A51, selection    2 (pick any)
+507 00000000 SECT1AD notype       External    | _IID_IDirect3DRMFrame
+508 00000000 SECT1AE notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 327858B8, selection    2 (pick any)
+50A 00000000 SECT1AE notype       External    | _IID_IDirect3DRMViewport2
+50B 00000000 SECT1AF notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A0081BC0, selection    2 (pick any)
+50D 00000000 SECT1AF notype       External    | _IID_IDirect3DRMViewport
+50E 00000000 SECT1B0 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1F6FADB6, selection    2 (pick any)
+510 00000000 SECT1B0 notype       External    | _IID_IDirect3DRMDevice3
+511 00000000 SECT1B1 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DC16ACAE, selection    2 (pick any)
+513 00000000 SECT1B1 notype       External    | _IID_IDirect3DRMDevice2
+514 00000000 SECT1B2 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E5B34FFE, selection    2 (pick any)
+516 00000000 SECT1B2 notype       External    | _IID_IDirect3DRMDevice
+517 00000000 SECT1B3 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  827E029, selection    2 (pick any)
+519 00000000 SECT1B3 notype       External    | _IID_IDirect3DRMObject2
+51A 00000000 SECT1B4 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 27A83EA3, selection    2 (pick any)
+51C 00000000 SECT1B4 notype       External    | _IID_IDirect3DRMObject
+51D 00000000 SECT1B5 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DBD73863, selection    2 (pick any)
+51F 00000000 SECT1B5 notype       External    | _CLSID_CDirect3DRMClippedVisual
+520 00000000 SECT1B6 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5E1D7602, selection    2 (pick any)
+522 00000000 SECT1B6 notype       External    | _CLSID_CDirect3DRMProgressiveMesh
+523 00000000 SECT1B7 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 26EC753D, selection    2 (pick any)
+525 00000000 SECT1B7 notype       External    | _CLSID_CDirect3DRMTextureInterpolator
+526 00000000 SECT1B8 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A8061207, selection    2 (pick any)
+528 00000000 SECT1B8 notype       External    | _CLSID_CDirect3DRMMaterialInterpolator
+529 00000000 SECT1B9 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  66E8396, selection    2 (pick any)
+52B 00000000 SECT1B9 notype       External    | _CLSID_CDirect3DRMLightInterpolator
+52C 00000000 SECT1BA notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 7C375E80, selection    2 (pick any)
+52E 00000000 SECT1BA notype       External    | _CLSID_CDirect3DRMMeshInterpolator
+52F 00000000 SECT1BB notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D25FCF11, selection    2 (pick any)
+531 00000000 SECT1BB notype       External    | _CLSID_CDirect3DRMFrameInterpolator
+532 00000000 SECT1BC notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum FB977BE3, selection    2 (pick any)
+534 00000000 SECT1BC notype       External    | _CLSID_CDirect3DRMViewportInterpolator
+535 00000000 SECT1BD notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B06D7AB9, selection    2 (pick any)
+537 00000000 SECT1BD notype       External    | _CLSID_CDirect3DRMShadow
+538 00000000 SECT1BE notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1E05EB28, selection    2 (pick any)
+53A 00000000 SECT1BE notype       External    | _CLSID_CDirect3DRMUserVisual
+53B 00000000 SECT1BF notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 37CD5FDA, selection    2 (pick any)
+53D 00000000 SECT1BF notype       External    | _CLSID_CDirect3DRMAnimationSet
+53E 00000000 SECT1C0 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 99A5CE4B, selection    2 (pick any)
+540 00000000 SECT1C0 notype       External    | _CLSID_CDirect3DRMAnimation
+541 00000000 SECT1C1 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 174FA971, selection    2 (pick any)
+543 00000000 SECT1C1 notype       External    | _CLSID_CDirect3DRMMaterial
+544 00000000 SECT1C2 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B92738E0, selection    2 (pick any)
+546 00000000 SECT1C2 notype       External    | _CLSID_CDirect3DRMWrap
+547 00000000 SECT1C3 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 90EF8C12, selection    2 (pick any)
+549 00000000 SECT1C3 notype       External    | _CLSID_CDirect3DRMTexture
+54A 00000000 SECT1C4 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3E871D83, selection    2 (pick any)
+54C 00000000 SECT1C4 notype       External    | _CLSID_CDirect3DRMLight
+54D 00000000 SECT1C5 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C37EE5F6, selection    2 (pick any)
+54F 00000000 SECT1C5 notype       External    | _CLSID_CDirect3DRMFace
+550 00000000 SECT1C6 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6D167467, selection    2 (pick any)
+552 00000000 SECT1C6 notype       External    | _CLSID_CDirect3DRMMeshBuilder
+553 00000000 SECT1C7 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 44DEC095, selection    2 (pick any)
+555 00000000 SECT1C7 notype       External    | _CLSID_CDirect3DRMMesh
+556 00000000 SECT1C8 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EAB65104, selection    2 (pick any)
+558 00000000 SECT1C8 notype       External    | _CLSID_CDirect3DRMFrame
+559 00000000 SECT1C9 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 827B08A0, selection    2 (pick any)
+55B 00000000 SECT1C9 notype       External    | _CLSID_CDirect3DRMViewport
+55C 00000000 SECT1CA notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2C139931, selection    2 (pick any)
+55E 00000000 SECT1CA notype       External    | _CLSID_CDirect3DRMDevice
+55F 00000000 SECT1CB notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 27EFFA47, selection    2 (pick any)
+561 00000000 SECT1CB notype       External    | _IID_IDirect3DSwapChain8
+562 00000000 SECT1CC notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BC55E4BF, selection    2 (pick any)
+564 00000000 SECT1CC notype       External    | _IID_IDirect3DVolume8
+565 00000000 SECT1CD notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3B2CAF67, selection    2 (pick any)
+567 00000000 SECT1CD notype       External    | _IID_IDirect3DSurface8
+568 00000000 SECT1CE notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 4DCFD52E, selection    2 (pick any)
+56A 00000000 SECT1CE notype       External    | _IID_IDirect3DIndexBuffer8
+56B 00000000 SECT1CF notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8945649E, selection    2 (pick any)
+56D 00000000 SECT1CF notype       External    | _IID_IDirect3DVertexBuffer8
+56E 00000000 SECT1D0 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3AB44E4E, selection    2 (pick any)
+570 00000000 SECT1D0 notype       External    | _IID_IDirect3DVolumeTexture8
+571 00000000 SECT1D1 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 161127B4, selection    2 (pick any)
+573 00000000 SECT1D1 notype       External    | _IID_IDirect3DCubeTexture8
+574 00000000 SECT1D2 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F05AE419, selection    2 (pick any)
+576 00000000 SECT1D2 notype       External    | _IID_IDirect3DTexture8
+577 00000000 SECT1D3 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum B896DABA, selection    2 (pick any)
+579 00000000 SECT1D3 notype       External    | _IID_IDirect3DBaseTexture8
+57A 00000000 SECT1D4 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1B73D6A4, selection    2 (pick any)
+57C 00000000 SECT1D4 notype       External    | _IID_IDirect3DResource8
+57D 00000000 SECT1D5 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D554406D, selection    2 (pick any)
+57F 00000000 SECT1D5 notype       External    | _IID_IDirect3DDevice8
+580 00000000 SECT1D6 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C0F29028, selection    2 (pick any)
+582 00000000 SECT1D6 notype       External    | _IID_IDirect3D8
+583 00000000 SECT1D7 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 188013B0, selection    2 (pick any)
+585 00000000 SECT1D7 notype       External    | _IID_IDirect3DVertexBuffer7
+586 00000000 SECT1D8 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 69C12C73, selection    2 (pick any)
+588 00000000 SECT1D8 notype       External    | _IID_IDirect3DVertexBuffer
+589 00000000 SECT1D9 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 22F388D5, selection    2 (pick any)
+58B 00000000 SECT1D9 notype       External    | _IID_IDirect3DViewport3
+58C 00000000 SECT1DA notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 240E4D5C, selection    2 (pick any)
+58E 00000000 SECT1DA notype       External    | _IID_IDirect3DViewport2
+58F 00000000 SECT1DB notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6A2D82B1, selection    2 (pick any)
+591 00000000 SECT1DB notype       External    | _IID_IDirect3DViewport
+592 00000000 SECT1DC notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 43E53643, selection    2 (pick any)
+594 00000000 SECT1DC notype       External    | _IID_IDirect3DExecuteBuffer
+595 00000000 SECT1DD notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 568CFE2B, selection    2 (pick any)
+597 00000000 SECT1DD notype       External    | _IID_IDirect3DMaterial3
+598 00000000 SECT1DE notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  DC6F9AE, selection    2 (pick any)
+59A 00000000 SECT1DE notype       External    | _IID_IDirect3DMaterial2
+59B 00000000 SECT1DF notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum ED8DA7D2, selection    2 (pick any)
+59D 00000000 SECT1DF notype       External    | _IID_IDirect3DMaterial
+59E 00000000 SECT1E0 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BE1CCE36, selection    2 (pick any)
+5A0 00000000 SECT1E0 notype       External    | _IID_IDirect3DLight
+5A1 00000000 SECT1E1 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A3AE683F, selection    2 (pick any)
+5A3 00000000 SECT1E1 notype       External    | _IID_IDirect3DTexture2
+5A4 00000000 SECT1E2 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A8BC40EC, selection    2 (pick any)
+5A6 00000000 SECT1E2 notype       External    | _IID_IDirect3DTexture
+5A7 00000000 SECT1E3 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CCB15F37, selection    2 (pick any)
+5A9 00000000 SECT1E3 notype       External    | _IID_IDirect3DDevice7
+5AA 00000000 SECT1E4 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8C9B1944, selection    2 (pick any)
+5AC 00000000 SECT1E4 notype       External    | _IID_IDirect3DDevice3
+5AD 00000000 SECT1E5 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8A66DCCD, selection    2 (pick any)
+5AF 00000000 SECT1E5 notype       External    | _IID_IDirect3DDevice2
+5B0 00000000 SECT1E6 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum   58B753, selection    2 (pick any)
+5B2 00000000 SECT1E6 notype       External    | _IID_IDirect3DDevice
+5B3 00000000 SECT1E7 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 62D9CEA6, selection    2 (pick any)
+5B5 00000000 SECT1E7 notype       External    | _IID_IDirect3DTnLHalDevice
+5B6 00000000 SECT1E8 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 621CEF21, selection    2 (pick any)
+5B8 00000000 SECT1E8 notype       External    | _IID_IDirect3DNullDevice
+5B9 00000000 SECT1E9 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 67CE33C3, selection    2 (pick any)
+5BB 00000000 SECT1E9 notype       External    | _IID_IDirect3DRefDevice
+5BC 00000000 SECT1EA notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 845C9A87, selection    2 (pick any)
+5BE 00000000 SECT1EA notype       External    | _IID_IDirect3DMMXDevice
+5BF 00000000 SECT1EB notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6D49E07C, selection    2 (pick any)
+5C1 00000000 SECT1EB notype       External    | _IID_IDirect3DHALDevice
+5C2 00000000 SECT1EC notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3B7AE582, selection    2 (pick any)
+5C4 00000000 SECT1EC notype       External    | _IID_IDirect3DRGBDevice
+5C5 00000000 SECT1ED notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 78F6A7DE, selection    2 (pick any)
+5C7 00000000 SECT1ED notype       External    | _IID_IDirect3DRampDevice
+5C8 00000000 SECT1EE notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EC33A99C, selection    2 (pick any)
+5CA 00000000 SECT1EE notype       External    | _IID_IDirect3D7
+5CB 00000000 SECT1EF notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  E6A9766, selection    2 (pick any)
+5CD 00000000 SECT1EF notype       External    | _IID_IDirect3D3
+5CE 00000000 SECT1F0 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 91A96A92, selection    2 (pick any)
+5D0 00000000 SECT1F0 notype       External    | _IID_IDirect3D2
+5D1 00000000 SECT1F1 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A01656DF, selection    2 (pick any)
+5D3 00000000 SECT1F1 notype       External    | _IID_IDirect3D
+5D4 00000000 SECT1F2 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D1C54E60, selection    2 (pick any)
+5D6 00000000 SECT1F2 notype       External    | _DDVPTYPE_PHILIPS
+5D7 00000000 SECT1F3 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 47AA6201, selection    2 (pick any)
+5D9 00000000 SECT1F3 notype       External    | _DDVPTYPE_BROOKTREE
+5DA 00000000 SECT1F4 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 8C8C380F, selection    2 (pick any)
+5DC 00000000 SECT1F4 notype       External    | _DDVPTYPE_CCIR656
+5DD 00000000 SECT1F5 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 466F1E4C, selection    2 (pick any)
+5DF 00000000 SECT1F5 notype       External    | _DDVPTYPE_E_HREFL_VREFL
+5E0 00000000 SECT1F6 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 3955C0BD, selection    2 (pick any)
+5E2 00000000 SECT1F6 notype       External    | _DDVPTYPE_E_HREFL_VREFH
+5E3 00000000 SECT1F7 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  13AE6AB, selection    2 (pick any)
+5E5 00000000 SECT1F7 notype       External    | _DDVPTYPE_E_HREFH_VREFL
+5E6 00000000 SECT1F8 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2307A797, selection    2 (pick any)
+5E8 00000000 SECT1F8 notype       External    | _DDVPTYPE_E_HREFH_VREFH
+5E9 00000000 SECT1F9 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 116812C5, selection    2 (pick any)
+5EB 00000000 SECT1F9 notype       External    | _IID_IDirectDrawVideoPortNotify
+5EC 00000000 SECT1FA notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1A7A1B47, selection    2 (pick any)
+5EE 00000000 SECT1FA notype       External    | _IID_IDirectDrawVideoPort
+5EF 00000000 SECT1FB notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9AAE3B49, selection    2 (pick any)
+5F1 00000000 SECT1FB notype       External    | _IID_IDDVideoPortContainer
+5F2 00000000 SECT1FC notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A4E7FD07, selection    2 (pick any)
+5F4 00000000 SECT1FC notype       External    | _GUID_DDMoreCaps
+5F5 00000000 SECT1FD notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DBBB70D5, selection    2 (pick any)
+5F7 00000000 SECT1FD notype       External    | _GUID_Miscellaneous2Callbacks
+5F8 00000000 SECT1FE notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F754574C, selection    2 (pick any)
+5FA 00000000 SECT1FE notype       External    | _GUID_NTCallbacks
+5FB 00000000 SECT1FF notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D6D7C344, selection    2 (pick any)
+5FD 00000000 SECT1FF notype       External    | _GUID_MotionCompCallbacks
+5FE 00000000 SECT200 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 666DE631, selection    2 (pick any)
+600 00000000 SECT200 notype       External    | _GUID_D3DParseUnknownCommandCallback
+601 00000000 SECT201 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C2F621BF, selection    2 (pick any)
+603 00000000 SECT201 notype       External    | _GUID_UserModeDriverPassword
+604 00000000 SECT202 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A78D5B77, selection    2 (pick any)
+606 00000000 SECT202 notype       External    | _GUID_UserModeDriverInfo
+607 00000000 SECT203 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 56222D20, selection    2 (pick any)
+609 00000000 SECT203 notype       External    | _GUID_OptSurfaceUmodeInfo
+60A 00000000 SECT204 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A9AA9AB3, selection    2 (pick any)
+60C 00000000 SECT204 notype       External    | _GUID_OptSurfaceKmodeInfo
+60D 00000000 SECT205 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum DDE09B3C, selection    2 (pick any)
+60F 00000000 SECT205 notype       External    | _GUID_DDStereoMode
+610 00000000 SECT206 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 20CFB8D2, selection    2 (pick any)
+612 00000000 SECT206 notype       External    | _GUID_DDMoreSurfaceCaps
+613 00000000 SECT207 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5BDD2DA1, selection    2 (pick any)
+615 00000000 SECT207 notype       External    | _GUID_ZPixelFormats
+616 00000000 SECT208 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 95047474, selection    2 (pick any)
+618 00000000 SECT208 notype       External    | _GUID_D3DExtendedCaps
+619 00000000 SECT209 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 14388B7A, selection    2 (pick any)
+61B 00000000 SECT209 notype       External    | _GUID_KernelCaps
+61C 00000000 SECT20A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 881948B8, selection    2 (pick any)
+61E 00000000 SECT20A notype       External    | _GUID_KernelCallbacks
+61F 00000000 SECT20B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E00F23D2, selection    2 (pick any)
+621 00000000 SECT20B notype       External    | _GUID_NonLocalVidMemCaps
+622 00000000 SECT20C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 9C4F7151, selection    2 (pick any)
+624 00000000 SECT20C notype       External    | _GUID_D3DCallbacks3
+625 00000000 SECT20D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 58B7FA2E, selection    2 (pick any)
+627 00000000 SECT20D notype       External    | _GUID_D3DCallbacks2
+628 00000000 SECT20E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 45F1F8B7, selection    2 (pick any)
+62A 00000000 SECT20E notype       External    | _GUID_VideoPortCaps
+62B 00000000 SECT20F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum EB996926, selection    2 (pick any)
+62D 00000000 SECT20F notype       External    | _GUID_ColorControlCallbacks
+62E 00000000 SECT210 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum C251DDD4, selection    2 (pick any)
+630 00000000 SECT210 notype       External    | _GUID_VideoPortCallbacks
+631 00000000 SECT211 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6C394C45, selection    2 (pick any)
+633 00000000 SECT211 notype       External    | _GUID_MiscellaneousCallbacks
+634 00000000 SECT212 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 799C7B92, selection    2 (pick any)
+636 00000000 SECT212 notype       External    | _IID_IDirectDrawGammaControl
+637 00000000 SECT213 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AB153EAA, selection    2 (pick any)
+639 00000000 SECT213 notype       External    | _IID_IDirectDrawColorControl
+63A 00000000 SECT214 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 886505DF, selection    2 (pick any)
+63C 00000000 SECT214 notype       External    | _IID_IDirectDrawClipper
+63D 00000000 SECT215 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 260D944E, selection    2 (pick any)
+63F 00000000 SECT215 notype       External    | _IID_IDirectDrawPalette
+640 00000000 SECT216 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A52CC96A, selection    2 (pick any)
+642 00000000 SECT216 notype       External    | _IID_IDirectDrawPalette2
+643 00000000 SECT217 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F7097ABF, selection    2 (pick any)
+645 00000000 SECT217 notype       External    | _IID_IDirectDrawOptSurface
+646 00000000 SECT218 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 48536883, selection    2 (pick any)
+648 00000000 SECT218 notype       External    | _GUID_DirectDrawPaletteStream
+649 00000000 SECT219 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  6F56D0F, selection    2 (pick any)
+64B 00000000 SECT219 notype       External    | _GUID_DirectDrawSurfaceStream
+64C 00000000 SECT21A notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum AC93DB04, selection    2 (pick any)
+64E 00000000 SECT21A notype       External    | _IID_IDirectDrawFactory2
+64F 00000000 SECT21B notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum BEC1A081, selection    2 (pick any)
+651 00000000 SECT21B notype       External    | _CLSID_DirectDrawFactory2
+652 00000000 SECT21C notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum A5CED701, selection    2 (pick any)
+654 00000000 SECT21C notype       External    | _IID_IDirectDrawSurfaceNew
+655 00000000 SECT21D notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum E35A7A2E, selection    2 (pick any)
+657 00000000 SECT21D notype       External    | _IID_IDirectDrawSurface7
+658 00000000 SECT21E notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D122109F, selection    2 (pick any)
+65A 00000000 SECT21E notype       External    | _IID_IDirectDrawSurface4
+65B 00000000 SECT21F notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum CEA87E55, selection    2 (pick any)
+65D 00000000 SECT21F notype       External    | _IID_IDirectDrawSurface3
+65E 00000000 SECT220 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 6EC5FF38, selection    2 (pick any)
+660 00000000 SECT220 notype       External    | _IID_IDirectDrawSurface2
+661 00000000 SECT221 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5C544958, selection    2 (pick any)
+663 00000000 SECT221 notype       External    | _IID_IDirectDrawSurface
+664 00000000 SECT222 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 2471C4B8, selection    2 (pick any)
+666 00000000 SECT222 notype       External    | _IID_IDirectDraw7
+667 00000000 SECT223 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum  DE90828, selection    2 (pick any)
+669 00000000 SECT223 notype       External    | _IID_IDirectDraw4
+66A 00000000 SECT224 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum D5B67D5A, selection    2 (pick any)
+66C 00000000 SECT224 notype       External    | _IID_IDirectDraw2
+66D 00000000 SECT225 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum F23CD8C9, selection    2 (pick any)
+66F 00000000 SECT225 notype       External    | _IID_IDirectDraw
+670 00000000 SECT226 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 1317BD89, selection    2 (pick any)
+672 00000000 SECT226 notype       External    | _CLSID_DirectDrawClipper
+673 00000000 SECT227 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 622DF573, selection    2 (pick any)
+675 00000000 SECT227 notype       External    | _CLSID_DirectDraw7
+676 00000000 SECT228 notype       Static      | .rdata
+    Section length   10, #relocs    0, #linenums    0, checksum 5E5F2F28, selection    2 (pick any)
+678 00000000 SECT228 notype       External    | _CLSID_DirectDraw
+
+String Table Size = 0x3322 bytes
+
+  Summary
+
+         12A .debug$S
+          5C .drectve
+        2370 .rdata

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (ASAN)|Win32">
+      <Configuration>Debug (ASAN)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{25FC645B-A461-4FDD-848A-4F7C5522313A}</ProjectGuid>
+    <RootNamespace>TGameCtrl</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <EnableASAN>true</EnableASAN>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\DX_SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_NONSTDC_NO_WARNINGS;_USRDLL;TGAMECTRL_EXPORTS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;imm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences />
+      <EnableCOMDATFolding />
+      <BaseAddress>
+      </BaseAddress>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\DX_SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_NONSTDC_NO_WARNINGS;_USRDLL;TGAMECTRL_EXPORTS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;imm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>
+      </OptimizeReferences>
+      <EnableCOMDATFolding>
+      </EnableCOMDATFolding>
+      <BaseAddress>
+      </BaseAddress>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)3rdParty\DX_SDK\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_NONSTDC_NO_WARNINGS;_USRDLL;TGAMECTRL_EXPORTS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>winmm.lib;imm32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>
+      </BaseAddress>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <ResourceCompile>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ActionEvent.cpp" />
+    <ClCompile Include="ActionListenerList.cpp" />
+    <ClCompile Include="CToolTip.cpp" />
+    <ClCompile Include="ITControl.cpp" />
+    <ClCompile Include="JComboBox.cpp" />
+    <ClCompile Include="JContainer.cpp" />
+    <ClCompile Include="JLetter.cpp" />
+    <ClCompile Include="JListBox.cpp" />
+    <ClCompile Include="JString.cpp" />
+    <ClCompile Include="JStringParser.cpp" />
+    <ClCompile Include="JTable.cpp" />
+    <ClCompile Include="ResourceMgr.cpp" />
+    <ClCompile Include="SinglelineString.cpp" />
+    <ClCompile Include="SplitHangul.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TabbedPane.cpp" />
+    <ClCompile Include="TAnimation.cpp" />
+    <ClCompile Include="TButton.cpp" />
+    <ClCompile Include="TCandidateWindow.cpp" />
+    <ClCompile Include="TCandidateWindowHanja.cpp" />
+    <ClCompile Include="TCandidateWindowList.cpp" />
+    <ClCompile Include="TCaption.cpp" />
+    <ClCompile Include="TCheckBox.cpp" />
+    <ClCompile Include="TComboBox.cpp" />
+    <ClCompile Include="TCommand.cpp" />
+    <ClCompile Include="TCommandQ.cpp" />
+    <ClCompile Include="TContainer.cpp" />
+    <ClCompile Include="TContainerItem.cpp" />
+    <ClCompile Include="TControlMgr.cpp" />
+    <ClCompile Include="TDefaultListCellRenderer.cpp" />
+    <ClCompile Include="TDefaultTreeModel.cpp" />
+    <ClCompile Include="TDefaultTreeNode.cpp" />
+    <ClCompile Include="TDefaultTreeNodeRenderer.cpp" />
+    <ClCompile Include="TDialog.cpp" />
+    <ClCompile Include="TEditBox.cpp" />
+    <ClCompile Include="TFrame.cpp" />
+    <ClCompile Include="TGameCtrl.cpp" />
+    <ClCompile Include="TGuage.cpp" />
+    <ClCompile Include="TImage.cpp" />
+    <ClCompile Include="TriggerIme.cpp" />
+    <ClCompile Include="TListBox.cpp" />
+    <ClCompile Include="TListCellRenderer.cpp" />
+    <ClCompile Include="TMsgBox.cpp" />
+    <ClCompile Include="TObject.cpp" />
+    <ClCompile Include="TPane.cpp" />
+    <ClCompile Include="TPushButton.cpp" />
+    <ClCompile Include="TRadioBox.cpp" />
+    <ClCompile Include="TRadioButton.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="TreePath.cpp" />
+    <ClCompile Include="TScrollBar.cpp" />
+    <ClCompile Include="TScrollBarType.cpp" />
+    <ClCompile Include="TScrollBox.cpp" />
+    <ClCompile Include="TScrollBoxType.cpp" />
+    <ClCompile Include="TSplitString.cpp" />
+    <ClCompile Include="TStatic.cpp" />
+    <ClCompile Include="TStatusBar.cpp" />
+    <ClCompile Include="WinCtrl.cpp" />
+    <ClCompile Include="ZListBox.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ActionEvent.h" />
+    <ClInclude Include="ActionListenerList.h" />
+    <ClInclude Include="CToolTip.h" />
+    <ClInclude Include="IActionListener.h" />
+    <ClInclude Include="IListCellRenderer.h" />
+    <ClInclude Include="IScrollModel.h" />
+    <ClInclude Include="ITControl.h" />
+    <ClInclude Include="ITDraw.h" />
+    <ClInclude Include="ITFont.h" />
+    <ClInclude Include="ITreeModel.h" />
+    <ClInclude Include="ITreeNode.h" />
+    <ClInclude Include="ITreeNodeRenderer.h" />
+    <ClInclude Include="ITSound.h" />
+    <ClInclude Include="JComboBox.h" />
+    <ClInclude Include="JContainer.h" />
+    <ClInclude Include="JLetter.h" />
+    <ClInclude Include="JListBox.h" />
+    <ClInclude Include="JString.h" />
+    <ClInclude Include="JStringParser.h" />
+    <ClInclude Include="JTable.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ResourceMgr.h" />
+    <ClInclude Include="SinglelineString.h" />
+    <ClInclude Include="SplitHangul.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TabbedPane.h" />
+    <ClInclude Include="TAnimation.h" />
+    <ClInclude Include="TButton.h" />
+    <ClInclude Include="TCandidateWindow.h" />
+    <ClInclude Include="TCandidateWindowHanja.h" />
+    <ClInclude Include="TCandidateWindowList.h" />
+    <ClInclude Include="TCaption.h" />
+    <ClInclude Include="TCheckBox.h" />
+    <ClInclude Include="TComboBox.h" />
+    <ClInclude Include="TCommand.h" />
+    <ClInclude Include="TCommandQ.h" />
+    <ClInclude Include="TContainer.h" />
+    <ClInclude Include="TContainerItem.h" />
+    <ClInclude Include="TControlMgr.h" />
+    <ClInclude Include="TDefaultListCellRenderer.h" />
+    <ClInclude Include="TDefaultTreeModel.h" />
+    <ClInclude Include="TDefaultTreeNode.h" />
+    <ClInclude Include="TDefaultTreeNodeRenderer.h" />
+    <ClInclude Include="TDialog.h" />
+    <ClInclude Include="TEditBox.h" />
+    <ClInclude Include="TFrame.h" />
+    <ClInclude Include="TGameCtrl.h" />
+    <ClInclude Include="TGuage.h" />
+    <ClInclude Include="TImage.h" />
+    <ClInclude Include="TriggerIme.h" />
+    <ClInclude Include="TListBox.h" />
+    <ClInclude Include="TListCellRenderer.h" />
+    <ClInclude Include="TMsgBox.h" />
+    <ClInclude Include="TObject.h" />
+    <ClInclude Include="TPane.h" />
+    <ClInclude Include="TPushButton.h" />
+    <ClInclude Include="TRadioBox.h" />
+    <ClInclude Include="TRadioButton.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="TreePath.h" />
+    <ClInclude Include="TScrollBar.h" />
+    <ClInclude Include="TScrollBarType.h" />
+    <ClInclude Include="TScrollBox.h" />
+    <ClInclude Include="TScrollBoxType.h" />
+    <ClInclude Include="TSplitString.h" />
+    <ClInclude Include="TStatic.h" />
+    <ClInclude Include="TStatusBar.h" />
+    <ClInclude Include="WinCtrl.h" />
+    <ClInclude Include="ZListBox.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="TGameCtrl.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

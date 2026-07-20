@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (ASAN)|Win32">
+      <Configuration>Debug (ASAN)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>LIB_UTIL</ProjectName>
+    <ProjectGuid>{B4DDE42E-8878-441E-87AE-62B2F0E5A9CF}</ProjectGuid>
+    <RootNamespace>LIB_UTIL</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <EnableASAN>true</EnableASAN>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <OutDir>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Client\Util;$(SolutionDir)Server\SHO_GS\SHO_GS_LIB\srv_COMMON;$(SolutionDir)Server\SHO_GS\SHO_GS_LIB\Common;$(SolutionDir)Common;$(SolutionDir)Client\Common;$(SolutionDir)3rdParty\ijl15;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <PostBuildEvent>
+      <Message>copy libs</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)Client\Util;$(SolutionDir)Server\SHO_GS\SHO_GS_LIB\srv_COMMON;$(SolutionDir)Server\SHO_GS\SHO_GS_LIB\Common;$(SolutionDir)Common;$(SolutionDir)Client\Common;$(SolutionDir)3rdParty\ijl15;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;NOMINMAX;_DEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <PostBuildEvent>
+      <Message>copy libs</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>$(SolutionDir)Client\Util;$(SolutionDir)Server\SHO_GS\SHO_GS_LIB\srv_COMMON;$(SolutionDir)Server\SHO_GS\SHO_GS_LIB\Common;$(SolutionDir)Common;$(SolutionDir)Client\Common;$(SolutionDir)3rdParty\ijl15;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;NOMINMAX;NDEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0412</Culture>
+    </ResourceCompile>
+    <Lib>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <PostBuildEvent>
+      <Message>copy libs</Message>
+      <Command>copy             VC_LIB\*.lib             ..\Client\util\</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Client\Util\CBITArray.h" />
+    <ClInclude Include="..\Client\Util\CClientSOCKET.h" />
+    <ClInclude Include="..\Client\Util\classHASH.h" />
+    <ClInclude Include="..\Client\Util\classHTTP.h" />
+    <ClInclude Include="..\Client\Util\classIME.h" />
+    <ClInclude Include="..\Client\Util\classLOG.h" />
+    <ClInclude Include="..\Client\Util\classLUA.h" />
+    <ClInclude Include="..\Client\Util\classMD5.h" />
+    <ClInclude Include="..\Client\Util\classSTB.h" />
+    <ClInclude Include="..\Client\Util\classSTR.h" />
+    <ClInclude Include="..\Client\Util\classTIME.h" />
+    <ClInclude Include="..\Client\Util\classUTIL.h" />
+    <ClInclude Include="..\Client\Util\CMMPlayer.h" />
+    <ClInclude Include="..\Client\Util\CRawSOCKET.h" />
+    <ClInclude Include="..\Client\Util\CshoSOCKET.h" />
+    <ClInclude Include="..\Client\Util\CSocket.h" />
+    <ClInclude Include="..\Client\Util\CSocketWND.h" />
+    <ClInclude Include="..\Client\Util\DLLIST.h" />
+    <ClInclude Include="..\Client\Util\PacketHEADER.h" />
+    <ClInclude Include="..\Client\Util\SLLIST.h" />
+    <ClInclude Include="AStrTABLE.h" />
+    <ClInclude Include="CDXHPC.H" />
+    <ClInclude Include="classCRC.h" />
+    <ClInclude Include="classFile.h" />
+    <ClInclude Include="classMD5Defines.h" />
+    <ClInclude Include="classSYNCOBJ.h" />
+    <ClInclude Include="classSYS.h" />
+    <ClInclude Include="classTHREAD.h" />
+    <ClInclude Include="classTRACE.h" />
+    <ClInclude Include="CPacketCODEC.h" />
+    <ClInclude Include="CProcess.h" />
+    <ClInclude Include="CRandom.h" />
+    <ClInclude Include="CWaveFILE.h" />
+    <ClInclude Include="DynamicData.h" />
+    <ClInclude Include="LIB_IJL.h" />
+    <ClInclude Include="LIB_Util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CBITArray.cpp" />
+    <ClCompile Include="CClientSOCKET.cpp" />
+    <ClCompile Include="cdxHPC.cpp" />
+    <ClCompile Include="classCRC.cpp" />
+    <ClCompile Include="classFile.cpp" />
+    <ClCompile Include="classHASH.cpp" />
+    <ClCompile Include="classHTTP.cpp" />
+    <ClCompile Include="classIME.cpp" />
+    <ClCompile Include="classLOG.cpp" />
+    <ClCompile Include="classMD5.cpp" />
+    <ClCompile Include="classSTB.cpp" />
+    <ClCompile Include="classSTR.cpp" />
+    <ClCompile Include="classSYNCOBJ.cpp" />
+    <ClCompile Include="classSYS.cpp" />
+    <ClCompile Include="classTHREAD.cpp" />
+    <ClCompile Include="classTIME.cpp" />
+    <ClCompile Include="classTRACE.cpp" />
+    <ClCompile Include="classUTIL.cpp" />
+    <ClCompile Include="CPacketCODEC.cpp" />
+    <ClCompile Include="CProcess.cpp" />
+    <ClCompile Include="CRandom.cpp" />
+    <ClCompile Include="CRawSOCKET.cpp" />
+    <ClCompile Include="CshoSOCKET.cpp" />
+    <ClCompile Include="CSocket.cpp" />
+    <ClCompile Include="CSocketWND.cpp" />
+    <ClCompile Include="LIB_IJL.cpp" />
+    <ClCompile Include="PacketHEADER.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

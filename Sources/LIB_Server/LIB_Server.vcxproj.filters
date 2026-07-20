@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{81ab6ef5-9303-4a04-9d9e-c030fd4b1806}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\IOCP">
+      <UniqueIdentifier>{d58a2b5e-f53d-4274-8131-c31f3f387c4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SQL">
+      <UniqueIdentifier>{dc5b30cc-479a-41a8-86e0-7baa6bad8a5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\URL">
+      <UniqueIdentifier>{f3b68685-22dc-4806-9a30-d76407c931b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\IOCPSocketServer">
+      <UniqueIdentifier>{c0ad58a8-f5ca-4330-8451-f80fabc55b31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3708eb27-7a7a-4953-97f4-e27c97067429}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="blockLIST.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="classPACKET.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IP_Addr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ipLIST.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CAcceptTHREAD.cpp">
+      <Filter>Source Files\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="CIocpTHREAD.cpp">
+      <Filter>Source Files\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="iocpSOCKET.cpp">
+      <Filter>Source Files\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="classODBC.cpp">
+      <Filter>Source Files\SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="classSQL.cpp">
+      <Filter>Source Files\SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="CSqlTHREAD.cpp">
+      <Filter>Source Files\SQL</Filter>
+    </ClCompile>
+    <ClCompile Include="CurlTHREAD.cpp">
+      <Filter>Source Files\URL</Filter>
+    </ClCompile>
+    <ClCompile Include="iocpSocketSERVER.cpp">
+      <Filter>Source Files\IOCPSocketServer</Filter>
+    </ClCompile>
+    <ClCompile Include="ioDataPOOL.cpp">
+      <Filter>Source Files\IOCP</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blockLIST.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="classPACKET.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IP_Addr.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ipLIST.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CAcceptTHREAD.h">
+      <Filter>Source Files\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="CIocpTHREAD.h">
+      <Filter>Source Files\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="classIOCP.h">
+      <Filter>Source Files\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="iocpSOCKET.h">
+      <Filter>Source Files\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="ioDataPOOL.h">
+      <Filter>Source Files\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="classODBC.h">
+      <Filter>Source Files\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="classSQL.h">
+      <Filter>Source Files\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="CSqlTHREAD.h">
+      <Filter>Source Files\SQL</Filter>
+    </ClInclude>
+    <ClInclude Include="CurlTHREAD.h">
+      <Filter>Source Files\URL</Filter>
+    </ClInclude>
+    <ClInclude Include="iocpSocketSERVER.h">
+      <Filter>Source Files\IOCPSocketServer</Filter>
+    </ClInclude>
+    <ClInclude Include="CDataPOOL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="classINDEX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

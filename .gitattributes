@@ -1,0 +1,5 @@
+* text=lf
+*.lotus_config linguist-language=JSON
+*.lotus_project linguist-language=JSON
+*.lotus_toolset linguist-language=JSON
+*.lotus_use linguist-language=JSON

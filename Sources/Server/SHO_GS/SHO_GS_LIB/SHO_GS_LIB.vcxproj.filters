@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{365480f9-569c-4a17-99cd-bd7e5d01109a}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\ZONE">
+      <UniqueIdentifier>{1ed2fd19-d0a8-45d4-b1e0-ea2013970883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{54bca9cb-1c62-4dc2-8550-7be1866922ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{e8c6a499-4c95-4c0a-bba8-abe0cbf11f60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cli_COMMON">
+      <UniqueIdentifier>{9ec2fa15-6c0e-4717-a862-9c5bbec11646}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\cli_COMMON\AI_LIB">
+      <UniqueIdentifier>{115cebb3-d92a-44e6-9052-e990b9e15e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SQL_Thread">
+      <UniqueIdentifier>{302fb0ca-3746-4fe0-bebe-92fc227d8e82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Grouping">
+      <UniqueIdentifier>{c92d30a6-1371-4ab6-9fea-16f656c8d509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\srv_COMMON">
+      <UniqueIdentifier>{968668f0-1d70-446c-b48b-881a6c557fc8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AlphabetCvt\AlphabetCvt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ETC_Math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LIB_gsMAIN.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\MiniDumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_ThreadZONE.cpp">
+      <Filter>Source Files\ZONE</Filter>
+    </ClCompile>
+    <ClCompile Include="ZoneFILE.cpp">
+      <Filter>Source Files\ZONE</Filter>
+    </ClCompile>
+    <ClCompile Include="ZoneLIST.cpp">
+      <Filter>Source Files\ZONE</Filter>
+    </ClCompile>
+    <ClCompile Include="ZoneSECTOR.cpp">
+      <Filter>Source Files\ZONE</Filter>
+    </ClCompile>
+    <ClCompile Include="CCharDATA.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameOBJ.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CheatCMD.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CIngSTATUS.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjAVT.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjCHAR.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjEVENT.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjITEM.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjNPC.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_ListUSER.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_ObjPOOL.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_USER.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="OBJECT.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_SocketASV.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_SocketLSV.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Calculation.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Common\CAssertNew.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CEconomy.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CHotICON.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CInventory.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CItem.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CObjAI.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CQuest.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CRegenAREA.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CUserDATA.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\Io_ai.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\IO_Motion.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\IO_PAT.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\IO_Quest.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\IO_Skill.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\IO_STB.cpp">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="Ai_lib\AI_Action.cpp">
+      <Filter>Source Files\cli_COMMON\AI_LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="Ai_lib\AI_Condition.cpp">
+      <Filter>Source Files\cli_COMMON\AI_LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="Ai_lib\Cai_file.cpp">
+      <Filter>Source Files\cli_COMMON\AI_LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="srv_COMMON\CThreadGUILD.CPP">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="srv_COMMON\CThreadMSGR.cpp">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_ThreadLOG.cpp">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_ThreadMALL.cpp">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_ThreadSQL.cpp">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="GS_PARTY.CPP">
+      <Filter>Source Files\Grouping</Filter>
+    </ClCompile>
+    <ClCompile Include="srv_COMMON\CChatROOM.cpp">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="srv_COMMON\CThreadLOG.cpp">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="md5.cpp">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlphabetCvt\AlphabetCvt.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CGS_API.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ETC_Math.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LIB_gsMAIN.H">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\MiniDumper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdAFX.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_ThreadZONE.h">
+      <Filter>Source Files\ZONE</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoneFILE.h">
+      <Filter>Source Files\ZONE</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoneLIST.h">
+      <Filter>Source Files\ZONE</Filter>
+    </ClInclude>
+    <ClInclude Include="ZoneSECTOR.h">
+      <Filter>Source Files\ZONE</Filter>
+    </ClInclude>
+    <ClInclude Include="CCharDATA.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameOBJ.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CIngSTATUS.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjAVT.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjCHAR.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjEVENT.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjITEM.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjNPC.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_ListUSER.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_ObjPOOL.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_USER.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="OBJECT.h">
+      <Filter>Source Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_SocketASV.h">
+      <Filter>Source Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_SocketLSV.h">
+      <Filter>Source Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Calculation.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\CAssertNew.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CEconomy.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CHotICON.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CInventory.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CItem.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CObjAI.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CQuest.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CRegenAREA.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CUserDATA.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\DataTYPE.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Io_ai.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\IO_Motion.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Io_pat.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\IO_Quest.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\IO_Skill.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\IO_STB.h">
+      <Filter>Source Files\cli_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="Ai_lib\Cai_file.h">
+      <Filter>Source Files\cli_COMMON\AI_LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="Ai_lib\Cai_lib.h">
+      <Filter>Source Files\cli_COMMON\AI_LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="srv_COMMON\CThreadGUILD.H">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="srv_COMMON\CThreadMSGR.h">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_ThreadLOG.h">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_ThreadMALL.h">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_ThreadSQL.h">
+      <Filter>Source Files\SQL_Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="GS_PARTY.H">
+      <Filter>Source Files\Grouping</Filter>
+    </ClInclude>
+    <ClInclude Include="srv_COMMON\CChatROOM.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="srv_COMMON\CObjVAR.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="srv_COMMON\CThreadLOG.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="srv_COMMON\CWorldVAR.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="DEF_STB.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="md5.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\net_prototype.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Common\SRV_Prototype.h">
+      <Filter>Source Files\srv_COMMON</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="DB구조.TXT" />
+    <Text Include="구조설정서.txt" />
+    <Text Include="버그수정사항.txt" />
+    <Text Include="사용안하는 소스.txt" />
+    <Text Include="서버정보.txt" />
+  </ItemGroup>
+</Project>

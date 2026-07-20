@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (ASAN)|Win32">
+      <Configuration>Debug (ASAN)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{423F6727-70C6-4D7A-97BA-97C72FBC169B}</ProjectGuid>
+    <RootNamespace>znzin</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <EnableASAN>true</EnableASAN>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental />
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <LinkIncremental />
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)..\bins\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\objs\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules />
+    <CodeAnalysisRuleAssemblies />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Message>Increasing Build Count</Message>
+      <Command>cd "$(SolutionDir)Engine\include"
+"$(SolutionDir)..\bins\$(Platform)\$(Configuration)\lua5.exe" -e debug=1 "$(SolutionDir)Engine\include\zz_build_count.lua"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\..\include;$(SolutionDir)Tools\TriggerVFS\include;$(SolutionDir)LIB_Util;$(SolutionDir)3rdParty\lua-5.0\include;$(SolutionDir)3rdParty\DX_SDK\Include;$(SolutionDir)3rdParty\zlib123;$(SolutionDir)3rdParty\zlib123\contrib\minizip;$(SolutionDir)3rdParty\nvtristrip\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_NONSTDC_NO_WARNINGS;_USRDLL;ZZ_DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;ZZ_LUA500;NOMINMAX;_DEBUG;XXXZZ_MEM_ON;D3D_DEBUG_INFO;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;version.lib;winmm.lib;d3d9.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\DX_SDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>
+      </BaseAddress>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">
+    <PreBuildEvent>
+      <Message>Increasing Build Count</Message>
+      <Command>cd "$(SolutionDir)Engine\include"
+"$(SolutionDir)..\bins\$(Platform)\$(Configuration)\lua5.exe" -e debug=1 "$(SolutionDir)Engine\include\zz_build_count.lua"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\..\include;$(SolutionDir)Tools\TriggerVFS\include;$(SolutionDir)LIB_Util;$(SolutionDir)3rdParty\lua-5.0\include;$(SolutionDir)3rdParty\DX_SDK\Include;$(SolutionDir)3rdParty\zlib123;$(SolutionDir)3rdParty\zlib123\contrib\minizip;$(SolutionDir)3rdParty\nvtristrip\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_NONSTDC_NO_WARNINGS;_USRDLL;ZZ_DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;ZZ_LUA500;NOMINMAX;_DEBUG;XXXZZ_MEM_ON;D3D_DEBUG_INFO;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;version.lib;winmm.lib;d3d9.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\DX_SDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <BaseAddress>
+      </BaseAddress>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Message>Increasing Build Count</Message>
+      <Command>cd "$(SolutionDir)Engine\include"
+"$(SolutionDir)..\bins\$(Platform)\$(Configuration)\lua5.exe" -e debug=0 "$(SolutionDir)Engine\include\zz_build_count.lua"
+</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
+      <Command />
+    </CustomBuildStep>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)..\..\..\include;$(SolutionDir)Tools\TriggerVFS\include;$(SolutionDir)LIB_Util;$(SolutionDir)3rdParty\lua-5.0\include;$(SolutionDir)3rdParty\DX_SDK\Include;$(SolutionDir)3rdParty\zlib123;$(SolutionDir)3rdParty\zlib123\contrib\minizip;$(SolutionDir)3rdParty\nvtristrip\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_NONSTDC_NO_WARNINGS;_USRDLL;ZZ_DLL_EXPORT;_CRT_SECURE_NO_WARNINGS;ZZ_LUA500;NOMINMAX;NDEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <ResourceOutputFileName>$(IntDir)znzin.res</ResourceOutputFileName>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;version.lib;winmm.lib;d3d9.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)3rdParty\DX_SDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>false</GenerateMapFile>
+      <SubSystem>Windows</SubSystem>
+      <HeapReserveSize>
+      </HeapReserveSize>
+      <HeapCommitSize>
+      </HeapCommitSize>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <BaseAddress>
+      </BaseAddress>
+      <ImportLibrary>$(SolutionDir)..\libs\$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <FixedBaseAddress />
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\zz_algebra.cpp" />
+    <ClCompile Include="..\..\..\src\zz_animatable.cpp" />
+    <ClCompile Include="..\..\..\src\zz_assert.cpp" />
+    <ClCompile Include="..\..\..\src\zz_bone.cpp" />
+    <ClCompile Include="..\..\..\src\zz_bvolume.cpp" />
+    <ClCompile Include="..\..\..\src\zz_bvolume_obb.cpp" />
+    <ClCompile Include="..\..\..\src\zz_camera.cpp" />
+    <ClCompile Include="..\..\..\src\zz_camera_follow.cpp" />
+    <ClCompile Include="..\..\..\src\zz_channel.cpp" />
+    <ClCompile Include="..\..\..\src\zz_channel_position.cpp" />
+    <ClCompile Include="..\..\..\src\zz_channel_rotation.cpp" />
+    <ClCompile Include="..\..\..\src\zz_channel_x.cpp" />
+    <ClCompile Include="..\..\..\src\zz_channel_xy.cpp" />
+    <ClCompile Include="..\..\..\src\zz_cursor.cpp" />
+    <ClCompile Include="..\..\..\src\zz_db.cpp" />
+    <ClCompile Include="..\..\..\src\zz_dx_version.cpp" />
+    <ClCompile Include="..\..\..\src\zz_error.cpp" />
+    <ClCompile Include="..\..\..\src\zz_event.cpp" />
+    <ClCompile Include="..\..\..\src\zz_font.cpp" />
+    <ClCompile Include="..\..\..\src\zz_font_d3d.cpp" />
+    <ClCompile Include="..\..\..\src\zz_font_texture.cpp" />
+    <ClCompile Include="..\..\..\src\zz_font_texture_d3d.cpp" />
+    <ClCompile Include="..\..\..\src\zz_gamma.cpp" />
+    <ClCompile Include="..\..\..\src\zz_ik_limb.cpp" />
+    <ClCompile Include="..\..\..\src\zz_index_buffer.cpp" />
+    <ClCompile Include="..\..\..\src\zz_interface.cpp" />
+    <ClCompile Include="..\..\..\src\zz_light.cpp" />
+    <ClCompile Include="..\..\..\src\zz_light_direct.cpp" />
+    <ClCompile Include="..\..\..\src\zz_light_omni.cpp" />
+    <ClCompile Include="..\..\..\src\zz_light_point.cpp" />
+    <ClCompile Include="..\..\..\src\zz_lod.cpp" />
+    <ClCompile Include="..\..\..\src\zz_log.cpp" />
+    <ClCompile Include="..\..\..\src\zz_main.cpp" />
+    <ClCompile Include="..\..\..\src\zz_manager.cpp" />
+    <ClCompile Include="..\..\..\src\zz_manager_font.cpp" />
+    <ClCompile Include="..\..\..\src\zz_manager_mesh_ishared.cpp" />
+    <ClCompile Include="..\..\..\src\zz_manager_sound.cpp" />
+    <ClCompile Include="..\..\..\src\zz_manager_texture.cpp" />
+    <ClCompile Include="..\..\..\src\zz_manager_visible.cpp" />
+    <ClCompile Include="..\..\..\src\zz_material.cpp" />
+    <ClCompile Include="..\..\..\src\zz_material_colormap.cpp" />
+    <ClCompile Include="..\..\..\src\zz_material_ocean.cpp" />
+    <ClCompile Include="..\..\..\src\zz_material_sky.cpp" />
+    <ClCompile Include="..\..\..\src\zz_material_terrain.cpp" />
+    <ClCompile Include="..\..\..\src\zz_mem.cpp" />
+    <ClCompile Include="..\..\..\src\zz_mesh.cpp" />
+    <ClCompile Include="..\..\..\src\zz_mesh_ishared.cpp" />
+    <ClCompile Include="..\..\..\src\zz_mesh_ocean.cpp" />
+    <ClCompile Include="..\..\..\src\zz_mesh_terrain.cpp" />
+    <ClCompile Include="..\..\..\src\zz_mesh_tool.cpp" />
+    <ClCompile Include="..\..\..\src\zz_misc.cpp" />
+    <ClCompile Include="..\..\..\src\zz_model.cpp" />
+    <ClCompile Include="..\..\..\src\zz_morpher.cpp" />
+    <ClCompile Include="..\..\..\src\zz_motion.cpp" />
+    <ClCompile Include="..\..\..\src\zz_motion_controller.cpp" />
+    <ClCompile Include="..\..\..\src\zz_motion_mixer.cpp" />
+    <ClCompile Include="..\..\..\src\zz_motion_tool.cpp" />
+    <ClCompile Include="..\..\..\src\zz_node.cpp" />
+    <ClCompile Include="..\..\..\src\zz_node_type.cpp" />
+    <ClCompile Include="..\..\..\src\zz_ocean_block.cpp" />
+    <ClCompile Include="..\..\..\src\zz_octree.cpp" />
+    <ClCompile Include="..\..\..\src\zz_os.cpp" />
+    <ClCompile Include="..\..\..\src\zz_particle.cpp" />
+    <ClCompile Include="..\..\..\src\zz_particle_emitter.cpp" />
+    <ClCompile Include="..\..\..\src\zz_particle_event.cpp" />
+    <ClCompile Include="..\..\..\src\zz_particle_event_sequence.cpp" />
+    <ClCompile Include="..\..\..\src\zz_path.cpp" />
+    <ClCompile Include="..\..\..\src\zz_primitive.cpp" />
+    <ClCompile Include="..\..\..\src\zz_profiler.cpp" />
+    <ClCompile Include="..\..\..\src\zz_renderer.cpp" />
+    <ClCompile Include="..\..\..\src\zz_renderer_d3d.cpp" />
+    <ClCompile Include="..\..\..\src\zz_render_state.cpp" />
+    <ClCompile Include="..\..\..\src\zz_scene.cpp" />
+    <ClCompile Include="..\..\..\src\zz_scene_octree.cpp" />
+    <ClCompile Include="..\..\..\src\zz_script.cpp" />
+    <ClCompile Include="..\..\..\src\zz_script_lua.cpp" />
+    <ClCompile Include="..\..\..\src\zz_script_simple.cpp" />
+    <ClCompile Include="..\..\..\src\zz_sfx.cpp" />
+    <ClCompile Include="..\..\..\src\zz_shader.cpp" />
+    <ClCompile Include="..\..\..\src\zz_skeleton.cpp" />
+    <ClCompile Include="..\..\..\src\zz_sky.cpp" />
+    <ClCompile Include="..\..\..\src\zz_sound.cpp" />
+    <ClCompile Include="..\..\..\src\zz_string.cpp" />
+    <ClCompile Include="..\..\..\src\zz_system.cpp" />
+    <ClCompile Include="..\..\..\src\zz_targa.cpp" />
+    <ClCompile Include="..\..\..\src\zz_terrain.cpp" />
+    <ClCompile Include="..\..\..\src\zz_terrain_block.cpp" />
+    <ClCompile Include="..\..\..\src\zz_texture.cpp" />
+    <ClCompile Include="..\..\..\src\zz_thread.cpp" />
+    <ClCompile Include="..\..\..\src\zz_timer.cpp" />
+    <ClCompile Include="..\..\..\src\zz_trail.cpp" />
+    <ClCompile Include="..\..\..\src\zz_unit_test.cpp" />
+    <ClCompile Include="..\..\..\src\zz_vertex_buffer.cpp" />
+    <ClCompile Include="..\..\..\src\zz_vfs.cpp" />
+    <ClCompile Include="..\..\..\src\zz_vfs_local.cpp" />
+    <ClCompile Include="..\..\..\src\zz_vfs_mem.cpp" />
+    <ClCompile Include="..\..\..\src\zz_vfs_pkg.cpp" />
+    <ClCompile Include="..\..\..\src\zz_vfs_thread.cpp" />
+    <ClCompile Include="..\..\..\src\zz_vfs_zip.cpp" />
+    <ClCompile Include="..\..\..\src\zz_view.cpp" />
+    <ClCompile Include="..\..\..\src\zz_view_d3d.cpp" />
+    <ClCompile Include="..\..\..\src\zz_visible.cpp" />
+    <ClCompile Include="..\..\..\src\zz_waiting_line.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\zz_algebra.h" />
+    <ClInclude Include="..\..\..\include\zz_animatable.h" />
+    <ClInclude Include="..\..\..\include\zz_array.h" />
+    <ClInclude Include="..\..\..\include\zz_assert.h" />
+    <ClInclude Include="..\..\..\include\zz_autolock.h" />
+    <ClInclude Include="..\..\..\include\zz_bone.h" />
+    <ClInclude Include="..\..\..\include\zz_bvolume.h" />
+    <ClInclude Include="..\..\..\include\zz_bvolume_obb.h" />
+    <ClInclude Include="..\..\..\include\zz_camera.h" />
+    <ClInclude Include="..\..\..\include\zz_camera_follow.h" />
+    <ClInclude Include="..\..\..\include\zz_channel.h" />
+    <ClInclude Include="..\..\..\include\zz_channel_position.h" />
+    <ClInclude Include="..\..\..\include\zz_channel_rotation.h" />
+    <ClInclude Include="..\..\..\include\zz_channel_x.h" />
+    <ClInclude Include="..\..\..\include\zz_channel_xy.h" />
+    <ClInclude Include="..\..\..\include\zz_critical_section.h" />
+    <ClInclude Include="..\..\..\include\zz_cursor.h" />
+    <ClInclude Include="..\..\..\include\zz_db.h" />
+    <ClInclude Include="..\..\..\include\zz_device_resource.h" />
+    <ClInclude Include="..\..\..\include\zz_dx_version.h" />
+    <ClInclude Include="..\..\..\include\zz_error.h" />
+    <ClInclude Include="..\..\..\include\zz_event.h" />
+    <ClInclude Include="..\..\..\include\zz_font.h" />
+    <ClInclude Include="..\..\..\include\zz_font_d3d.h" />
+    <ClInclude Include="..\..\..\include\zz_font_texture.h" />
+    <ClInclude Include="..\..\..\include\zz_font_texture_d3d.h" />
+    <ClInclude Include="..\..\..\include\zz_gamma.h" />
+    <ClInclude Include="..\..\..\include\zz_hash_table.h" />
+    <ClInclude Include="..\..\..\include\zz_ik_limb.h" />
+    <ClInclude Include="..\..\..\include\zz_index_buffer.h" />
+    <ClInclude Include="..\..\..\include\zz_interface.h" />
+    <ClInclude Include="..\..\..\include\zz_light.h" />
+    <ClInclude Include="..\..\..\include\zz_light_direct.h" />
+    <ClInclude Include="..\..\..\include\zz_light_omni.h" />
+    <ClInclude Include="..\..\..\include\zz_light_point.h" />
+    <ClInclude Include="..\..\..\include\zz_list.h" />
+    <ClInclude Include="..\..\..\include\zz_lod.h" />
+    <ClInclude Include="..\..\..\include\zz_log.h" />
+    <ClInclude Include="..\..\..\include\zz_macro.h" />
+    <ClInclude Include="..\..\..\include\zz_manager.h" />
+    <ClInclude Include="..\..\..\include\zz_manager_font.h" />
+    <ClInclude Include="..\..\..\include\zz_manager_mesh_ishared.h" />
+    <ClInclude Include="..\..\..\include\zz_manager_sound.h" />
+    <ClInclude Include="..\..\..\include\zz_manager_texture.h" />
+    <ClInclude Include="..\..\..\include\zz_manager_visible.h" />
+    <ClInclude Include="..\..\..\include\zz_material.h" />
+    <ClInclude Include="..\..\..\include\zz_material_colormap.h" />
+    <ClInclude Include="..\..\..\include\zz_material_ocean.h" />
+    <ClInclude Include="..\..\..\include\zz_material_sky.h" />
+    <ClInclude Include="..\..\..\include\zz_material_terrain.h" />
+    <ClInclude Include="..\..\..\include\zz_mem.h" />
+    <ClInclude Include="..\..\..\include\zz_mesh.h" />
+    <ClInclude Include="..\..\..\include\zz_mesh_ishared.h" />
+    <ClInclude Include="..\..\..\include\zz_mesh_ocean.h" />
+    <ClInclude Include="..\..\..\include\zz_mesh_terrain.h" />
+    <ClInclude Include="..\..\..\include\zz_mesh_tool.h" />
+    <ClInclude Include="..\..\..\include\zz_minmax.h" />
+    <ClInclude Include="..\..\..\include\zz_misc.h" />
+    <ClInclude Include="..\..\..\include\zz_model.h" />
+    <ClInclude Include="..\..\..\include\zz_morpher.h" />
+    <ClInclude Include="..\..\..\include\zz_motion.h" />
+    <ClInclude Include="..\..\..\include\zz_motion_controller.h" />
+    <ClInclude Include="..\..\..\include\zz_motion_mixer.h" />
+    <ClInclude Include="..\..\..\include\zz_motion_tool.h" />
+    <ClInclude Include="..\..\..\include\zz_node.h" />
+    <ClInclude Include="..\..\..\include\zz_node_type.h" />
+    <ClInclude Include="..\..\..\include\zz_ocean_block.h" />
+    <ClInclude Include="..\..\..\include\zz_octree.h" />
+    <ClInclude Include="..\..\..\include\zz_os.h" />
+    <ClInclude Include="..\..\..\include\zz_oskernel.h" />
+    <ClInclude Include="..\..\..\include\zz_particle.h" />
+    <ClInclude Include="..\..\..\include\zz_particle_emitter.h" />
+    <ClInclude Include="..\..\..\include\zz_particle_event.h" />
+    <ClInclude Include="..\..\..\include\zz_particle_event_sequence.h" />
+    <ClInclude Include="..\..\..\include\zz_path.h" />
+    <ClInclude Include="..\..\..\include\zz_pointer.h" />
+    <ClInclude Include="..\..\..\include\zz_pool.h" />
+    <ClInclude Include="..\..\..\include\zz_primitive.h" />
+    <ClInclude Include="..\..\..\include\zz_profiler.h" />
+    <ClInclude Include="..\..\..\include\zz_recycling_array.h" />
+    <ClInclude Include="..\..\..\include\zz_refcount.h" />
+    <ClInclude Include="..\..\..\include\zz_renderer.h" />
+    <ClInclude Include="..\..\..\include\zz_renderer_d3d.h" />
+    <ClInclude Include="..\..\..\include\zz_render_state.h" />
+    <ClInclude Include="..\..\..\include\zz_scene.h" />
+    <ClInclude Include="..\..\..\include\zz_scene_octree.h" />
+    <ClInclude Include="..\..\..\include\zz_script.h" />
+    <ClInclude Include="..\..\..\include\zz_script_lua.h" />
+    <ClInclude Include="..\..\..\include\zz_script_simple.h" />
+    <ClInclude Include="..\..\..\include\zz_sfx.h" />
+    <ClInclude Include="..\..\..\include\zz_shader.h" />
+    <ClInclude Include="..\..\..\include\zz_skeleton.h" />
+    <ClInclude Include="..\..\..\include\zz_sky.h" />
+    <ClInclude Include="..\..\..\include\zz_sound.h" />
+    <ClInclude Include="..\..\..\include\zz_string.h" />
+    <ClInclude Include="..\..\..\include\zz_system.h" />
+    <ClInclude Include="..\..\..\include\zz_targa.h" />
+    <ClInclude Include="..\..\..\include\zz_terrain.h" />
+    <ClInclude Include="..\..\..\include\zz_terrain_block.h" />
+    <ClInclude Include="..\..\..\include\zz_texture.h" />
+    <ClInclude Include="..\..\..\include\zz_thread.h" />
+    <ClInclude Include="..\..\..\include\zz_tier0.h" />
+    <ClInclude Include="..\..\..\include\zz_timer.h" />
+    <ClInclude Include="..\..\..\include\zz_trail.h" />
+    <ClInclude Include="..\..\..\include\zz_tree.h" />
+    <ClInclude Include="..\..\..\include\zz_type.h" />
+    <ClInclude Include="..\..\..\include\zz_unit_test.h" />
+    <ClInclude Include="..\..\..\include\zz_vertex_buffer.h" />
+    <ClInclude Include="..\..\..\include\zz_vertex_format.h" />
+    <ClInclude Include="..\..\..\include\zz_vfs.h" />
+    <ClInclude Include="..\..\..\include\zz_vfs_local.h" />
+    <ClInclude Include="..\..\..\include\zz_vfs_mem.h" />
+    <ClInclude Include="..\..\..\include\zz_vfs_pkg.h" />
+    <ClInclude Include="..\..\..\include\zz_vfs_thread.h" />
+    <ClInclude Include="..\..\..\include\zz_vfs_zip.h" />
+    <ClInclude Include="..\..\..\include\zz_view.h" />
+    <ClInclude Include="..\..\..\include\zz_viewfrustum.h" />
+    <ClInclude Include="..\..\..\include\zz_view_d3d.h" />
+    <ClInclude Include="..\..\..\include\zz_visible.h" />
+    <ClInclude Include="..\..\..\include\zz_waiting_line.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\src\zz_error_trans.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="dialog.rc" />
+    <CustomBuild Include="version_info.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\include\zz_build_count.lua" />
+    <CustomBuild Include="..\..\..\include\zz_script_lua.lua">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating zz_script_lua.inc</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">Generating zz_script_lua.inc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">cd "$(SolutionDir)Engine\include"
+"$(SolutionDir)..\bins\$(Platform)\$(Configuration)\lua5.exe" "%(FullPath)"
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">cd "$(SolutionDir)Engine\include"
+"$(SolutionDir)..\bins\$(Platform)\$(Configuration)\lua5.exe" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Engine\include\zz_interface.h;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">$(SolutionDir)Engine\include\zz_interface.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)Engine\include\zz_script_lua.inc;%(Outputs)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug (ASAN)|Win32'">$(SolutionDir)Engine\include\zz_script_lua.inc;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating zz_script_lua.inc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">cd "$(SolutionDir)Engine\include"
+"$(SolutionDir)..\bins\$(Platform)\$(Configuration)\lua5.exe" "%(FullPath)"
+</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Engine\include\zz_interface.h;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)Engine\include\zz_script_lua.inc;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\..\..\shader\Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\shader\bumpmap.psh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\bumpmap.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\bumpmap_skin.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\bumpmap_tangentspace.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\bumpmap_tangentspace_specular.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\glow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\glow_skin.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\irradiance.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\irradiance_skin.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lightmap_nolit.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lightmap_nolit_first.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lightmap_nolit_first_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lightmap_nolit_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lightmap_nolit_shadow1.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lightmap_nolit_shadow2.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lit_skin.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\lit_skin1.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\ocean.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\shadowmap.psh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\shadowmap.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\shadowmap_skin.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple.psh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple_lit.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple_lit_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple_nolit.psh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple_nolit.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple_nolit_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple_skin.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\simple_skin2.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\sky.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\specular.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\specular_skin.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain.psh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_light.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_light_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_light_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_light_shadow_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second_light.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second_light_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second_light_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second_light_shadow_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_second_shadow_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_first_shadow_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_light.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_light_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_light_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_light_shadow_fog.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_plight.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_pos.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_rough.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\terrain_shadow.vsh">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\..\shader\test.psh">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\3rdParty\nvtristrip\src\NvTriStrip\NvTriStrip.vcxproj">
+      <Project>{3a9e8b28-4553-44c2-8b1f-e5a4713031f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\3rdParty\projects\Lua500\Lua500\Lua500.vcxproj">
+      <Project>{51a47a6c-02eb-4f0d-8905-0513b419adc4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\3rdParty\projects\Lua500\lua5\lua5.vcxproj">
+      <Project>{7182673f-e84c-466e-9a88-956229bc287d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\LIB_Util\LIB_Util.vcxproj">
+      <Project>{b4dde42e-8878-441e-87ae-62b2f0e5a9cf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Tools\TriggerVFS\TriggerVFS.vcxproj">
+      <Project>{3d8fb37b-21f3-4def-9b78-6fe270c73494}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
