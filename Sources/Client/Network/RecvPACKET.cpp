@@ -285,7 +285,7 @@ bool CRecvPACKET::Recv_lsv_LOGIN_REPLY ()
 			g_EUILobby.ShowMsgBox(STR_INVALID_PASSWORD,CTMsgBox::BT_OK ,true ,pLogin->GetDialogType());
 			return false;
 		case RESULT_LOGIN_REPLY_ALREADY_LOGGEDIN     :// 이미 로그인 중이다
-			g_EUILobby.ShowMsgBox(STR_ALREADY_LOGGEDIN,CTMsgBox::BT_OK ,true , pLogin->GetDialogType() );
+			//g_EUILobby.ShowMsgBox(STR_ALREADY_LOGGEDIN,CTMsgBox::BT_OK ,true , pLogin->GetDialogType() );
 			return false;
 		case RESULT_LOGIN_REPLY_REFUSED_ACCOUNT      :// 서버에서 거부된 계정이다.혹은 블럭된 계정입니다.
 			g_EUILobby.ShowMsgBox(STR_REFUSED_ACCOUNT,CTMsgBox::BT_OK ,true , pLogin->GetDialogType());
@@ -939,49 +939,130 @@ void CRecvPACKET::Recv_gsv_PARTY_CHAT()
 	_RPT1( _CRT_WARN,"Recv_gsv_PARTY_CHAT_2(%d)\n" ,g_GameDATA.GetGameTime() );
 }
 
-void CRecvPACKET::Recv_gsv_WHISPER ()
+void CRecvPACKET::Recv_gsv_WHISPER()
 {
-	short nOffset = sizeof( gsv_WHISPER );
-	char *szAccount, *szMsg;
-	szAccount = Packet_GetStringPtr( m_pRecvPacket, nOffset);
-	szMsg     = Packet_GetStringPtr( m_pRecvPacket, nOffset);
+	short nOffset = sizeof(gsv_WHISPER);
 
-	if( szMsg[ 0 ] == '/' )
+	char* szAccount =
+		Packet_GetStringPtr(m_pRecvPacket, nOffset);
+
+	char* szMsg =
+		Packet_GetStringPtr(m_pRecvPacket, nOffset);
+
+	if (!szAccount || !szMsg)
 		return;
+
+	if (szMsg[0] == '/')
+		return;
+
 	char buffer[1024];
 
-	if ( szMsg && szMsg[ 0 ] ) 
+	if (szMsg[0])
 	{
-		if(g_GameDATA.m_bTranslate)
+		// Custom vending chat message
+		if (strcmpi(szAccount, "VENDOR") == 0)
 		{
-			///*
-			char* tMsg;
-			tMsg = Translate(szMsg, g_GameDATA.m_cLang.Get());
-			szMsg = tMsg;
-			//*/
-		}
-		///서버가 보내는 귓속말은 항상 보여준다.
-		///GM이나 시스템 귓속말의경우도 그렇게 해야 할텐데...
-		if( strcmpi( szAccount, "<SERVER>::" ) == 0 )
-		{
-			sprintf( buffer, "[%s]%s>%s",STR_WHISPER,szAccount, szMsg );
-			g_itMGR.AppendChatMsg ( buffer, IT_MGR::CHAT_TYPE_WHISPER );
-		}
-		else
-		{
-			if( g_ClientStorage.IsApproveWhisper() )
+			const DWORD dwVendingColor =
+				D3DCOLOR_ARGB(255, 255, 220, 0);
+
+			if (strncmp(szMsg, "Sold ", 5) == 0)
 			{
-				sprintf( buffer,"[%s]%s>%s", STR_WHISPER,szAccount, szMsg );
-				g_itMGR.AppendChatMsg ( buffer, IT_MGR::CHAT_TYPE_WHISPER );
+				sprintf(
+					buffer,
+					"[SOLD] %s",
+					szMsg
+				);
+			}
+			else if (strncmp(szMsg, "Bought ", 7) == 0)
+			{
+				sprintf(
+					buffer,
+					"[BOUGHT] %s",
+					szMsg
+				);
 			}
 			else
 			{
-				g_pNet->Send_cli_WHISPER(  szAccount, STR_OTHER_WHISPER_REJECT_STATE );
+				sprintf(
+					buffer,
+					"[VENDING] %s",
+					szMsg
+				);
+			}
+
+			g_itMGR.AppendChatMsg(
+				buffer,
+				IT_MGR::CHAT_TYPE_SYSTEM,
+				dwVendingColor
+			);
+
+			return;
+		}
+
+		if (g_GameDATA.m_bTranslate)
+		{
+			char* tMsg;
+			tMsg = Translate(
+				szMsg,
+				g_GameDATA.m_cLang.Get()
+			);
+
+			szMsg = tMsg;
+		}
+
+		/// 서버가 보내는 귓속말은 항상 보여준다.
+		/// GM이나 시스템 귓속말의경우도 그렇게 해야 할텐데...
+		if (strcmpi(szAccount, "<SERVER>::") == 0)
+		{
+			sprintf(
+				buffer,
+				"[%s]%s>%s",
+				STR_WHISPER,
+				szAccount,
+				szMsg
+			);
+
+			g_itMGR.AppendChatMsg(
+				buffer,
+				IT_MGR::CHAT_TYPE_WHISPER
+			);
+		}
+		else
+		{
+			if (g_ClientStorage.IsApproveWhisper())
+			{
+				sprintf(
+					buffer,
+					"[%s]%s>%s",
+					STR_WHISPER,
+					szAccount,
+					szMsg
+				);
+
+				g_itMGR.AppendChatMsg(
+					buffer,
+					IT_MGR::CHAT_TYPE_WHISPER
+				);
+			}
+			else
+			{
+				g_pNet->Send_cli_WHISPER(
+					szAccount,
+					STR_OTHER_WHISPER_REJECT_STATE
+				);
 			}
 		}
 	}
 	else
-		g_itMGR.AppendChatMsg ( CStr::Printf( FORMAT_STR_FAIL_WHISPER, szAccount ), IT_MGR::CHAT_TYPE_WHISPER );
+	{
+		g_itMGR.AppendChatMsg(
+			CStr::Printf(
+				FORMAT_STR_FAIL_WHISPER,
+				szAccount
+			),
+			IT_MGR::CHAT_TYPE_WHISPER
+		);
+	}
 }
 
 void CRecvPACKET::Recv_gsv_SHOUT ()

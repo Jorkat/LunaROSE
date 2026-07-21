@@ -652,14 +652,26 @@ void GS_CThreadSQL::Execute ()
 		m_AddUserLIST.Init ();
 		m_csUserLIST.Unlock ();
 
-		while ( pUsrNODE = m_RunUserLIST.GetHeadNode() ) {
-			if ( pUsrNODE->DATA.m_pUSER->Get_NAME() ) {
-			/*
-				if ( pUsrNODE->DATA.m_btLogOutMODE ) {
-					LogString (0xffff, "		%d UPDATE %s:%s DATA \n", pUsrNODE->DATA.m_btLogOutMODE, pUsrNODE->DATA.m_pUSER->Get_ACCOUNT(), pUsrNODE->DATA.m_pUSER->Get_NAME() );
+		while (pUsrNODE = m_RunUserLIST.GetHeadNode()) {
+			if (pUsrNODE->DATA.m_pUSER->Get_NAME()) {
+				classUSER* pSavedUSER = pUsrNODE->DATA.m_pUSER;
+
+				this->UpdateUserRECORD(pSavedUSER);
+
+				// Alleen de speciaal aangevraagde offline-shopbackup.
+				// Een logoutsave heeft een niet-nul m_btLogOutMODE.
+				if (0 == pUsrNODE->DATA.m_btLogOutMODE &&
+					pSavedUSER->m_bOfflineVending &&
+					pSavedUSER->m_bOfflineVendingCloseRequested)
+				{
+					pSavedUSER->m_bOfflineVendingSaveDone = true;
+
+					printf(
+						"[OFFLINE VENDING] Final save completed for %s\n",
+						pSavedUSER->Get_NAME()
+					);
+					fflush(stdout);
 				}
-			*/
-				this->UpdateUserRECORD( pUsrNODE->DATA.m_pUSER );
 			}
 			
 			if ( pUsrNODE->DATA.m_btLogOutMODE ) {

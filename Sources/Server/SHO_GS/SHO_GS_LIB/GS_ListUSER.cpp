@@ -308,11 +308,60 @@ bool CUserLIST::Add_ACCOUNT (int iSocketIDX, t_PACKET *pRecvPket, char *szAccoun
 	classUSER *pUSER = (classUSER*)this->GetSOCKET( iSocketIDX );
 	if ( NULL == pUSER ) 
 		return false;
-	classUSER *pFIND = this->Find_ACCOUNT( szAccount );
-	if ( pFIND ) {
-		pFIND->CloseSocket ();
-		pUSER->CloseSocket ();
-		return false;
+	classUSER* pFIND = this->Find_ACCOUNT(szAccount);
+
+	if (pFIND)
+	{
+		if (pFIND->m_bOfflineVending)
+		{
+			pUSER->m_OfflineVendingLogs = pFIND->m_OfflineVendingLogs;
+			pUSER->m_bOfflineVendingLogsSent = false;
+
+			if (!pFIND->m_bOfflineVendingCloseRequested)
+			{
+				pFIND->m_bOfflineVendingCloseRequested = true;
+				pFIND->m_bOfflineVendingSaveDone = false;
+
+				printf(
+					"[OFFLINE VENDING] Relog requested for %s, saving shop\n",
+					pFIND->Get_NAME()
+				);
+				fflush(stdout);
+
+				g_pThreadSQL->Add_BackUpUSER(pFIND);
+			}
+			const DWORD dwWaitStart = ::GetTickCount();
+			const DWORD dwWaitLimit = 5000;
+
+			while (this->Find_ACCOUNT(szAccount) != NULL)
+			{
+				if (::GetTickCount() - dwWaitStart >= dwWaitLimit)
+				{
+					printf(
+						"[OFFLINE VENDING] Relog timeout for account %s\n",
+						szAccount
+					);
+					fflush(stdout);
+
+					pUSER->CloseSocket();
+					return false;
+				}
+
+				::Sleep(10);
+			}
+
+			printf(
+				"[OFFLINE VENDING] Shop removed, continuing login for %s\n",
+				szAccount
+			);
+			fflush(stdout);
+		}
+		else
+		{
+			pFIND->CloseSocket();
+			pUSER->CloseSocket();
+			return false;
+		}
 	}
 
 	if ( pUSER->Send_srv_JOIN_SERVER_REPLY( pRecvPket, szAccount ) ) {

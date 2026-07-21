@@ -15,6 +15,9 @@
 #include "Calculation.h"
 #include "CPacketCODEC.h"
 
+#include <vector>
+#include <string>
+
 #ifdef	__INC_WORLD
 	#include "CDLList.h"
 	#include "CThreadMSGR.h"
@@ -240,6 +243,7 @@ private:
 
     bool  Recv_cli_P_STORE_OPEN( t_PACKET *pPacket );
     bool  Recv_cli_P_STORE_CLOSE( t_PACKET *pPacket );
+	bool  Recv_cli_P_STORE_OFFLINE(t_PACKET* pPacket);
 
     bool  Recv_cli_P_STORE_LIST_REQ( t_PACKET *pPacket );
     bool  Recv_cli_P_STORE_BUY_REQ( t_PACKET *pPacket );
@@ -560,6 +564,14 @@ public :
 	tPOINTF			m_PosImmediateRivive;
 
 	bool			m_bKickOutFromGUMS;
+	bool            m_bOfflineVending;
+
+	volatile bool   m_bOfflineVendingCloseRequested;
+	volatile bool   m_bOfflineVendingSaveDone;
+
+	std::vector<std::string> m_OfflineVendingLogs;
+	bool			m_bOfflineVendingLogsSent;
+
 	BYTE			m_btWishLogOutMODE;
 	DWORD			m_dwTimeToLogOUT;
 	DWORD			m_dwLastSkillActiveTIME;
@@ -755,6 +767,14 @@ x	//CDLList< tagPartyUSER >::tagNODE *m_pPartyNODE;
 		m_iClanCreateMoney = 0;
 
 		m_bKickOutFromGUMS = false;
+		m_bOfflineVending = false;
+
+		m_bOfflineVendingCloseRequested = false;
+		m_bOfflineVendingSaveDone = false;
+
+		m_OfflineVendingLogs.clear();
+		m_bOfflineVendingLogsSent = false;
+
 		m_btWishLogOutMODE = 0;
 		m_dwTimeToLogOUT   = 0;
 		m_dwAttackTIME     = 0;

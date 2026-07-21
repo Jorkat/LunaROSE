@@ -511,6 +511,8 @@
 #define	GSV_P_STORE_RESULT			0x07c6
 #define	GSV_P_STORE_MONEYnINV		0x07c7
 
+#define CLI_P_STORE_OFFLINE         0x07c8
+
 #define	CLI_ASSEMBLE_RIDE_ITEM		0x07ca
 #define	GSV_ASSEMBLE_RIDE_ITEM		0x07ca
 
@@ -1931,6 +1933,10 @@ struct cli_P_STORE_CLOSE : public t_PACKETHEADER {
 };
 struct gsv_P_STORE_CLOSED : public t_PACKETHEADER {
 	WORD	m_wObjectIDX;
+};
+
+struct cli_P_STORE_OFFLINE : public t_PACKETHEADER
+{
 };
 
 

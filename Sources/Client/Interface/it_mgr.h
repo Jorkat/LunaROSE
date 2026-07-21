@@ -218,6 +218,15 @@ public:
 
 	void		ServerDisconnected();													/// 서버와의 연결이 끊어졌을경우 처리하는 method
 	
+	void SetOfflineVendingDisconnect(bool bValue)
+	{
+		m_bOfflineVendingDisconnect = bValue;
+	}
+
+	bool IsOfflineVendingDisconnect() const
+	{
+		return m_bOfflineVendingDisconnect;
+	}
 	
 	bool		IsMouseOnInterface();													/// 현재 마우스가 인터페이스위에 있는가?
 
@@ -305,6 +314,8 @@ private:
 
 	int			m_iWaitDisconnectTime;
 	int			m_iWaitDisconnectType;													///0. Disconnect 1. Goto Select Avatar
+
+	bool		m_bOfflineVendingDisconnect;
 
 	CReloadProcess*				m_pReloadProcess;										/// 아이템및 스킬의 쿨타임을 아이콘위에 표시하기 위한 멤버
 

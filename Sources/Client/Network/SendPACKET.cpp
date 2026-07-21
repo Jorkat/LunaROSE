@@ -1156,6 +1156,15 @@ void CSendPACKET::Send_cli_P_STORE_CLOSE (void)
 }
 
 //-------------------------------------------------------------------------------------------------
+void CSendPACKET::Send_cli_P_STORE_OFFLINE(void)
+{
+	m_pSendPacket->m_HEADER.m_wType = CLI_P_STORE_OFFLINE;
+	m_pSendPacket->m_HEADER.m_nSize = sizeof(cli_P_STORE_OFFLINE);
+
+	Send_PACKET(m_pSendPacket);
+}
+
+//-------------------------------------------------------------------------------------------------
 void CSendPACKET::Send_cli_P_STORE_LIST_REQ ( WORD wStoreObjectIDX )
 {
 	m_pSendPacket->m_HEADER.m_wType = CLI_P_STORE_LIST_REQ;

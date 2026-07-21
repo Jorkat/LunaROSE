@@ -152,6 +152,8 @@ IT_MGR::IT_MGR()
 
 	m_pCurrState = m_pStates[ STATE_NORMAL ];
 	m_pNotifyButtonDlg = NULL;	
+
+	m_bOfflineVendingDisconnect = false;
 }
 
 IT_MGR::~IT_MGR()
@@ -1477,34 +1479,49 @@ void IT_MGR::SetInterfacePosBySavedData()
 
 void IT_MGR::ServerDisconnected()
 {
-	assert( m_pCurrState );
-	if( m_pCurrState->GetID() == STATE_NORMAL )
-	{
-// 05. 10. 27 - 김주현
-// __SRVDISCONNECTRELOGIN(서버디스컨넥트가 되었을 경우)에 로그인창으로 이동할것인가
-// 아니면... 프로그램을 강종할것인가..
+	assert(m_pCurrState);
 
-#ifdef __SRVDISCONNECTRELOGIN
-		CTCommand* pCmd = new CTCmdReLogin; // 이건 재로그인
-#else
-		CTCommand* pCmd = new CTCmdExit; // 이건 강종
-#endif
-		OpenMsgBox("Server Disconnected",CMsgBox::BT_OK, true, 0, pCmd ,NULL);
-	}
-	else if( m_pCurrState->GetID() == STATE_WAITDISCONNECT )
+	if (m_pCurrState->GetID() == STATE_NORMAL)
 	{
-		if( g_itMGR.GetWaitDisconnectType() == 0 )
-			{
-			#ifdef __SRVDISCONNECTRELOGIN
-				CGame::GetInstance().ChangeState( CGame::GS_RELOGIN );
-			#else
-				g_pCApp->SetExitGame();
-			#endif
-			}
-	
+#ifdef __SRVDISCONNECTRELOGIN
+		CTCommand* pCmd = new CTCmdReLogin;
+#else
+		CTCommand* pCmd = new CTCmdExit;
+#endif
+
+		const char* szMessage = "Server Disconnected";
+
+		if (m_bOfflineVendingDisconnect)
+		{
+			szMessage = "Offline vending activated";
+			m_bOfflineVendingDisconnect = false;
+		}
+
+		OpenMsgBox(
+			szMessage,
+			CMsgBox::BT_OK,
+			true,
+			0,
+			pCmd,
+			NULL
+		);
+	}
+	else if (m_pCurrState->GetID() == STATE_WAITDISCONNECT)
+	{
+		m_bOfflineVendingDisconnect = false;
+
+		if (g_itMGR.GetWaitDisconnectType() == 0)
+		{
+#ifdef __SRVDISCONNECTRELOGIN
+			CGame::GetInstance().ChangeState(CGame::GS_RELOGIN);
+#else
+			g_pCApp->SetExitGame();
+#endif
+		}
 	}
 	else
 	{
+		m_bOfflineVendingDisconnect = false;
 		g_pCApp->SetExitGame();
 	}
 }

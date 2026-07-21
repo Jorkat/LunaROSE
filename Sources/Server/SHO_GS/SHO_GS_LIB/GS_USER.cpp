@@ -31,6 +31,21 @@ extern classLogFILE	 g_ChatGMLOG;
 
 extern bool IsJAPAN ();
 
+static std::string FormatOfflineVendingZuly(__int64 i64Zuly)
+{
+	char szMoney[64];
+	sprintf(szMoney, "%I64d", i64Zuly);
+
+	std::string strMoney = szMoney;
+
+	for (int i = (int)strMoney.length() - 3; i > 0; i -= 3)
+	{
+		strMoney.insert(i, ".");
+	}
+
+	return strMoney;
+}
+
 
 //-------------------------------------------------------------------------------------------------
 classUSER::classUSER ()
@@ -5710,6 +5725,47 @@ bool classUSER::Recv_cli_P_STORE_CLOSE( t_PACKET *pPacket )
 	return true;
 }
 
+bool classUSER::Recv_cli_P_STORE_OFFLINE(t_PACKET* pPacket)
+{
+	if (!this->m_STORE.m_bActive)
+	{
+		printf("[OFFLINE VENDING] Rejected: store is not active\n");
+		fflush(stdout);
+		return true;
+	}
+
+	if (this->m_bOfflineVending)
+		return true;
+
+	const int iSocketIDX = this->m_iSocketIDX;
+
+	if (iSocketIDX <= 0)
+	{
+		printf("[OFFLINE VENDING] Rejected: invalid socket index\n");
+		fflush(stdout);
+		return true;
+	}
+
+	this->m_bOfflineVending = true;
+
+	// Bewaar de huidige character- en winkelgegevens.
+	g_pThreadSQL->Add_BackUpUSER(this);
+
+	printf(
+		"[OFFLINE VENDING] Detaching %s from socket %d\n",
+		this->Get_NAME(),
+		iSocketIDX
+	);
+	fflush(stdout);
+
+	// Verwijder alleen de netwerkverbinding.
+	// Omdat deze user nog een zone-objectindex heeft,
+	// zal ClosedClientSOCKET() hem niet deleten.
+	g_pUserLIST->Del_SOCKET(iSocketIDX);
+
+	return true;
+}
+
 
 //-------------------------------------------------------------------------------------------------
 /// 개인 상점 물품 목록을 요청
@@ -5831,9 +5887,17 @@ bool classUSER::Recv_cli_P_STORE_BUY_REQ( t_PACKET *pPacket )
 	// 1:1거래중 상점 거래중 금지..
 	if ( this->m_btTradeBIT & (BIT_TRADE_READY|BIT_TRADE_DONE) )	return true;
 
-	classUSER *pStoreOWNER = g_pObjMGR->Get_UserOBJ( pPacket->m_cli_P_STORE_BUY_REQ.m_wStoreObjectIDX );
-	if ( pStoreOWNER ) {
-		if ( !pStoreOWNER->m_STORE.m_bActive )
+	classUSER* pStoreOWNER =
+		g_pObjMGR->Get_UserOBJ(
+			pPacket->m_cli_P_STORE_BUY_REQ.m_wStoreObjectIDX
+		);
+
+	if (pStoreOWNER)
+	{
+		if (pStoreOWNER->m_bOfflineVendingCloseRequested)
+			return true;
+
+		if (!pStoreOWNER->m_STORE.m_bActive)
 			return true;
 
 		classPACKET *pStorePacket  = Init_gsv_P_STORE_RESULT( pPacket->m_cli_P_STORE_BUY_REQ.m_wStoreObjectIDX );
@@ -5902,6 +5966,56 @@ bool classUSER::Recv_cli_P_STORE_BUY_REQ( t_PACKET *pPacket )
 				this->m_Inventory.m_i64Money -= biNeedMoney;
 				pStoreOWNER->m_Inventory.m_i64Money += biNeedMoney;
 
+				{
+					const unsigned int uiQuantity =
+						(unsigned int)sSubITEM.GetQuantity();
+
+					const char* szItemName = ITEM_NAME(
+						sSubITEM.GetTYPE(),
+						sSubITEM.GetItemNO()
+					);
+
+					const std::string strZuly =
+						FormatOfflineVendingZuly(biNeedMoney);
+
+					char szSellerLog[256];
+					char szBuyerLog[256];
+
+					sprintf(
+						szSellerLog,
+						"Sold %u %s for %sz.",
+						uiQuantity,
+						szItemName ? szItemName : "Unknown Item",
+						strZuly.c_str()
+					);
+
+					sprintf(
+						szBuyerLog,
+						"Bought %u %s for %sz.",
+						uiQuantity,
+						szItemName ? szItemName : "Unknown Item",
+						strZuly.c_str()
+					);
+
+					if (pStoreOWNER->m_bOfflineVending)
+					{
+						pStoreOWNER->m_OfflineVendingLogs.push_back(szSellerLog);
+					}
+					else
+					{
+						pStoreOWNER->Send_gsv_WHISPER(
+							"VENDOR",
+							szSellerLog
+						);
+					}
+
+					this->Send_gsv_WHISPER(
+						"VENDOR",
+						szBuyerLog
+					);
+				}
+				
+
 				// 구입자 인벤 갱신
 				pBuyerPacket->m_gsv_SET_MONEYnINV.m_sInvITEM[ pBuyerPacket->m_gsv_SET_MONEYnINV.m_btItemCNT ].m_btInvIDX = (BYTE)nBuyerInvIDX;
 				pBuyerPacket->m_gsv_SET_MONEYnINV.m_sInvITEM[ pBuyerPacket->m_gsv_SET_MONEYnINV.m_btItemCNT ].m_ITEM = sBuyITEM;
@@ -5926,6 +6040,18 @@ bool classUSER::Recv_cli_P_STORE_BUY_REQ( t_PACKET *pPacket )
 			} /* else {
 				인벤토리 모자람... 이 아이템 거래 취소...
 			} */
+		}
+
+		if (pStorePacket->m_gsv_P_STORE_RESULT.m_btItemCNT > 0 &&
+			pStoreOWNER->m_bOfflineVending)
+		{
+			g_pThreadSQL->Add_BackUpUSER(pStoreOWNER);
+
+			printf(
+				"[OFFLINE VENDING] Saved seller %s after transaction\n",
+				pStoreOWNER->Get_NAME()
+			);
+			fflush(stdout);
 		}
 
 		this->Send_gsv_SET_MONEYnINV ( pBuyerPacket );		// 구매자는 인벤토리,돈 패킷으로 변경 정보 전송.
@@ -5965,8 +6091,12 @@ bool classUSER::Recv_cli_P_STORE_SELL_REQ( t_PACKET *pPacket )
 
 	classUSER *pStoreOWNER = g_pObjMGR->Get_UserOBJ( pPacket->m_cli_P_STORE_SELL_REQ.m_wStoreObjectIDX );
 
-	if ( pStoreOWNER ) {
-		if ( !pStoreOWNER->m_STORE.m_bActive )
+	if (pStoreOWNER)
+	{
+		if (pStoreOWNER->m_bOfflineVendingCloseRequested)
+			return true;
+
+		if (!pStoreOWNER->m_STORE.m_bActive)
 			return true;
 
 		classPACKET *pStorePacket  = Init_gsv_P_STORE_RESULT( pPacket->m_cli_P_STORE_SELL_REQ.m_wStoreObjectIDX );
@@ -6050,6 +6180,55 @@ bool classUSER::Recv_cli_P_STORE_SELL_REQ( t_PACKET *pPacket )
 				pSellerITEM->SubtractOnly( sSubITEM );		// 팔린 양만큼 제거
 				pWishITEM->SubtractOnly( sSubITEM );		// 구매한 양만큼 제거
 
+				{
+					const unsigned int uiQuantity =
+						(unsigned int)sSubITEM.GetQuantity();
+
+					const char* szItemName = ITEM_NAME(
+						sSubITEM.GetTYPE(),
+						sSubITEM.GetItemNO()
+					);
+
+					const std::string strZuly =
+						FormatOfflineVendingZuly(dwNeedMoney);
+
+					char szBuyerLog[256];
+					char szSellerLog[256];
+
+					sprintf(
+						szBuyerLog,
+						"Bought %u %s for %sz.",
+						uiQuantity,
+						szItemName ? szItemName : "Unknown Item",
+						strZuly.c_str()
+					);
+
+					sprintf(
+						szSellerLog,
+						"Sold %u %s for %sz.",
+						uiQuantity,
+						szItemName ? szItemName : "Unknown Item",
+						strZuly.c_str()
+					);
+
+					if (pStoreOWNER->m_bOfflineVending)
+					{
+						pStoreOWNER->m_OfflineVendingLogs.push_back(szBuyerLog);
+					}
+					else
+					{
+						pStoreOWNER->Send_gsv_WHISPER(
+							"VENDOR",
+							szBuyerLog
+						);
+					}
+
+					this->Send_gsv_WHISPER(
+						"VENDOR",
+						szSellerLog
+					);
+				}
+
 				pSellerPacket->m_gsv_SET_MONEYnINV.m_sInvITEM[ pSellerPacket->m_gsv_SET_MONEYnINV.m_btItemCNT ].m_btInvIDX = pPacket->m_cli_P_STORE_SELL_REQ.m_SellITEMs[ nI ].m_btInvIDX;
 				pSellerPacket->m_gsv_SET_MONEYnINV.m_sInvITEM[ pSellerPacket->m_gsv_SET_MONEYnINV.m_btItemCNT ].m_ITEM = *pSellerITEM;
 				pSellerPacket->m_gsv_SET_MONEYnINV.m_btItemCNT ++;
@@ -6072,6 +6251,18 @@ bool classUSER::Recv_cli_P_STORE_SELL_REQ( t_PACKET *pPacket )
 			} /* else {
 				구매자 인벤 꽉참.. 거래에서 이 아이템 제외~~~
 			} */
+		}
+
+		if (pStorePacket->m_gsv_P_STORE_RESULT.m_btItemCNT > 0 &&
+			pStoreOWNER->m_bOfflineVending)
+		{
+			g_pThreadSQL->Add_BackUpUSER(pStoreOWNER);
+
+			printf(
+				"[OFFLINE VENDING] Saved buyer %s after transaction\n",
+				pStoreOWNER->Get_NAME()
+			);
+			fflush(stdout);
 		}
 
 		this->Send_gsv_SET_MONEYnINV( pSellerPacket );			// 판매자 인벤토리,돈 패킷으로 변경 정보 전송.
@@ -8856,6 +9047,8 @@ int classUSER::Proc_ZonePACKET( t_PACKET *pPacket )
             return Recv_cli_P_STORE_OPEN( pPacket );
         case CLI_P_STORE_CLOSE :
             return Recv_cli_P_STORE_CLOSE( pPacket );
+		case CLI_P_STORE_OFFLINE:
+			return Recv_cli_P_STORE_OFFLINE(pPacket);
 
         case CLI_P_STORE_LIST_REQ :
             return Recv_cli_P_STORE_LIST_REQ( pPacket );
@@ -9254,6 +9447,57 @@ int  classUSER::ProcLogOUT()
  */
 int	 classUSER::Proc(void)
 {
+	if (this->m_bOfflineVending)
+	{
+		if (!this->GetZONE())
+			return 0;
+
+		if (this->m_bOfflineVendingCloseRequested)
+		{
+			if (!this->m_bOfflineVendingSaveDone)
+				return 1;
+
+			printf(
+				"[OFFLINE VENDING] Save completed, removing shop %s\n",
+				this->Get_NAME()
+			);
+			fflush(stdout);
+
+			return 0;
+		}
+
+		if (!this->m_STORE.m_bActive)
+			return 0;
+
+		if (this->Get_HP() <= 0)
+			return 0;
+
+		return CObjCHAR::Proc();
+	}
+
+	if (!this->m_bOfflineVendingLogsSent &&
+		!this->m_OfflineVendingLogs.empty() &&
+		this->GetZONE() &&
+		this->Get_SOCKET() != INVALID_SOCKET)
+	{
+		for (
+			std::vector<std::string>::iterator it =
+			this->m_OfflineVendingLogs.begin();
+
+			it != this->m_OfflineVendingLogs.end();
+			++it
+			)
+		{
+			this->Send_gsv_WHISPER(
+				"VENDOR",
+				const_cast<char*>(it->c_str())
+			);
+		}
+
+		this->m_OfflineVendingLogs.clear();
+		this->m_bOfflineVendingLogsSent = true;
+	}
+
 	// 존안에 있을때 처리되는 함수다...
 	if(this->m_btLogOutMODE || INVALID_SOCKET == this->Get_SOCKET())
 	{

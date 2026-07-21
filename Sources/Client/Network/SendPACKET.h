@@ -85,6 +85,7 @@ public   :
 
 	void Send_cli_P_STORE_OPEN ( BYTE btSellItemCount,BYTE btBuyItemCount, tagPS_ITEM* SellItems, tagPS_ITEM* BuyItems, char* pszTitle );
 	void Send_cli_P_STORE_CLOSE (void);
+	void Send_cli_P_STORE_OFFLINE(void);
 	void Send_cli_P_STORE_LIST_REQ ( WORD wStoreObjectIDX );
 	void Send_cli_P_STORE_BUY_REQ ( WORD wStoreObjectIDX, int iItemCount, tagPS_SLOT_ITEM* pBuyItems );
 	void Send_cli_P_STORE_SELL_REQ( WORD wStoreObjectIDX, int iItemCount, tagSELL_ITEM*	pSellItems );

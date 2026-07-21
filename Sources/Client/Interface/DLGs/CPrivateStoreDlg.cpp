@@ -10,6 +10,7 @@
 #include "../Command/DragCommand.h"
 #include "../../GameCommon/item.h"
 #include "../../GameData/Event/CTEventPrivateStore.h"
+#include <Network/CNetwork.h>
 CPrivateStoreDlg::CPrivateStoreDlg( int iDlgType )
 {
 	SetDialogType( iDlgType );
@@ -88,6 +89,7 @@ void CPrivateStoreDlg::Show()
 	HideChild( IID_BTN_STOP );
 	HideChild( IID_BTN_ADD_BUYLIST);
 	SetEnableChild( IID_EDITBOX, true );
+	SetEnableChild(IID_BTN_OFFLINE, false);
 	
 	CPrivateStore& refPrivateStore = CPrivateStore::GetInstance();
 	m_iTab = 0;
@@ -230,6 +232,7 @@ void CPrivateStoreDlg::OnLButtonUp( unsigned uiProcID, WPARAM wParam, LPARAM lPa
 					HideChild( IID_BTN_START );
 					HideChild( IID_TEXT_CLOSED );
 					SetEnableChild( IID_EDITBOX, false );
+					SetEnableChild(IID_BTN_OFFLINE, true);
 				}
 			}
 			break;
@@ -241,7 +244,14 @@ void CPrivateStoreDlg::OnLButtonUp( unsigned uiProcID, WPARAM wParam, LPARAM lPa
 			ShowChild( IID_BTN_START );
 			ShowChild( IID_TEXT_CLOSED );
 			SetEnableChild( IID_EDITBOX, true );
+			SetEnableChild(IID_BTN_OFFLINE, false);
 			CPrivateStore::GetInstance().Close();
+			break;
+		}
+	case IID_BTN_OFFLINE:
+		{
+			g_itMGR.SetOfflineVendingDisconnect(true);
+			g_pNet->Send_cli_P_STORE_OFFLINE();
 			break;
 		}
 	case IID_BTN_CLOSE:
