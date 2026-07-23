@@ -638,19 +638,91 @@ void	CIconSkill::GetToolTip( CInfo& ToolTip,  DWORD dwDialogType, DWORD dwType )
 
 ///*---------------------------------------------------------------------------------------------/
 /// 스킬 툴팁 관련
-void CIconSkill::AddSkillTypeTarget( int iSkillNo, CInfo& ToolTip , bool bAddTarget )
+void CIconSkill::AddSkillTypeTarget(
+	int iSkillNo,
+	CInfo& ToolTip,
+	bool bAddTarget)
 {
-	char* pszBuf = NULL;
-	if( bAddTarget )
-		pszBuf = CStr::Printf( "%s:%s    %s:%s",
-					STR_ITEM_TYPE, 
-					CStringManager::GetSingleton().GetSkillType( SKILL_TYPE( iSkillNo )), 
-					STR_TARGET, 
-					CStringManager::GetSingleton().GetSkillTarget( SKILL_CLASS_FILTER(iSkillNo) ) );
+	const char* pszSkillType =
+		CStringManager::GetSingleton().GetSkillType(
+			SKILL_TYPE(iSkillNo)
+		);
+
+	if (bAddTarget)
+	{
+		const char* pszSkillTarget =
+			CStringManager::GetSingleton().GetSkillTarget(
+				SKILL_CLASS_FILTER(iSkillNo)
+			);
+
+		char szTypeLabel[64];
+		char szTypeValue[128];
+		char szTargetLabel[64];
+		char szTargetValue[128];
+
+		sprintf_s(
+			szTypeLabel,
+			sizeof(szTypeLabel),
+			"%s: ",
+			STR_ITEM_TYPE
+		);
+
+		sprintf_s(
+			szTypeValue,
+			sizeof(szTypeValue),
+			"%s    ",
+			pszSkillType
+		);
+
+		sprintf_s(
+			szTargetLabel,
+			sizeof(szTargetLabel),
+			"%s: ",
+			STR_TARGET
+		);
+
+		sprintf_s(
+			szTargetValue,
+			sizeof(szTargetValue),
+			"%s",
+			pszSkillTarget
+		);
+
+		ToolTip.AddMultiColorString(
+			szTypeLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+
+			szTypeValue,
+			g_dwWHITE,
+
+			szTargetLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+
+			szTargetValue,
+			g_dwWHITE,
+
+			g_GameDATA.m_hFONT[FONT_NORMAL]
+		);
+	}
 	else
-		pszBuf = CStr::Printf( "%s:%s",STR_ITEM_TYPE, CStringManager::GetSingleton().GetSkillType(SKILL_TYPE( iSkillNo )) );
-		
-	ToolTip.AddString( pszBuf );
+	{
+		char szTypeLabel[64];
+
+		sprintf_s(
+			szTypeLabel,
+			sizeof(szTypeLabel),
+			"%s: ",
+			STR_ITEM_TYPE
+		);
+
+		ToolTip.AddSplitString(
+			szTypeLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+			pszSkillType,
+			g_dwWHITE,
+			g_GameDATA.m_hFONT[FONT_NORMAL]
+		);
+	}
 }
 void CIconSkill::AddSkillSummon( int iSkillNo, CInfo& ToolTip )
 {
@@ -658,49 +730,187 @@ void CIconSkill::AddSkillSummon( int iSkillNo, CInfo& ToolTip )
 	ToolTip.AddString( pszBuf,g_dwBlueToolTip );
 }
 
-void CIconSkill::AddSkillDistanceScope( int iSkillNo, CInfo& ToolTip ,bool bAddScope )
+void CIconSkill::AddSkillDistanceScope(
+	int iSkillNo,
+	CInfo& ToolTip,
+	bool bAddScope)
 {
-	///거리가 0일경우는 표시하지 않는다.
-	char* pszBuf;
-	int iDistance = SKILL_DISTANCE( iSkillNo ) / 100;
-	int iScope    = SKILL_SCOPE( iSkillNo ) / 100;
+	const int iDistance =
+		SKILL_DISTANCE(iSkillNo) / 100;
 
-	if( bAddScope )
+	const int iScope =
+		SKILL_SCOPE(iSkillNo) / 100;
+
+	if (bAddScope)
 	{
-		if( iDistance && iScope )
+		if (iDistance && iScope)
 		{
-			pszBuf = CStr::Printf( "%s : %dm %s : %dm",
-				STR_SHOOT_RANGE, iDistance,
-				STR_APPLY_RANGE, iScope );
-			ToolTip.AddString( pszBuf );
+			char szDistanceLabel[64];
+			char szDistanceValue[32];
+			char szScopeLabel[64];
+			char szScopeValue[32];
+
+			sprintf_s(
+				szDistanceLabel,
+				sizeof(szDistanceLabel),
+				"%s: ",
+				STR_SHOOT_RANGE
+			);
+
+			sprintf_s(
+				szDistanceValue,
+				sizeof(szDistanceValue),
+				"%dm    ",
+				iDistance
+			);
+
+			sprintf_s(
+				szScopeLabel,
+				sizeof(szScopeLabel),
+				"%s: ",
+				STR_APPLY_RANGE
+			);
+
+			sprintf_s(
+				szScopeValue,
+				sizeof(szScopeValue),
+				"%dm",
+				iScope
+			);
+
+			ToolTip.AddMultiColorString(
+				szDistanceLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+
+				szDistanceValue,
+				g_dwWHITE,
+
+				szScopeLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+
+				szScopeValue,
+				g_dwWHITE,
+
+				g_GameDATA.m_hFONT[FONT_NORMAL]
+			);
 		}
-		else if( iDistance )
+		else if (iDistance)
 		{
-			pszBuf = CStr::Printf( "%s : %dm", STR_SHOOT_RANGE, iDistance );
-			ToolTip.AddString( pszBuf );
+			char szLabel[64];
+			char szValue[32];
+
+			sprintf_s(
+				szLabel,
+				sizeof(szLabel),
+				"%s: ",
+				STR_SHOOT_RANGE
+			);
+
+			sprintf_s(
+				szValue,
+				sizeof(szValue),
+				"%dm",
+				iDistance
+			);
+
+			ToolTip.AddSplitString(
+				szLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+				szValue,
+				g_dwWHITE,
+				g_GameDATA.m_hFONT[FONT_NORMAL]
+			);
 		}
-		else if( iScope )
+		else if (iScope)
 		{
-			pszBuf = CStr::Printf( "%s : %dm", STR_APPLY_RANGE, iScope );
-			ToolTip.AddString( pszBuf );
+			char szLabel[64];
+			char szValue[32];
+
+			sprintf_s(
+				szLabel,
+				sizeof(szLabel),
+				"%s: ",
+				STR_APPLY_RANGE
+			);
+
+			sprintf_s(
+				szValue,
+				sizeof(szValue),
+				"%dm",
+				iScope
+			);
+
+			ToolTip.AddSplitString(
+				szLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+				szValue,
+				g_dwWHITE,
+				g_GameDATA.m_hFONT[FONT_NORMAL]
+			);
 		}
 	}
-	else
+	else if (iDistance)
 	{
-		if( iDistance )
-		{
-			pszBuf = CStr::Printf( "%s : %dm",STR_SHOOT_RANGE, iDistance );
-			ToolTip.AddString( pszBuf );
-		}
+		char szLabel[64];
+		char szValue[32];
+
+		sprintf_s(
+			szLabel,
+			sizeof(szLabel),
+			"%s: ",
+			STR_SHOOT_RANGE
+		);
+
+		sprintf_s(
+			szValue,
+			sizeof(szValue),
+			"%dm",
+			iDistance
+		);
+
+		ToolTip.AddSplitString(
+			szLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+			szValue,
+			g_dwWHITE,
+			g_GameDATA.m_hFONT[FONT_NORMAL]
+		);
 	}
-	
 }
-void CIconSkill::AddSkillScope( int iSkillNo, CInfo& ToolTip )
+
+void CIconSkill::AddSkillScope(
+	int iSkillNo,
+	CInfo& ToolTip)
 {
-	if( SKILL_SCOPE( iSkillNo ) )
+	const int iScope =
+		SKILL_SCOPE(iSkillNo) / 100;
+
+	if (iScope)
 	{
-		char* pszBuf = CStr::Printf( "%s : %dm",STR_APPLY_RANGE,SKILL_SCOPE( iSkillNo ) / 100);
-		ToolTip.AddString( pszBuf );
+		char szLabel[64];
+		char szValue[32];
+
+		sprintf_s(
+			szLabel,
+			sizeof(szLabel),
+			"%s: ",
+			STR_APPLY_RANGE
+		);
+
+		sprintf_s(
+			szValue,
+			sizeof(szValue),
+			"%dm",
+			iScope
+		);
+
+		ToolTip.AddSplitString(
+			szLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+			szValue,
+			g_dwWHITE,
+			g_GameDATA.m_hFONT[FONT_NORMAL]
+		);
 	}
 }
 //void CIconSkill::AddSkillIncreaseAbility( int iSkillNo, CInfo& ToolTip )
@@ -721,21 +931,65 @@ void CIconSkill::AddSkillScope( int iSkillNo, CInfo& ToolTip )
 
 void CIconSkill::AddSkillName( int iSkillNo ,CInfo& ToolTip, bool bAddLevel )
 {
-	if( bAddLevel )
+	if (bAddLevel)
 	{
-		char* pszBuf = CStr::Printf( "%s[%s:%d]", SKILL_NAME(iSkillNo ),STR_LEVEL, SKILL_LEVEL(iSkillNo ));
-		ToolTip.AddString( pszBuf ,g_dwYELLOW, g_GameDATA.m_hFONT[ FONT_NORMAL_BOLD] );
+		char* pszBuf = CStr::Printf(
+			"%s[%s:%d]",
+			SKILL_NAME(iSkillNo),
+			STR_LEVEL,
+			SKILL_LEVEL(iSkillNo)
+		);
+
+		ToolTip.AddString(
+			pszBuf,
+			g_dwYELLOW,
+			g_GameDATA.m_hFONT[FONT_NORMAL_BOLD],
+			DT_LEFT,
+			false
+		);
 	}
 	else
 	{
-		ToolTip.AddString( SKILL_NAME( iSkillNo ) ,g_dwYELLOW, g_GameDATA.m_hFONT[ FONT_NORMAL_BOLD]);
+		ToolTip.AddString(
+			SKILL_NAME(iSkillNo),
+			g_dwYELLOW,
+			g_GameDATA.m_hFONT[FONT_NORMAL_BOLD],
+			DT_LEFT,
+			false
+		);
 	}
 }
 
-void CIconSkill::AddSkillDuration( int iSkillNo, CInfo& ToolTip, DWORD color )
+void CIconSkill::AddSkillDuration(
+	int iSkillNo,
+	CInfo& ToolTip,
+	DWORD color)
 {
-	char* pszBuf = CStr::Printf( "%s:%d%s", STR_CONTINUE_TIME,SKILL_DURATION( iSkillNo) ,STR_SECOND);
-	ToolTip.AddString( pszBuf , color );
+	char szLabel[64];
+	char szValue[64];
+
+	sprintf_s(
+		szLabel,
+		sizeof(szLabel),
+		"%s: ",
+		STR_CONTINUE_TIME
+	);
+
+	sprintf_s(
+		szValue,
+		sizeof(szValue),
+		"%d%s",
+		SKILL_DURATION(iSkillNo),
+		STR_SECOND
+	);
+
+	ToolTip.AddSplitString(
+		szLabel,
+		D3DCOLOR_ARGB(255, 166, 202, 240),
+		szValue,
+		color,
+		g_GameDATA.m_hFONT[FONT_NORMAL]
+	);
 }
 
 int  CIconSkill::GetSkillNextLevelNo( int iSkillNo )
@@ -1090,57 +1344,110 @@ void CIconSkill::AddSkillStatus( int iSkillNo, CInfo& ToolTip  )
 	int iStateNo1 = SKILL_STATE_STB(iSkillNo ,1);
 
 
-	if( iStateNo0 )
+	if (iStateNo0)
 	{
-
-		if( STATE_TYPE( iStateNo0 )  == ING_DUMMY_DAMAGE )
+		if (STATE_TYPE(iStateNo0) == ING_DUMMY_DAMAGE)
 		{
-			//strTemp.append( STATE_NAME( iStateNo0 ) );
-			//strTemp.append( CStr::Printf(" : %d%%",SKILL_POWER( iSkillNo ) ) );
-			//ToolTip.AddString( strTemp.c_str() ,g_dwBlueToolTip );
 		}
 		else
 		{
 			strTemp = pszHeader;
-			strTemp.append( STATE_NAME( iStateNo0 ) );
-			if( GetSkillIncreaseAbility( iSkillNo, 0, strOut , false ) )
-				strTemp.append( strOut.c_str() );
-			ToolTip.AddString( strTemp.c_str() ,g_dwBlueToolTip );
-		}		
+			strTemp.append(STATE_NAME(iStateNo0));
+
+			if (GetSkillIncreaseAbility(
+				iSkillNo,
+				0,
+				strOut,
+				false))
+			{
+				strTemp.append(strOut.c_str());
+			}
+
+			ToolTip.AddString(
+				strTemp.c_str(),
+				g_dwBlueToolTip,
+				g_GameDATA.m_hFONT[FONT_NORMAL],
+				DT_LEFT,
+				false
+			);
+		}
 	}
 	else
 	{
 		strTemp = pszHeader;
-		if( GetSkillIncreaseAbility( iSkillNo, 0, strOut , true ) )
+
+		if (GetSkillIncreaseAbility(
+			iSkillNo,
+			0,
+			strOut,
+			true))
 		{
-			strTemp.append( strOut.c_str() );
-			ToolTip.AddString( strTemp.c_str() ,g_dwBlueToolTip );
+			strTemp.append(strOut.c_str());
+
+			ToolTip.AddString(
+				strTemp.c_str(),
+				g_dwBlueToolTip,
+				g_GameDATA.m_hFONT[FONT_NORMAL],
+				DT_LEFT,
+				false
+			);
 		}
 	}
 
-	if( iStateNo1 )
+	if (iStateNo1)
 	{
-		if( STATE_TYPE( iStateNo1 ) == ING_DUMMY_DAMAGE )
+		if (STATE_TYPE(iStateNo1) == ING_DUMMY_DAMAGE)
 		{
-			strTemp.append( STATE_NAME( iStateNo1 ) );
-			strTemp.append( CStr::Printf(" : %d%%",SKILL_POWER( iSkillNo ) ) );
+			strTemp.append(STATE_NAME(iStateNo1));
+			strTemp.append(
+				CStr::Printf(
+					" : %d%%",
+					SKILL_POWER(iSkillNo)
+				)
+			);
 		}
 		else
 		{
 			strTemp = pszHeader;
-			strTemp.append( STATE_NAME( iStateNo1 ) );
-			if( GetSkillIncreaseAbility( iSkillNo, 1, strOut , false ) )
-				strTemp.append( strOut.c_str() );
+			strTemp.append(STATE_NAME(iStateNo1));
+
+			if (GetSkillIncreaseAbility(
+				iSkillNo,
+				1,
+				strOut,
+				false))
+			{
+				strTemp.append(strOut.c_str());
+			}
 		}
-		ToolTip.AddString( strTemp.c_str() ,g_dwBlueToolTip );
+
+		ToolTip.AddString(
+			strTemp.c_str(),
+			g_dwBlueToolTip,
+			g_GameDATA.m_hFONT[FONT_NORMAL],
+			DT_LEFT,
+			false
+		);
 	}
 	else
 	{
 		strTemp = pszHeader;
-		if( GetSkillIncreaseAbility( iSkillNo, 1, strOut , true ) )
+
+		if (GetSkillIncreaseAbility(
+			iSkillNo,
+			1,
+			strOut,
+			true))
 		{
-			strTemp.append( strOut.c_str() );
-			ToolTip.AddString( strTemp.c_str() ,g_dwBlueToolTip );
+			strTemp.append(strOut.c_str());
+
+			ToolTip.AddString(
+				strTemp.c_str(),
+				g_dwBlueToolTip,
+				g_GameDATA.m_hFONT[FONT_NORMAL],
+				DT_LEFT,
+				false
+			);
 		}
 	}
 
@@ -1209,26 +1516,75 @@ void CIconSkill::AddSkillStatus( int iSkillNo, CInfo& ToolTip  )
 
 }
 
-void CIconSkill::AddSkillSuccessRateDuration( int iSkillNo, CInfo& ToolTip )
+void CIconSkill::AddSkillSuccessRateDuration(
+	int iSkillNo,
+	CInfo& ToolTip)
 {
-	char* pszBuf;
+	char szSuccessLabel[64];
+	char szSuccessValue[64];
+	char szDurationLabel[64];
+	char szDurationValue[64];
 
-	///80% ~ 100%
-	if( SKILL_SUCCESS_RATIO( iSkillNo ) )
+	sprintf_s(
+		szSuccessLabel,
+		sizeof(szSuccessLabel),
+		"%s: ",
+		STR_SUCCESS_RATE
+	);
+
+	if (SKILL_SUCCESS_RATIO(iSkillNo))
 	{
-		pszBuf = CStr::Printf( "%s:%d-%d%%  %s:%d%s",
-			STR_SUCCESS_RATE, (int)(SKILL_SUCCESS_RATIO( iSkillNo ) * 0.8),(int)(SKILL_SUCCESS_RATIO( iSkillNo )),
-			STR_CONTINUE_TIME,SKILL_DURATION( iSkillNo) ,STR_SECOND );
+		sprintf_s(
+			szSuccessValue,
+			sizeof(szSuccessValue),
+			"%d-%d%%  ",
+			static_cast<int>(
+				SKILL_SUCCESS_RATIO(iSkillNo) * 0.8
+				),
+			static_cast<int>(
+				SKILL_SUCCESS_RATIO(iSkillNo)
+				)
+		);
 	}
-	else///성공률이 0일경우 100%로 처리
+	else
 	{
-		pszBuf = CStr::Printf( "%s:%d%%  %s:%d%s",
-			STR_SUCCESS_RATE, 100,
-			STR_CONTINUE_TIME,SKILL_DURATION( iSkillNo) ,STR_SECOND );
+		sprintf_s(
+			szSuccessValue,
+			sizeof(szSuccessValue),
+			"100%%  "
+		);
 	}
 
+	sprintf_s(
+		szDurationLabel,
+		sizeof(szDurationLabel),
+		"%s: ",
+		STR_CONTINUE_TIME
+	);
 
-	ToolTip.AddString( pszBuf );
+	sprintf_s(
+		szDurationValue,
+		sizeof(szDurationValue),
+		"%d%s",
+		SKILL_DURATION(iSkillNo),
+		STR_SECOND
+	);
+
+	ToolTip.AddMultiColorString(
+		szSuccessLabel,
+		D3DCOLOR_ARGB(255, 166, 202, 240),
+
+		szSuccessValue,
+		g_dwWHITE,
+
+		szDurationLabel,
+		D3DCOLOR_ARGB(255, 166, 202, 240),
+
+		szDurationValue,
+		g_dwWHITE,
+
+		g_GameDATA.m_hFONT[FONT_NORMAL]
+	);
 }
 
 void CIconSkill::AddSkillRequireSkillPoint( int iSkillNo, CInfo& ToolTip )

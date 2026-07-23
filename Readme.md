@@ -2,19 +2,19 @@
 
 LunaROSE is a custom iROSE-based project featuring new gameplay systems, server-controlled content, and various client improvements.
 
-## Versions
+## Features and Improvements
 
 ### 1. Monster Database
 
 **Added:** An in-game Monster Database.
 
-The Monster Database allows players to view information about monsters directly inside the game client.
+The Monster Database allows players to view detailed information about monsters directly inside the game client.
 
 ![Monster Database](images/monster-database.png)
 
 ---
 
-### 2. Custom Bag/Box System
+### 2. Custom Bag and Box System
 
 **Added:** A custom bag and box reward system controlled entirely by the server.
 
@@ -42,9 +42,50 @@ Players can keep their personal shop active after disconnecting from the game, a
 
 ### 5. Custom Bought and Sold Messages
 
-**Added:** Custom messages for purchased and sold items.
+**Added:** Custom notifications for purchased and sold items.
 
-Players now receive clearer notifications when an item is bought from or sold through a personal shop.
+Players now receive clearer messages when they purchase an item or when an item is sold through their personal shop.
 
 ![Custom Bought Message](images/custom-bought-message.png)
+
 ![Custom Sold Message](images/custom-sold-message.png)
+
+---
+
+### 6. Custom Bag and Box Tooltips
+
+**Added:** Custom tooltips for bags and boxes.
+
+The tooltip displays the number of possible reward items and includes a hint explaining how to open the bag preview interface.
+
+![Custom Bag Tooltip](images/custom-bag-tooltip.png)
+
+---
+
+### 7. Bag Preview Interface
+
+**Added:** A new preview interface for bags and boxes.
+
+Players can preview the possible rewards inside a bag or box before opening it.
+
+![Bag Preview](images/bag-preview.png)
+
+---
+
+### 8. Improved Item Tooltips
+
+**Improved:** Item tooltip appearance and readability.
+
+Tooltip labels are now easier to distinguish, and empty gem sockets display a dedicated description.
+
+![Improved Item Tooltips](images/improved-item-tooltips.png)
+
+---
+
+### 9. Improved Skill Window and Tooltips
+
+**Improved:** Skill window usability and tooltip readability.
+
+Skill tooltips now have a clearer appearance, and the skill window hides the plus button when a skill has reached its maximum level.
+
+![Improved Skill Window and Tooltips](images/improved-skill-window-and-tooltips.png)

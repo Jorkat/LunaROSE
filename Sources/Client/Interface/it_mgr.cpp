@@ -119,6 +119,7 @@
 #include "../Common/IO_QUEST.H"
 #include "controls/EffectString.h"
 #include <algorithm>
+#include <DLGs/CBagPreviewDlg.h>
 
 
 const D3DCOLOR c_dwChatColorAll		= D3DCOLOR_ARGB( 255,255,255,255 );
@@ -556,6 +557,18 @@ void IT_MGR::InitDLG()
 		pMonsterDatabaseDlg,
 		pMonsterDatabaseDlg->GetControlID()
 	);
+
+	CBagPreviewDlg* pBagPreviewDlg =
+		new CBagPreviewDlg();
+
+	pBagPreviewDlg->Create("DlgBagPreview");
+
+	AppendDlg(
+		DLG_TYPE_BAG_PREVIEW,
+		pBagPreviewDlg,
+		pBagPreviewDlg->GetControlID()
+	);
+
 
 	//스킬창 
 	CSkillDLG* pSkillDLG = new CSkillDLG( DLG_TYPE_SKILL );

@@ -26,6 +26,7 @@
 
 #include "../Country.h"
 #include "SplitHangul.h"
+#include <CItem.h>
 #define INFO_TEXT_WIDTH		26
 enum
 {
@@ -234,9 +235,18 @@ void CItem::AddItemName( tagITEM& sItem, CInfo& Info )
 		Info.AddString( CStr::Printf( "%s",ITEM_NAME(sItem.GetTYPE(), sItem.GetItemNO()) ),dwTextColor , g_GameDATA.m_hFONT[ FONT_NORMAL_BOLD ] );
 }
 
-void CItem::AddItemWeight( tagITEM& sItem, CInfo& Info )
+void CItem::AddItemWeight(tagITEM& sItem, CInfo& Info)
 {
-	Info.AddString( CStr::Printf( "%s:%d", STR_WEIGHT, ITEM_WEIGHT(sItem.GetTYPE(), sItem.GetItemNO()) ) );
+	Info.AddString(
+		CStr::Printf(
+			"%s: %d",
+			STR_WEIGHT,
+			ITEM_WEIGHT(
+				sItem.GetTYPE(),
+				sItem.GetItemNO()
+			)
+		)
+	);
 }
 
 void CItem::AddItemPatUseFuelRate( tagITEM& sItem, CInfo& Info )
@@ -277,16 +287,31 @@ void CItem::AddItemPatAttackPowSpeed(tagITEM& sItem, CInfo& Info)
 		GetAttackPower( sItem ) ) );
 }
 
-void CItem::AddItemPatDesc( tagITEM& sItem, CInfo& Info )
+void CItem::AddItemPatDesc(
+	tagITEM& sItem,
+	CInfo& Info)
 {
-	CSplitHangul	splitHAN(  (char*)ITEM_DESC( sItem.GetTYPE(), sItem.GetItemNO() ),
-								Info.GetMaxSizeString() - 2,
-								CLocalizing::GetSingleton().GetCurrentCodePageNO());
+	CSplitHangul splitHAN(
+		(char*)ITEM_DESC(
+			sItem.GetTYPE(),
+			sItem.GetItemNO()
+		),
+		Info.GetMaxSizeString() - 2,
+		CLocalizing::GetSingleton().GetCurrentCodePageNO()
+	);
 
-	short	nCNT   = splitHAN.GetLineCount();
-	for(short nI=0; nI<nCNT; nI++) 
+	const short nCNT =
+		splitHAN.GetLineCount();
+
+	for (short nI = 0; nI < nCNT; ++nI)
 	{
-		Info.AddString( splitHAN.GetString(nI));
+		Info.AddString(
+			splitHAN.GetString(nI),
+			g_dwWHITE,
+			g_GameDATA.m_hFONT[FONT_NORMAL],
+			DT_LEFT,
+			false
+		);
 	}
 }
 
@@ -302,18 +327,70 @@ void CItem::AddItemPatClass( tagITEM& sItem, CInfo& Info )
 	int iClass = ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() );	
 	
 	//분류,명중력
-	if( iClass == TUNING_PART_WEAPON_CASTLEGEAR )
+	if (iClass == TUNING_PART_WEAPON_CASTLEGEAR)
 	{
-		Info.AddString( CStr::Printf( "%s:%s %s:%d", 
-			STR_ITEM_TYPE, 
-			CStringManager::GetSingleton().GetItemType( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) ), 
-			CStringManager::GetSingleton().GetAbility( AT_HIT ), 
-			(int)( ITEM_QUALITY( sItem.GetTYPE(), sItem.GetItemNO() ) * 1.2) )
-			);
+		char szTypeLabel[64];
+		char szTypeValue[128];
+		char szHitLabel[64];
+		char szHitValue[32];
+
+		sprintf_s(
+			szTypeLabel,
+			sizeof(szTypeLabel),
+			"%s: ",
+			STR_ITEM_TYPE
+		);
+
+		sprintf_s(
+			szTypeValue,
+			sizeof(szTypeValue),
+			"%s  ",
+			CStringManager::GetSingleton().GetItemType(
+				ITEM_TYPE(
+					sItem.GetTYPE(),
+					sItem.GetItemNO()
+				)
+			)
+		);
+
+		sprintf_s(
+			szHitLabel,
+			sizeof(szHitLabel),
+			"%s: ",
+			CStringManager::GetSingleton().GetAbility(AT_HIT)
+		);
+
+		sprintf_s(
+			szHitValue,
+			sizeof(szHitValue),
+			"%d",
+			static_cast<int>(
+				ITEM_QUALITY(
+					sItem.GetTYPE(),
+					sItem.GetItemNO()
+				) * 1.2
+				)
+		);
+
+		Info.AddMultiColorString(
+			szTypeLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+
+			szTypeValue,
+			g_dwWHITE,
+
+			szHitLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+
+			szHitValue,
+			g_dwWHITE,
+
+			g_GameDATA.m_hFONT[FONT_NORMAL]
+		);
 	}
 	else
 	{
-		Info.AddString( CStr::Printf( "%s:%s", 
+		Info.AddString( CStr::Printf( "%s: %s", 
 			STR_ITEM_TYPE, 
 			CStringManager::GetSingleton().GetItemType( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) ) ) );
 	}
@@ -449,39 +526,142 @@ void CItem::GetToolTip( CInfo& ToolTip,  DWORD dwDialogType, DWORD dwType )
 									);
 
 			//분류,명중력
-			std::string strTemp;
-			strTemp = CStr::Printf( "%s:%s %s:", 
-				STR_ITEM_TYPE, 
-				CStringManager::GetSingleton().GetItemType( ITEM_TYPE( nItemType, nItemIdx ) ),
-				CStringManager::GetSingleton().GetAbility( AT_HIT )
+			char szTypeLabel[64];
+			char szTypeValue[128];
+			char szHitLabel[64];
+			char szHitValue[32];
+
+			sprintf_s(
+				szTypeLabel,
+				sizeof(szTypeLabel),
+				"%s: ",
+				STR_ITEM_TYPE
 			);
 
-			if( sItem.GetGrade() <= 0)
-				strTemp.append( CStr::Printf("%d", sItem.GetHitRate() ) );
-			else
-				strTemp.append( CStr::Printf("%d", sItem.GetHitRate() + ITEMGRADE_HIT( sItem.GetGrade() )) );
+			sprintf_s(
+				szTypeValue,
+				sizeof(szTypeValue),
+				"%s  ",
+				CStringManager::GetSingleton().GetItemType(
+					ITEM_TYPE(
+						nItemType,
+						nItemIdx
+					)
+				)
+			);
 
-			ToolTip.AddString( strTemp.c_str() );
+			sprintf_s(
+				szHitLabel,
+				sizeof(szHitLabel),
+				"%s: ",
+				CStringManager::GetSingleton().GetAbility(
+					AT_HIT
+				)
+			);
+
+			sprintf_s(
+				szHitValue,
+				sizeof(szHitValue),
+				"%d",
+				sItem.GetGrade() <= 0
+				? sItem.GetHitRate()
+				: sItem.GetHitRate() +
+				ITEMGRADE_HIT(
+					sItem.GetGrade()
+				)
+			);
+
+			ToolTip.AddMultiColorString(
+				szTypeLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+
+				szTypeValue,
+				g_dwWHITE,
+
+				szHitLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+
+				szHitValue,
+				g_dwWHITE,
+
+				g_GameDATA.m_hFONT[FONT_NORMAL]
+			);
 
 			AddItemLifeDuration( sItem, ToolTip );
 
 
 
 			std::string strAttackSpeed;
-			GetAttackSpeedString( WEAPON_ATTACK_SPEED( nItemIdx ), strAttackSpeed );
-			//공격력,공격속도
-			ToolTip.AddString( CStr::Printf( "%s:%d  %s:%s", 
-									CStringManager::GetSingleton().GetAbility( AT_ATK ), 
-									GetAttackPower( sItem ) + ITEMGRADE_ATK( sItem.GetGrade() ),
-									CStringManager::GetSingleton().GetAbility( AT_ATK_SPD ),
-									strAttackSpeed.c_str()) 
-							);
-			//공격거리 
-			ToolTip.AddString( CStr::Printf( "%s%dM", STR_ATTACK_RANGE, WEAPON_ATTACK_RANGE( nItemIdx ) / 100 ), g_dwWHITE );
+			GetAttackSpeedString(
+				WEAPON_ATTACK_SPEED(nItemIdx),
+				strAttackSpeed
+			);
 
+			char szAttackLabel[64];
+			char szAttackValue[32];
+			char szSpeedLabel[64];
+			char szSpeedValue[64];
+
+			sprintf_s(
+				szAttackLabel,
+				sizeof(szAttackLabel),
+				"%s: ",
+				CStringManager::GetSingleton().GetAbility(AT_ATK)
+			);
+
+			sprintf_s(
+				szAttackValue,
+				sizeof(szAttackValue),
+				"%d  ",
+				GetAttackPower(sItem) +
+				ITEMGRADE_ATK(sItem.GetGrade())
+			);
+
+			sprintf_s(
+				szSpeedLabel,
+				sizeof(szSpeedLabel),
+				"%s: ",
+				CStringManager::GetSingleton().GetAbility(AT_ATK_SPD)
+			);
+
+			sprintf_s(
+				szSpeedValue,
+				sizeof(szSpeedValue),
+				"%s",
+				strAttackSpeed.c_str()
+			);
+
+			ToolTip.AddMultiColorString(
+				szAttackLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+
+				szAttackValue,
+				g_dwWHITE,
+
+				szSpeedLabel,
+				D3DCOLOR_ARGB(255, 166, 202, 240),
+
+				szSpeedValue,
+				g_dwWHITE,
+
+				g_GameDATA.m_hFONT[FONT_NORMAL]
+			);
+
+			ToolTip.AddString(
+				CStr::Printf(
+					"%s: %dM",
+					STR_ATTACK_RANGE,
+					WEAPON_ATTACK_RANGE(nItemIdx) / 100
+				),
+				g_dwWHITE
+			);
 
 			if(bIsDetail) 
 			{
+				if (sItem.HasSocket() && sItem.GetOption() == 0)
+				{
+					ToolTip.AddString("[Empty Gem Socket]", g_dwGRAY, g_GameDATA.m_hFONT[FONT_NORMAL]);
+				}
 				AddItemSpecialJob( sItem, ToolTip );
 				AddItemSpecialUnion( sItem, ToolTip );
 
@@ -510,10 +690,15 @@ void CItem::GetToolTip( CInfo& ToolTip,  DWORD dwDialogType, DWORD dwType )
 				AddItemLifeDuration( sItem, ToolTip );
 			}
 			
+			
 
 
 			if(bIsDetail) 
 			{
+				if (sItem.HasSocket() && sItem.GetOption() == 0)
+				{
+					ToolTip.AddString("[Empty Gem Socket]", g_dwGRAY, g_GameDATA.m_hFONT[FONT_NORMAL]);
+				}
 				AddItemSpecialJob( sItem , ToolTip );
 				AddItemSpecialUnion( sItem, ToolTip );
 				AddItemOption( sItem, ToolTip );
@@ -611,8 +796,15 @@ void CItem::GetToolTip( CInfo& ToolTip,  DWORD dwDialogType, DWORD dwType )
 	case ITEM_TYPE_JEWEL:
 		{
 			AddItemDefaultTopText( sItem, ToolTip );
+
+			
+
 			if( bIsDetail )
 			{
+				if (sItem.HasSocket() && sItem.GetOption() == 0)
+				{
+					ToolTip.AddString("[Empty Gem Socket]", g_dwGRAY, g_GameDATA.m_hFONT[FONT_NORMAL]);
+				}
 				AddItemSpecialJob( sItem , ToolTip );
 				AddItemSpecialUnion( sItem, ToolTip );
 				AddItemOption( sItem, ToolTip );
@@ -669,6 +861,45 @@ void CItem::GetToolTip( CInfo& ToolTip,  DWORD dwDialogType, DWORD dwType )
 	case ITEM_TYPE_USE:
 		{
 			AddItemDefaultTopText( sItem, ToolTip );
+
+			const int iBagID = USEITEM_BAG_ID(nItemIdx);
+
+			if (iBagID > 0 && iBagID < g_TblBAGS.m_nDataCnt)
+			{
+				const int iRewardCount =
+					g_TblBAGS.m_ppDATA[iBagID][1];
+
+				if (iRewardCount > 0)
+				{
+					const DWORD dwBagTooltipColor =
+						D3DCOLOR_ARGB(255, 190, 120, 255);
+
+					ToolTip.AddString(
+						CStr::Printf(
+							"[Gives %d %s]",
+							iRewardCount,
+							iRewardCount == 1 ? "Item" : "Items"
+						),
+						dwBagTooltipColor,
+						g_GameDATA.m_hFONT[FONT_NORMAL_BOLD]
+					);
+				}
+
+				ToolTip.AddString(
+					CStr::Printf(
+						"[Alt+Click to Preview]"
+					),
+					g_dwYELLOW,
+					g_GameDATA.m_hFONT[FONT_NORMAL_BOLD]
+				);
+				
+
+				if (bIsDetail)
+					AddItemDefaultBottomText(sItem, ToolTip);
+
+				break;
+			}
+
 
 			switch( ITEM_TYPE( nItemType, nItemIdx ) )
 			{
@@ -960,26 +1191,86 @@ void CItem::AddItemDefaultTopTextDefenceItem( tagITEM& sItem ,CInfo& Info )
 	//stdTemp.append( CStringManager::GetSingleton().GetItemType( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) ) );
 	//stdTemp.append( CStringManager::GetSingleton().GetAbility( AT_AVOID ) );
 
-	if( sItem.GetTYPE() != ITEM_TYPE_RIDE_PART )
+	if (sItem.GetTYPE() != ITEM_TYPE_RIDE_PART)
 	{
-		stdTemp = CStr::Printf("%s:%s %s:",
-				STR_ITEM_TYPE,
-				CStringManager::GetSingleton().GetItemType( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) ),
-				CStringManager::GetSingleton().GetAbility( AT_AVOID ) );
+		char szTypeLabel[64];
+		char szTypeValue[128];
+		char szAvoidLabel[64];
+		char szAvoidValue[32];
 
-		if( sItem.GetGrade() )
-			stdTemp.append( CStr::Printf("%d", sItem.GetAvoidRate() + ITEMGRADE_AVOID( sItem.GetGrade() ) ));
-		else
-			stdTemp.append( CStr::Printf("%d", sItem.GetAvoidRate() ));
+		sprintf_s(
+			szTypeLabel,
+			sizeof(szTypeLabel),
+			"%s: ",
+			STR_ITEM_TYPE
+		);
+
+		sprintf_s(
+			szTypeValue,
+			sizeof(szTypeValue),
+			"%s  ",
+			CStringManager::GetSingleton().GetItemType(
+				ITEM_TYPE(
+					sItem.GetTYPE(),
+					sItem.GetItemNO()
+				)
+			)
+		);
+
+		sprintf_s(
+			szAvoidLabel,
+			sizeof(szAvoidLabel),
+			"%s: ",
+			CStringManager::GetSingleton().GetAbility(
+				AT_AVOID
+			)
+		);
+
+		sprintf_s(
+			szAvoidValue,
+			sizeof(szAvoidValue),
+			"%d",
+			sItem.GetGrade()
+			? sItem.GetAvoidRate() +
+			ITEMGRADE_AVOID(
+				sItem.GetGrade()
+			)
+			: sItem.GetAvoidRate()
+		);
+
+		Info.AddMultiColorString(
+			szTypeLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+
+			szTypeValue,
+			g_dwWHITE,
+
+			szAvoidLabel,
+			D3DCOLOR_ARGB(255, 166, 202, 240),
+
+			szAvoidValue,
+			g_dwWHITE,
+
+			g_GameDATA.m_hFONT[FONT_NORMAL]
+		);
 	}
 	else
 	{
-		stdTemp = CStr::Printf("%s:%s",
+		Info.AddString(
+			CStr::Printf(
+				"%s: %s",
 				STR_ITEM_TYPE,
-				CStringManager::GetSingleton().GetItemType( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) ) );
+				CStringManager::GetSingleton().GetItemType(
+					ITEM_TYPE(
+						sItem.GetTYPE(),
+						sItem.GetItemNO()
+					)
+				)
+			),
+			g_dwWHITE,
+			g_GameDATA.m_hFONT[FONT_NORMAL]
+		);
 	}
-
-	Info.AddString( stdTemp.c_str() );
 }
 
 void CItem::AddItemDefaultTopText( tagITEM& sItem, CInfo& Info )
@@ -994,27 +1285,91 @@ void CItem::AddItemDefaultTopText( tagITEM& sItem, CInfo& Info )
 	//Info.SetTitle( (char*)(ITEM_NAME( sItem.GetTYPE(), sItem.GetItemNO() )) );
 	Info.AddString( (char*)(ITEM_NAME( sItem.GetTYPE(), sItem.GetItemNO() ) ), GetItemNameColor( sItem.GetTYPE(), sItem.GetItemNO()) , g_GameDATA.m_hFONT[ FONT_NORMAL_BOLD ]);
 	///분류,무게
-	char* pszBuf = CStr::Printf( "%s:%s %s:%d",
-		STR_ITEM_TYPE,
-		CStringManager::GetSingleton().GetItemType( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) ),
-		STR_QUALITY,
-		ITEM_QUALITY(sItem.GetTYPE(), sItem.GetItemNO()));
+	char szTypeLabel[64];
+	char szTypeValue[128];
+	char szQualityLabel[64];
+	char szQualityValue[32];
 
-	Info.AddString( pszBuf ,g_dwWHITE, g_GameDATA.m_hFONT[ FONT_NORMAL ]);
+	sprintf_s(
+		szTypeLabel,
+		sizeof(szTypeLabel),
+		"%s: ",
+		STR_ITEM_TYPE
+	);
+
+	sprintf_s(
+		szTypeValue,
+		sizeof(szTypeValue),
+		"%s  ",
+		CStringManager::GetSingleton().GetItemType(
+			ITEM_TYPE(
+				sItem.GetTYPE(),
+				sItem.GetItemNO()
+			)
+		)
+	);
+
+	sprintf_s(
+		szQualityLabel,
+		sizeof(szQualityLabel),
+		"%s: ",
+		STR_QUALITY
+	);
+
+	sprintf_s(
+		szQualityValue,
+		sizeof(szQualityValue),
+		"%d",
+		ITEM_QUALITY(
+			sItem.GetTYPE(),
+			sItem.GetItemNO()
+		)
+	);
+
+	Info.AddMultiColorString(
+		szTypeLabel,
+		D3DCOLOR_ARGB(255, 166, 202, 240),
+
+		szTypeValue,
+		g_dwWHITE,
+
+		szQualityLabel,
+		D3DCOLOR_ARGB(255, 166, 202, 240),
+
+		szQualityValue,
+		g_dwWHITE,
+
+		g_GameDATA.m_hFONT[FONT_NORMAL]
+	);
 }
 
 void CItem::AddItemDefaultBottomText( tagITEM& sItem, CInfo& Info )
 {
 	// 무게 				
-	char* pszBuf = CStr::Printf("%s:%d",  STR_WEIGHT, ITEM_WEIGHT( sItem.GetTYPE(), sItem.GetItemNO() ) );
-
-	Info.AddString( pszBuf );
+	Info.AddString(
+		CStr::Printf(
+			"%s: %d",
+			STR_WEIGHT,
+			ITEM_WEIGHT(
+				sItem.GetTYPE(),
+				sItem.GetItemNO()
+			)
+		)
+	);
 	
 	///볼드라서 
 	CSplitHangul	splitHAN(  (char*)ITEM_DESC( sItem.GetTYPE(), sItem.GetItemNO() ), INFO_TEXT_WIDTH - 2, CLocalizing::GetSingleton().GetCurrentCodePageNO());
 	short	nCNT   = splitHAN.GetLineCount();
-	for(short nI=0;nI<nCNT;nI++) 
-		Info.AddString( splitHAN.GetString(nI));
+	for (short nI = 0; nI < nCNT; ++nI)
+	{
+		Info.AddString(
+			splitHAN.GetString(nI),
+			g_dwWHITE,
+			g_GameDATA.m_hFONT[FONT_NORMAL],
+			DT_LEFT,
+			false
+		);
+	}
 
 }
 void CItem::AddItemEquipRequireCondition( tagITEM& sItem, CInfo& Info )
@@ -1186,16 +1541,16 @@ void CItem::AddItemDefence( tagITEM& sItem, CInfo& Info )
 	std::string stdTemp;
 	stdTemp.append( CStringManager::GetSingleton().GetAbility( AT_DEF ) );
 	if( sItem.GetGrade() )
-		stdTemp.append(CStr::Printf(":%d ", GetDefence( sItem ) + ITEMGRADE_DEF(sItem.GetGrade()) ) );
+		stdTemp.append(CStr::Printf(": %d ", GetDefence( sItem ) + ITEMGRADE_DEF(sItem.GetGrade()) ) );
 	else
-		stdTemp.append(CStr::Printf(":%d ", GetDefence( sItem ) ) );
+		stdTemp.append(CStr::Printf(": %d ", GetDefence( sItem ) ) );
 
 
 	stdTemp.append( CStringManager::GetSingleton().GetAbility( AT_RES ) );
 	if( sItem.GetGrade() )
-		stdTemp.append( CStr::Printf(":%d", ITEM_RESISTENCE(nItemType, nItemIdx) + ITEMGRADE_RES( sItem.GetGrade() ) ) );
+		stdTemp.append( CStr::Printf(": %d", ITEM_RESISTENCE(nItemType, nItemIdx) + ITEMGRADE_RES( sItem.GetGrade() ) ) );
 	else
-		stdTemp.append( CStr::Printf(":%d", ITEM_RESISTENCE(nItemType, nItemIdx) ) )  ;
+		stdTemp.append( CStr::Printf(": %d", ITEM_RESISTENCE(nItemType, nItemIdx) ) )  ;
 
 
 	Info.AddString( stdTemp.c_str() );
@@ -1250,20 +1605,20 @@ void CItem::AddItemMoveSpeed( tagITEM& sItem, CInfo& Info )
 			if( BACKITEM_MOVE_SPEED( nItemIdx ) )
 			{
 				pszBuf = CStr::Printf( "[%s %d]",STR_MOVE_SPEED,BACKITEM_MOVE_SPEED( nItemIdx )  );
-				Info.AddString( pszBuf );
+				Info.AddString( pszBuf, g_dwYELLOW );
 			}
 			break;
 		}
 	case ITEM_TYPE_BOOTS:
 		pszBuf = CStr::Printf("[%s %d]",STR_MOVE_SPEED,BOOTS_MOVE_SPEED( nItemIdx ) - iDefaultMoveSpeed );
-		Info.AddString( pszBuf );
+		Info.AddString( pszBuf, g_dwYELLOW );
 		break;
 
 	case ITEM_TYPE_RIDE_PART:
 
 		if( PAT_ITEM_MOV_SPD( sItem.GetItemNO() ) > 0 )
 		{
-			Info.AddString( CStr::Printf("%s:%d%%", 
+			Info.AddString( CStr::Printf("%s: %d%%", 
 				CStringManager::GetSingleton().GetAbility( AT_SPEED ), PAT_ITEM_MOV_SPD( sItem.GetItemNO() ) ) );		
 		}
 		break;
@@ -1329,7 +1684,7 @@ void CItem::AddItemPrice(tagITEM& sItem, DWORD dwDlgType, DWORD dwType, CInfo& I
 				ITEM_PRICE_RATE( sItem.GetTYPE(), sItem.GetItemNO()) ,iCount );
 			
 			CGameUtil::ConvertMoney2String( iStorageFee, money_buffer, money_buffer_size );
-			pszBuf = CStr::Printf( "%s:%s",STR_BANK_STORAGE_FEE,money_buffer );
+			pszBuf = CStr::Printf( "%s: %s",STR_BANK_STORAGE_FEE,money_buffer );
 		}
 		else///보관할수 없는 아이템 
 		{
@@ -1368,38 +1723,38 @@ void CItem::AddItemPrice(tagITEM& sItem, DWORD dwDlgType, DWORD dwType, CInfo& I
 		if( CStore::GetInstance().IsUnionStore() )
 		{
 			iPrice = ITEM_TRADE_UNIONPOINT( sItem.GetTYPE(), sItem.GetItemNO() );
-			pszBuf = CStr::Printf( "%s:%d",STR_UNIONPOINT, iPrice );
+			pszBuf = CStr::Printf( "%s: %d",STR_UNIONPOINT, iPrice );
 		}
 		else
 		{
 			iPrice  = g_pTerrain->m_Economy.Get_ItemBuyPRICE(sItem.GetTYPE(),sItem.GetItemNO(), g_pAVATAR->GetBuySkillVALUE());
 			CGameUtil::ConvertMoney2String( iPrice, money_buffer, money_buffer_size );
-			pszBuf = CStr::Printf( "%s:%s",STR_SELL_PRICE,money_buffer );
+			pszBuf = CStr::Printf( "%s: %s",STR_SELL_PRICE,money_buffer );
 		}
 	}
 	else if( dwType & INFO_ADD_PRICE_PRIVATESTORE )
 	{
 		iPrice = GetUnitPrice();
 		CGameUtil::ConvertMoney2String( iPrice, money_buffer, money_buffer_size );
-		pszBuf = CStr::Printf( "%s:%s",STR_UNIT_PRICE, money_buffer );
+		pszBuf = CStr::Printf( "%s: %s",STR_UNIT_PRICE, money_buffer );
 	}
 	else if( dwType & INFO_ADD_PRICE_AVATARSTORE_BUYTAB )
 	{
 		iPrice = GetUnitPrice();
 
 		CGameUtil::ConvertMoney2String( iPrice, money_buffer, money_buffer_size );
-		pszBuf = CStr::Printf( "%s:%s",STR_UNIT_PRICE, money_buffer );
+		pszBuf = CStr::Printf( "%s: %s",STR_UNIT_PRICE, money_buffer );
 		Info.AddString( pszBuf, g_dwYELLOW );
 
 		iPrice  = g_pTerrain->m_Economy.Get_ItemSellPRICE(sItem, g_pAVATAR->GetSellSkillVALUE());
 		CGameUtil::ConvertMoney2String( iPrice, money_buffer, money_buffer_size );
-		pszBuf = CStr::Printf( "%s:%s", STR_NPC_TRADE_PRICE, money_buffer );
+		pszBuf = CStr::Printf( "%s: %s", STR_NPC_TRADE_PRICE, money_buffer );
 	}
 	else if( dwType & INFO_ADD_PRICE_AVATARSTORE_SELLTAB )
 	{
 		iPrice = GetUnitPrice();
 		CGameUtil::ConvertMoney2String( iPrice, money_buffer, money_buffer_size );
-		pszBuf = CStr::Printf( "%s:%s",STR_UNIT_PRICE, money_buffer );
+		pszBuf = CStr::Printf( "%s: %s",STR_UNIT_PRICE, money_buffer );
 	}
 	else if( dwType & INFO_ADD_PRICE_REPAIR )
 	{
@@ -1418,7 +1773,7 @@ void CItem::AddItemPrice(tagITEM& sItem, DWORD dwDlgType, DWORD dwType, CInfo& I
 		if( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) != TUNING_PART_ENGINE_CART &&
 			ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) != TUNING_PART_ENGINE_CASTLEGEAR )
 		{			
-			pszBuf = CStr::Printf("%s:%s",STR_REPAIR_PRICE, money_buffer );			
+			pszBuf = CStr::Printf("%s: %s",STR_REPAIR_PRICE, money_buffer );			
 		}
 		else
 		{
@@ -1429,7 +1784,7 @@ void CItem::AddItemPrice(tagITEM& sItem, DWORD dwDlgType, DWORD dwType, CInfo& I
 	else if( (dwType & INFO_ADD_PRICE_APPRAISAL) && sItem.IsEnableAppraisal() )
 	{
 		CGameUtil::ConvertMoney2String( sItem.GetAppraisalCost(), money_buffer, money_buffer_size );
-		pszBuf = CStr::Printf("%s:%s",STR_APPRAISAL_COST, money_buffer );
+		pszBuf = CStr::Printf("%s: %s",STR_APPRAISAL_COST, money_buffer );
 	}
 
 	DWORD color = D3DCOLOR_ARGB( 255,255,255,255 );
@@ -1451,26 +1806,81 @@ void CItem::AddItemPrice(tagITEM& sItem, DWORD dwDlgType, DWORD dwType, CInfo& I
 	Info.AddString( pszBuf, color );
 }
 
-void CItem::AddItemLifeDuration( tagITEM& sItem, CInfo& Info )
+void CItem::AddItemLifeDuration(
+	tagITEM& sItem,
+	CInfo& Info)
 {
 	int iLife = sItem.GetLife() / 10;
-	if( sItem.GetLife() % 10 )
-		iLife += 1;
-	
-	char* pszLife = NULL;
 
-	if( ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) != TUNING_PART_ENGINE_CART &&
-		ITEM_TYPE( sItem.GetTYPE(), sItem.GetItemNO() ) != TUNING_PART_ENGINE_CASTLEGEAR )
+	if (sItem.GetLife() % 10)
+		++iLife;
+
+	const char* pszLifeLabel = NULL;
+
+	if (ITEM_TYPE(
+		sItem.GetTYPE(),
+		sItem.GetItemNO()
+	) != TUNING_PART_ENGINE_CART &&
+		ITEM_TYPE(
+			sItem.GetTYPE(),
+			sItem.GetItemNO()
+		) != TUNING_PART_ENGINE_CASTLEGEAR)
 	{
-		pszLife = STR_LIFE;
+		pszLifeLabel = STR_LIFE;
 	}
 	else
 	{
-		pszLife = STR_FUEL;
+		pszLifeLabel = STR_FUEL;
 	}
 
-	Info.AddString( CStr::Printf("%s:%3d%%   %s:%3d", pszLife, iLife, STR_DURABILITY, sItem.GetDurability() ));
+	char szLifeLabel[64];
+	char szLifeValue[32];
+	char szDurabilityLabel[64];
+	char szDurabilityValue[32];
 
+	sprintf_s(
+		szLifeLabel,
+		sizeof(szLifeLabel),
+		"%s: ",
+		pszLifeLabel
+	);
+
+	sprintf_s(
+		szLifeValue,
+		sizeof(szLifeValue),
+		"%d%%   ",
+		iLife
+	);
+
+	sprintf_s(
+		szDurabilityLabel,
+		sizeof(szDurabilityLabel),
+		"%s: ",
+		STR_DURABILITY
+	);
+
+	sprintf_s(
+		szDurabilityValue,
+		sizeof(szDurabilityValue),
+		"%d",
+		sItem.GetDurability()
+	);
+
+	Info.AddMultiColorString(
+		szLifeLabel,
+		D3DCOLOR_ARGB(255, 166, 202, 240),
+
+		szLifeValue,
+		g_dwWHITE,
+
+		szDurabilityLabel,
+		D3DCOLOR_ARGB(255, 166, 202, 240),
+
+		szDurabilityValue,
+		g_dwWHITE,
+
+		g_GameDATA.m_hFONT[FONT_NORMAL]
+	);
 }
 
 void CItem::GetAttackSpeedString( short nSpeed, std::string& strMsg )

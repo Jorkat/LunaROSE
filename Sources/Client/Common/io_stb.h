@@ -262,8 +262,14 @@ public :
 
 #define USEITME_DELAYTIME_TYPE(I)			g_TblUSEITEM.m_ppDATA[ I ][ 25 ]	// 쿨타임타입
 #define USEITME_DELAYTIME_TICK(I)			g_TblUSEITEM.m_ppDATA[ I ][ 26 ]	// 쿨타임틱(초단위)
-
+#define USEITEM_BAG_ID(I)					g_TblUSEITEM.m_ppDATA[ I ][ 28 ]
 #define	MAX_USEITEM_COOLTIME_TYPE			4	// 0~3
+
+
+//-------------------------------------------------------------------------------------------------
+// LIST_BAGS.STB
+#define BAG_ID(I)							g_TblBAGS.m_ppDATA[I][0]
+#define BAG_REWARD_COUNT(I)					g_TblBAGS.m_ppDATA[I][1]
 
 
 
@@ -701,6 +707,7 @@ extern STBDATA  g_TblJEWELITEM;		//장신구 아이템
 extern STBDATA  g_TblGEMITEM;		//보석 아이템 
 extern STBDATA  g_TblNATUAL;		//원재료 
 extern STBDATA	g_TblUSEITEM;		//소모 아이템 
+extern STBDATA  g_TblBAGS;          // Custom bag/box rewards
 
 
 extern STBDATA  g_TblEFFECT;		//효과 

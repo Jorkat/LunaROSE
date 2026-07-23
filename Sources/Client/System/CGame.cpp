@@ -561,6 +561,9 @@ bool CGame::Load_BasicDATA2()
 	g_TblWEAPON.Load	( "3DDATA\\STB\\LIST_Weapon.STB",	true, true  );
 	g_TblSUBWPN.Load	( "3DDATA\\STB\\LIST_SUBWPN.STB",	true, true  );
 	g_TblUSEITEM.Load   ( "3DDATA\\STB\\LIST_USEITEM.STB",	true, true	);	
+	g_TblBAGS.Load		("3DDATA\\STB\\LIST_BAGS.STB",		false, false	);
+
+
 	g_TblGEMITEM.Load	( "3DDATA\\STB\\LIST_JEMITEM.STB",	true, true	);	
 	g_TblNATUAL.Load	( "3DDATA\\STB\\LIST_NATURAL.STB",	true, true	);
 	g_TblQUESTITEM.Load ( "3DDATA\\STB\\LIST_QUESTITEM.STB",	true, true	);	
@@ -892,6 +895,7 @@ void CGame::Free_BasicDATA ()
 	g_TblNATUAL.Free();
 	g_TblFACEITEM.Free();
 	g_TblUSEITEM.Free();
+	g_TblBAGS.Free();
 	g_TblBACKITEM.Free();
 	g_TblGEMITEM.Free();
 	g_TblJEWELITEM.Free();

@@ -86,32 +86,78 @@ void CSkillListItem::SetIcon( CIconSkill* pIcon )
 void CSkillListItem::Update()
 {
 	CIcon* pIcon = m_Slot.GetIcon();
-	if( NULL != pIcon )
-	{	
-		CIconSkill* pSkillIcon = (CIconSkill*)pIcon;
 
-		RECT rtDraw = { 50 , 25 , 50 + 100, 25 + 18 };
+	if (pIcon != NULL)
+	{
+		CIconSkill* pSkillIcon =
+			(CIconSkill*)pIcon;
 
-		CSkill* pSkill = pSkillIcon->GetSkill();
-		
-		int iSkillNo = pSkill->GetSkillIndex();
+		const int iSkillSlotIndex =
+			pSkillIcon->GetSkillSlotFromIcon();
+
+		/*
+			Alleen de plusknop tonen wanneer deze skill
+			daadwerkelijk een volgend level heeft.
+		*/
+		if (m_pButton)
+		{
+			if (IsHasNextLevel(iSkillSlotIndex))
+				m_pButton->Show();
+			else
+				m_pButton->Hide();
+		}
+
+		RECT rtDraw =
+		{
+			50,
+			25,
+			50 + 100,
+			25 + 18
+		};
+
+		CSkill* pSkill =
+			pSkillIcon->GetSkill();
+
+		const int iSkillNo =
+			pSkill->GetSkillIndex();
 
 		int iUseValue = 0;
-	
 		std::string strUseAbility;
-					
-		for( int i = 0; i < SKILL_USE_PROPERTY_CNT; ++i )
+
+		for (int i = 0;
+			i < SKILL_USE_PROPERTY_CNT;
+			++i)
 		{
-			if( SKILL_USE_PROPERTY(iSkillNo, i) )
+			if (SKILL_USE_PROPERTY(iSkillNo, i))
 			{
-				iUseValue = g_pAVATAR->Skill_ToUseAbilityVALUE( iSkillNo, i );
-				strUseAbility.append( CStr::Printf( "%s:%d", CStringManager::GetSingleton().GetAbility( SKILL_USE_PROPERTY(iSkillNo,i) ), iUseValue ) );
+				iUseValue =
+					g_pAVATAR->Skill_ToUseAbilityVALUE(
+						iSkillNo,
+						i
+					);
+
+				strUseAbility.append(
+					CStr::Printf(
+						"%s:%d",
+						CStringManager::GetSingleton().GetAbility(
+							SKILL_USE_PROPERTY(iSkillNo, i)
+						),
+						iUseValue
+					)
+				);
+
 				strUseAbility.append("   ");
 			}
 		}
-		
-		if( !strUseAbility.empty() )
-			m_strUseAbility.set_string( strUseAbility.c_str(), rtDraw, FONT_NORMAL );
+
+		if (!strUseAbility.empty())
+		{
+			m_strUseAbility.set_string(
+				strUseAbility.c_str(),
+				rtDraw,
+				FONT_NORMAL
+			);
+		}
 	}
 }
 
@@ -192,7 +238,7 @@ void CSkillListItem::Draw()
 	}
 	
 
-	if( m_pButton )
+	if (m_pButton && m_pButton->IsVision())
 		m_pButton->Draw();
 }
 
@@ -258,7 +304,17 @@ void CSkillListItem::Update( POINT ptMouse )
 						text_color = g_dwRED;
 					else
 						text_color = g_dwWHITE;
-					Info.AddString(CStr::Printf( "%s: %d", STR_REQUIRE_SP, iNeedSkillPoint) , text_color);
+					Info.AddString(
+						CStr::Printf(
+							"%s: %d",
+							STR_REQUIRE_SP,
+							iNeedSkillPoint
+						),
+						text_color,
+						g_GameDATA.m_hFONT[FONT_NORMAL],
+						DT_LEFT,
+						false
+					);
 
 					if( CCountry::GetSingleton().IsApplyNewVersion() )
 					{
@@ -268,7 +324,17 @@ void CSkillListItem::Update( POINT ptMouse )
 						else
 							text_color = g_dwWHITE;
 
-						Info.AddString(CStr::Printf( "%s: %d", STR_REQUIRE_JULY, iRequireJuly ), text_color );
+						Info.AddString(
+							CStr::Printf(
+								"%s: %d",
+								STR_REQUIRE_JULY,
+								iRequireJuly
+							),
+							text_color,
+							g_GameDATA.m_hFONT[FONT_NORMAL],
+							DT_LEFT,
+							false
+						);
 						
 						//필요 레벨
 						if( iRequireLevel > g_pAVATAR->Get_LEVEL() )
@@ -276,7 +342,17 @@ void CSkillListItem::Update( POINT ptMouse )
 						else
 							text_color = g_dwWHITE;
 
-						Info.AddString(CStr::Printf( "%s: %d", STR_REQUIRE_LEVEL, iRequireLevel ), text_color );
+						Info.AddString(
+							CStr::Printf(
+								"%s: %d",
+								STR_REQUIRE_LEVEL,
+								iRequireLevel
+							),
+							text_color,
+							g_GameDATA.m_hFONT[FONT_NORMAL],
+							DT_LEFT,
+							false
+						);
 					}
 
 					POINT ptDraw = ptMouse;
@@ -294,8 +370,23 @@ void CSkillListItem::Show()
 {
 	CWinCtrl::Show();
 	m_Slot.Show();
-	if( m_pButton )
+
+	if (!m_pButton)
+		return;
+
+	CIconSkill* pSkillIcon = GetIcon();
+
+	if (pSkillIcon &&
+		IsHasNextLevel(
+			pSkillIcon->GetSkillSlotFromIcon()
+		))
+	{
 		m_pButton->Show();
+	}
+	else
+	{
+		m_pButton->Hide();
+	}
 }
 
 void CSkillListItem::Hide()
@@ -312,7 +403,9 @@ unsigned CSkillListItem::Process( unsigned uiMsg, WPARAM wParam, LPARAM lParam )
 	if( m_Slot.Process( uiMsg, wParam, lParam ) )
 		return GetControlID();
 
-	if( m_pButton && m_pButton->Process( uiMsg, wParam, lParam ) )
+	if (m_pButton &&
+		m_pButton->IsVision() &&
+		m_pButton->Process(uiMsg, wParam, lParam))
 	{
 		if( uiMsg == WM_LBUTTONUP )///서버에 Level Up을 요청한다.그전에 레벨업이 가능한지 한번더 체크할것
 		{

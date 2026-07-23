@@ -31,6 +31,17 @@ const D3DCOLOR	g_dwBlueToolTip = D3DCOLOR_ARGB( 255, 100, 200,255);
 * @Author		최종진
 * @Date			2005/9/5
 */
+struct CInfoStringPart
+{
+	CTString m_String;
+	int      m_iOffsetX;
+};
+
+struct CInfoStringLine
+{
+	std::vector<CInfoStringPart> m_Parts;
+};
+
 class CInfo
 {
 public:
@@ -43,9 +54,35 @@ public:
 	int	 GetWidth();
 	int  GetHeight();
 	int	 GetMaxSizeString();
-	void AddString( const char* pszTxt, DWORD color = D3DCOLOR_ARGB( 255,255,255,255 ), HNODE hFont = g_GameDATA.m_hFONT[FONT_NORMAL], UINT uFormat = DT_LEFT );
+	void AddString(
+		const char* pszTxt,
+		DWORD color = D3DCOLOR_ARGB(255, 255, 255, 255),
+		HNODE hFont = g_GameDATA.m_hFONT[FONT_NORMAL],
+		UINT uFormat = DT_LEFT,
+		bool bColorLabel = true
+	);
 	void AddString( CTString& TString );
 	bool IsEmpty();
+
+	void AddSplitString(
+		const char* pszLeft,
+		DWORD dwLeftColor,
+		const char* pszRight,
+		DWORD dwRightColor,
+		HNODE hFont = g_GameDATA.m_hFONT[FONT_NORMAL]
+	);
+
+	void AddMultiColorString(
+		const char* pszPart1,
+		DWORD dwColor1,
+		const char* pszPart2,
+		DWORD dwColor2,
+		const char* pszPart3,
+		DWORD dwColor3,
+		const char* pszPart4,
+		DWORD dwColor4,
+		HNODE hFont = g_GameDATA.m_hFONT[FONT_NORMAL]
+	);
 //	void SetTitle( char* pszTitle );
 
 protected:
@@ -58,7 +95,7 @@ protected:
 	int			m_iWidth;
 	int			m_iHeight;
 	UINT		m_uMaxSizeString;///최대 글자수 
-	std::vector< CTString >  m_listString;
+	std::vector<CInfoStringLine> m_listString;
 	std::string				 m_strTitle;
 
 };

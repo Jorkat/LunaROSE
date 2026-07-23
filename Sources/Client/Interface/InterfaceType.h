@@ -63,6 +63,7 @@ DLG_TYPE_INPUTNAME,		/// 캐릭터 이름을 입력받는 창
 DLG_TYPE_BANKWINDOW,	
 DLG_TYPE_QUICKBAR_EXT,
 DLG_TYPE_MONSTER_DATABASE,
+DLG_TYPE_BAG_PREVIEW,
 DLG_TYPE_MAX
 };
 // *----------------------------------------------------------------* //

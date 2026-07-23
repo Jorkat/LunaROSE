@@ -20,6 +20,7 @@
 
 #include "ResourceMgr.h"
 #include "TCommand.h"
+#include <DLGs/CBagPreviewDlg.h>
 
 HNODE CIconItem::m_hSocketTexture = NULL;
 int	  CIconItem::m_iSocketTextureRefCount = 0;
@@ -402,18 +403,66 @@ const char*	CIconItem::GetName()
 	return CIcon::GetName();	
 }
 
-unsigned CIconItem::Process( unsigned uiMsg, WPARAM wParam, LPARAM lParam )
+unsigned CIconItem::Process(unsigned uiMsg, WPARAM wParam, LPARAM lParam)
 {
-	if( uiMsg == WM_LBUTTONDOWN && (wParam & MK_CONTROL) )
-	{
-		if( m_pItem )
-		{
-			CTCmdAddItem2WishList* pCmd = new CTCmdAddItem2WishList( m_pItem->GetItem() );
-			g_itMGR.OpenMsgBox(CStr::Printf("%s %s", m_pItem->GetName() ,STR_QUERY_REGIST_WISHLIST),
-				CMsgBox::BT_OK | CMsgBox::BT_CANCEL ,true, 0, pCmd, 0 );
+	if (uiMsg != WM_LBUTTONDOWN || !m_pItem)
+		return 0;
 
-			return uiMsg;
+	const bool isAltDown =
+		(GetAsyncKeyState(VK_MENU) & 0x8000) != 0;
+
+	const bool isCtrlDown =
+		(wParam & MK_CONTROL) != 0;
+
+	if (isAltDown)
+	{
+		tagITEM& item = m_pItem->GetItem();
+
+		if (item.GetTYPE() == ITEM_TYPE_USE)
+		{
+			const int itemNo = item.GetItemNO();
+			const int bagID = USEITEM_BAG_ID(itemNo);
+
+			if (bagID > 0)
+			{
+				CBagPreviewDlg* pDlg =
+					(CBagPreviewDlg*)g_itMGR.FindDlg(
+						DLG_TYPE_BAG_PREVIEW
+					);
+
+				if (pDlg)
+				{
+					pDlg->SetBagID(bagID);
+
+					g_itMGR.OpenDialog(
+						DLG_TYPE_BAG_PREVIEW
+					);
+
+					return uiMsg;
+				}
+			}
 		}
 	}
+	else if (isCtrlDown)
+	{
+		CTCmdAddItem2WishList* pCmd =
+			new CTCmdAddItem2WishList(m_pItem->GetItem());
+
+		g_itMGR.OpenMsgBox(
+			CStr::Printf(
+				"%s %s",
+				m_pItem->GetName(),
+				STR_QUERY_REGIST_WISHLIST
+			),
+			CMsgBox::BT_OK | CMsgBox::BT_CANCEL,
+			true,
+			0,
+			pCmd,
+			0
+		);
+
+		return uiMsg;
+	}
+
 	return 0;
 }

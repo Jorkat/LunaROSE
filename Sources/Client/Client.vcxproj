@@ -381,6 +381,7 @@
     <ClCompile Include="Interface\DLGs\CAddFriendDlg.cpp" />
     <ClCompile Include="Interface\DLGs\CAvatarStore.cpp" />
     <ClCompile Include="Interface\DLGs\CAvatarStoreDlg.cpp" />
+    <ClCompile Include="Interface\DLGs\CBagPreviewDlg.cpp" />
     <ClCompile Include="Interface\DLGs\CBankDlg.cpp" />
     <ClCompile Include="Interface\DLGs\CBankWindowDlg.cpp" />
     <ClCompile Include="interface\dlgs\CChatFilterDlg.cpp" />
@@ -434,6 +435,7 @@
     <ClCompile Include="Interface\DLGs\QuickToolBAR.cpp" />
     <ClCompile Include="Interface\DLGs\SelectEventDlg.cpp" />
     <ClCompile Include="Interface\DLGs\SkillTreeDlg.cpp" />
+    <ClCompile Include="Interface\DLGs\SubClass\CBagPreviewListItem.cpp" />
     <ClCompile Include="Interface\DLGs\SubClass\CChatRoomListItem.cpp" />
     <ClCompile Include="Interface\DLGs\SubClass\CClanSkillListItem.cpp" />
     <ClCompile Include="Interface\DLGs\SubClass\CDialogNpcScriptAnswerItem.cpp" />
@@ -739,6 +741,7 @@
     <ClInclude Include="Interface\DLGs\CAddFriendDlg.h" />
     <ClInclude Include="Interface\DLGs\CAvatarStore.h" />
     <ClInclude Include="Interface\DLGs\CAvatarStoreDlg.h" />
+    <ClInclude Include="Interface\DLGs\CBagPreviewDlg.h" />
     <ClInclude Include="Interface\DLGs\CBankDlg.h" />
     <ClInclude Include="Interface\DLGs\CBankWindowDlg.h" />
     <ClInclude Include="interface\dlgs\CChatFilterDlg.h" />
@@ -792,6 +795,7 @@
     <ClInclude Include="Interface\DLGs\QuickToolBAR.h" />
     <ClInclude Include="Interface\DLGs\SelectEventDlg.h" />
     <ClInclude Include="Interface\DLGs\SkillTreeDlg.h" />
+    <ClInclude Include="Interface\DLGs\SubClass\CBagPreviewListItem.h" />
     <ClInclude Include="Interface\DLGs\SubClass\CChatRoomListItem.h" />
     <ClInclude Include="Interface\DLGs\SubClass\CClanSkillListItem.h" />
     <ClInclude Include="Interface\DLGs\SubClass\CDialogNpcScriptAnswerItem.h" />
