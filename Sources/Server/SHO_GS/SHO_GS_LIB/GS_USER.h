@@ -99,6 +99,15 @@ public:
 	float m_fSUCPOINT[ 4 ];
 #endif
 
+	void ClearUnlockedPlayerTitles();
+	bool HasUnlockedPlayerTitle(short nTitleID) const;
+	bool AddUnlockedPlayerTitle(short nTitleID);
+
+	const std::vector<short>& GetUnlockedPlayerTitles() const
+	{
+		return m_UnlockedPlayerTitles;
+	}
+
 private:
 	CCriticalSection		m_csSrvRECV;
 	CSLList< t_PACKET* >	m_SrvRecvQ;
@@ -109,6 +118,9 @@ private:
 		DWORD		m_dwMD5PassWD[ 8 ];
 	} ;
 
+	short m_nPlayerTitleID;
+
+	std::vector<short> m_UnlockedPlayerTitles;
 
 	short GuildCMD (char *szCMD);
 	short Parse_CheatCODE (char *szCode);
@@ -225,6 +237,7 @@ private:
     short Recv_cli_TELEPORT_REQ( t_PACKET *pPacket );
 
 	bool  Recv_cli_USE_BPOINT_REQ( t_PACKET *pPacket );
+	bool  Recv_cli_SET_PLAYER_TITLE(t_PACKET* pPacket);
 
 	bool  Recv_cli_SKILL_LEVELUP_REQ( t_PACKET *pPacket );
 
@@ -320,6 +333,17 @@ private:
 	bool Recv_cli_CART_RIDE( t_PACKET *pPacket );
 
 public :
+	short GetPlayerTitleID() const
+	{
+		return m_nPlayerTitleID;
+	}
+
+	void SetPlayerTitleID(short nTitleID)
+	{
+		m_nPlayerTitleID = nTitleID;
+	}
+
+
 	bool Send_gsv_CART_RIDE( BYTE btType, WORD wSourObjIdx, WORD wDestObjIDX, bool bSendToSector=false );
 
 	bool Send_wsv_CLANMARK_REPLY( DWORD dwClanID, WORD wMarkCRC, BYTE *pMarkData, short nMarkDataLen );
@@ -383,6 +407,8 @@ public :
 	bool Send_gsv_UPDATE_NAME();
 
 	bool Recv_cli_SET_RIGHTS(t_PACKET *pPacket);
+
+	bool Send_gsv_PLAYER_TITLE_LIST();
 
 	//----------------------- virtual function inherit from CUserDATA
 	bool Add_MoneyNSend( int iAmount, WORD wType=GSV_SET_MONEY_ONLY )	
@@ -627,7 +653,7 @@ public :
 #ifdef	__USE_ARRAY_PARTY_USER
 	short							  m_nPartyPOS;
 #else
-x	//CDLList< tagPartyUSER >::tagNODE *m_pPartyNODE;
+	//CDLList< tagPartyUSER >::tagNODE *m_pPartyNODE;
 #endif
 
 	classUSER ();
@@ -721,6 +747,9 @@ x	//CDLList< tagPartyUSER >::tagNODE *m_pPartyNODE;
 
 		this->Set_NAME( NULL );
 		m_HashCHAR = 0;
+
+		m_nPlayerTitleID = 0;
+		m_UnlockedPlayerTitles.clear();
 
 		this->Clear_SummonCNT ();		// 소환된 갯수 0으로..
 

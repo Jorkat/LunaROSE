@@ -6,6 +6,8 @@
 #include "../../Common/CItem.h"
 #include "../../Common/DataType.h"
 
+#include <vector>
+
 /**
 * 캐릭터 정보를 보여주기 위한 다이얼로그 
 *
@@ -19,6 +21,7 @@ class CCharacterDLG : public CTDialog
 public:
 	CCharacterDLG( int iType );
 	virtual ~CCharacterDLG();
+	virtual void			Show();
 	virtual void			Draw();
 	virtual unsigned int	Process(UINT uiMsg,WPARAM wParam,LPARAM lParam);
 	virtual void			Update( POINT ptMouse );
@@ -34,6 +37,7 @@ public:
 		IID_TAB_BASICINFO_BG,
 		IID_TAB_BASICINFO_BTN,
 		IID_GUAGE_STAMINA		= 24,
+		IID_COMBO_PLAYER_TITLE	= 25,
 		IID_TAB_ABILITY			= 31,
 		IID_TAB_ABILITY_BG,
 		IID_TAB_ABILITY_BTN,
@@ -73,6 +77,11 @@ private:
 	int			m_iGuageBlueGID;				/// 마나 게이지의 그래픽 ID
 	int			m_iGuageYellowGID;				/// 스테미나 게이지의 그래픽 ID
 	int			m_iGuageRedGID;					/// 체력 게이지의 그래픽 ID
+
+	std::vector<short> m_PlayerTitleIDs;
+
+	void RefreshPlayerTitleCombo();
+	void CheckPlayerTitleComboSelection();
 };
 
 

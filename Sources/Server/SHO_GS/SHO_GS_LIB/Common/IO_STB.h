@@ -749,7 +749,7 @@ extern STBDATA	g_TblAVATAR;		/// 아바타 초기 설정 데이타..
 extern STBDATA  g_TblResolution;	/// 옵션-해상도
 extern STBDATA	g_TblFoulWord;		/// 채팅시 Filtering될 단어들의 리스트 
 
-
+extern STBDATA	g_TblPLAYER_TITLES;
 extern STBDATA  g_TblSTATE;			/// 캐릭터의 상태를 변경하는 정보.
 
 extern STBDATA  g_TblCamera;		/// 시야관련 정보..

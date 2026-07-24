@@ -107,6 +107,8 @@ STBDATA			*g_pTblSTBs[ ITEM_TYPE_RIDE_PART+1 ];
 STBDATA			 g_TblAVATAR;		// 아바타 초기 설정 데이타..
 STBDATA			 g_TblSTATE;		/// 캐릭터의 상태를 변경하는 정보.
 
+STBDATA			 g_TblPLAYER_TITLES;
+
 STBDATA			 g_TblUnion;
 STBDATA			 g_TblClass;
 STBDATA			 g_TblItemGRADE;
@@ -910,14 +912,6 @@ bool CLIB_GameSRV::Load_BasicDATA ()
 	g_TblFACEITEM.Load	( CStr::Printf("%s%s", BASE_DATA_DIR, "3DDATA\\STB\\LIST_FACEITEM.STB"),	true, true	);
 	g_TblUSEITEM.Load   ( CStr::Printf("%s%s", BASE_DATA_DIR, "3DDATA\\STB\\LIST_USEITEM.STB"),		true, true	);
 
-	g_LOG.CS_ODS(
-		0xffff,
-		"[USEITEM] Row=%d BagID=%d TotalCols=%d\n",
-		901,
-		USEITEM_BAG_ID(901),
-		g_TblUSEITEM.m_nColCnt
-	);
-
 	g_TblBAGS.Load(
 		CStr::Printf(
 			"%s%s",
@@ -926,13 +920,6 @@ bool CLIB_GameSRV::Load_BasicDATA ()
 		),
 		true,
 		false
-	);
-
-	g_LOG.CS_ODS(
-		0xffff,
-		"[BAGS] Rows: %d, Columns: %d\n",
-		g_TblBAGS.m_nDataCnt,
-		g_TblBAGS.m_nColCnt
 	);
 
 	if (g_TblBAGS.m_nDataCnt > 1)
@@ -977,6 +964,16 @@ bool CLIB_GameSRV::Load_BasicDATA ()
 
 	g_TblAVATAR.Load	( CStr::Printf("%s%s", BASE_DATA_DIR, "3DDATA\\STB\\INIT_AVATAR.STB"),		false,	false);
 	g_TblSTATE.Load2	( CStr::Printf("%s%s", BASE_DATA_DIR, "3DDATA\\STB\\LIST_STATUS.STB"),		true,	false);
+
+	g_TblPLAYER_TITLES.Load2(
+		CStr::Printf(
+			"%s%s",
+			BASE_DATA_DIR,
+			"3DDATA\\STB\\PLAYER_TITLES.STB"
+		),
+		false,
+		false
+	);
 
 	g_TblUnion.Load2	( CStr::Printf("%s%s", BASE_DATA_DIR, "3DDATA\\STB\\LIST_UNION.STB"),		false, false );
 	g_TblClass.Load2	( CStr::Printf("%s%s", BASE_DATA_DIR, "3DDATA\\STB\\LIST_CLASS.STB"),		false, false );

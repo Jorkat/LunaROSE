@@ -11,6 +11,8 @@
 
 #include "../Interface/ExternalUI/CSelectServer.h"
 
+#include <vector>
+
 extern bool			g_bDontDeleteCapFile;
 
 #define		WM_USER_CLOSE_MSGBOX		WM_USER + 1
@@ -65,6 +67,33 @@ private:
 public:
 	~CGame(void);
 	static CGame& GetInstance();
+
+	void ClearUnlockedPlayerTitles()
+	{
+		m_UnlockedPlayerTitles.clear();
+	}
+
+	void AddUnlockedPlayerTitle(short nTitleID)
+	{
+		if (nTitleID < 11)
+			return;
+
+		for (std::vector<short>::const_iterator it =
+			m_UnlockedPlayerTitles.begin();
+			it != m_UnlockedPlayerTitles.end();
+			++it)
+		{
+			if (*it == nTitleID)
+				return;
+		}
+
+		m_UnlockedPlayerTitles.push_back(nTitleID);
+	}
+
+	const std::vector<short>& GetUnlockedPlayerTitles() const
+	{
+		return m_UnlockedPlayerTitles;
+	}
 
 	void	ChangeState( int newState );
 	void    GameLoop();
@@ -319,6 +348,7 @@ private:
 	std::string		m_JapanPartnerString;
 	CFileVersionInfo m_ClientFileVersion;
 
+	std::vector<short> m_UnlockedPlayerTitles;
 
 	ServerInfo		m_sServerInfo;
 	

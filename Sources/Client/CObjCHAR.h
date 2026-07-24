@@ -1161,6 +1161,8 @@ protected:
 	std::string				m_Name;
 	int						m_iLevel;
 
+	short					m_nPlayerTitleID;
+
 
 	DWORD					m_dwSitTIME;
 	short					m_nPsvAtkSPEED;
@@ -1191,6 +1193,16 @@ protected:
 public:
 	CObjAVT ();
 	virtual ~CObjAVT ();
+
+	void SetPlayerTitleID(short nTitleID)
+	{
+		m_nPlayerTitleID = nTitleID;
+	}
+
+	short GetPlayerTitleID() const
+	{
+		return m_nPlayerTitleID;
+	}
 
 
 	void					SetShotData( int i, int iItemNo );

@@ -76,6 +76,8 @@ public   :
 	void Recv_gsv_NPC_CHAR ();
 	void Recv_gsv_MOB_CHAR ();
 	void Recv_gsv_AVT_CHAR ();
+	void Recv_gsv_SET_PLAYER_TITLE();
+	void Recv_gsv_PLAYER_TITLE_LIST();
 	void Recv_gsv_SUB_OBJECT ();
 
 	void Recv_gsv_SET_WEIGHT_RATE ();

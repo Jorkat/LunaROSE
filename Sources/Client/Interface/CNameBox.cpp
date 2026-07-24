@@ -27,6 +27,9 @@ const D3DCOLOR	g_dwLightBlueName	= D3DCOLOR_ARGB( 255, 202, 243, 255 );
 const D3DCOLOR	g_dwGrayName		= D3DCOLOR_ARGB( 255, 217,217,217 );
 
 
+const float PLAYER_NAMEPLATE_RAISE = 15.0f;
+
+
 
 /// 클랜 레벨에 따른 표시 색상을 구하는 함수
 inline DWORD GetClanNameColor( int iClanLevel )
@@ -407,7 +410,7 @@ void CNameBox::DrawAvatarName( float x, float y, float z, CObjCHAR* pCharOBJ, bo
 		size.cy = iHeightGuage;
 
 		float fGuageDrawX = x - iWidthBackImage / 2;
-		float fGuageDrawY = y - NAMEBOX_HEIGHT  / 2 + 4;
+		float fGuageDrawY = y - NAMEBOX_HEIGHT / 2 + 4 - PLAYER_NAMEPLATE_RAISE;
 
 		g_DrawImpl.Draw( fGuageDrawX, fGuageDrawY, z, 
 						IMAGE_RES_UI, CResourceMgr::GetInstance()->GetImageNID( IMAGE_RES_UI,"UI00_GUAGE_BG_AVATAR" ),
@@ -433,7 +436,7 @@ void CNameBox::DrawAvatarName( float x, float y, float z, CObjCHAR* pCharOBJ, bo
 	{
 		size = getFontTextExtent( g_GameDATA.m_hFONT[ FONT_NORMAL_OUTLINE ], pName );
 		D3DXMATRIX mat;	
-		D3DXMatrixTranslation( &mat, x - size.cx / 2, y - NAMEBOX_HEIGHT / 2 + 4, z );
+		D3DXMatrixTranslation( &mat, x - size.cx / 2, y - NAMEBOX_HEIGHT / 2 + 4 - PLAYER_NAMEPLATE_RAISE, z );
 		::setTransformSprite( mat );	
 		
 		RECT rt = { 0, 0, size.cx , size.cy };
@@ -441,11 +444,91 @@ void CNameBox::DrawAvatarName( float x, float y, float z, CObjCHAR* pCharOBJ, bo
 		::drawFont( g_GameDATA.m_hFONT[ FONT_NORMAL_OUTLINE ], true, &rt, dwColor, DT_CENTER, pName );
 	}
 
+	CObjAVT* pAvatar = (CObjAVT*)pCharOBJ;
+
+	short nTitleID =
+		pAvatar->GetPlayerTitleID();
+
+	if (
+		nTitleID > 0 &&
+		nTitleID < g_TblPLAYER_TITLES.m_nDataCnt &&
+		g_TblPLAYER_TITLES.m_nColCnt >= 5
+		)
+	{
+		const char* pszTitle =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][1].GetSTR();
+
+		int iRed =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][2].GetINT();
+
+		int iGreen =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][3].GetINT();
+
+		int iBlue =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][4].GetINT();
+
+		if (pszTitle && pszTitle[0])
+		{
+			if (iRed < 0) iRed = 0;
+			if (iRed > 255) iRed = 255;
+
+			if (iGreen < 0) iGreen = 0;
+			if (iGreen > 255) iGreen = 255;
+
+			if (iBlue < 0) iBlue = 0;
+			if (iBlue > 255) iBlue = 255;
+
+			DWORD dwTitleColor =
+				D3DCOLOR_ARGB(
+					255,
+					iRed,
+					iGreen,
+					iBlue
+				);
+
+			char szTitleDisplay[256];
+
+			sprintf(
+				szTitleDisplay,
+				"<%s>",
+				pszTitle
+			);
+
+			SIZE titleSize =
+				getFontTextExtent(
+					g_GameDATA.m_hFONT[FONT_NORMAL_OUTLINE],
+					szTitleDisplay
+				);
+
+			D3DXMATRIX matTitle;
+
+			D3DXMatrixTranslation( &matTitle, x - titleSize.cx / 2, y - NAMEBOX_HEIGHT / 2 + 20 - PLAYER_NAMEPLATE_RAISE, z );
+
+			::setTransformSprite(matTitle);
+
+			RECT rtTitle = {
+				0,
+				0,
+				titleSize.cx,
+				titleSize.cy
+			};
+
+			::drawFont(
+				g_GameDATA.m_hFONT[FONT_NORMAL_OUTLINE],
+				true,
+				&rtTitle,
+				dwTitleColor,
+				DT_CENTER,
+				szTitleDisplay
+			);
+		}
+	}
+
 	if( bTargeted )
 	{
 		RECT rcDrawTargetMark;
 		rcDrawTargetMark.left	= x - size.cx / 2 - 5;
-		rcDrawTargetMark.top	= y - NAMEBOX_HEIGHT / 2 + 4;
+		rcDrawTargetMark.top	= y - NAMEBOX_HEIGHT / 2 + 4 - PLAYER_NAMEPLATE_RAISE;
 		rcDrawTargetMark.right  = rcDrawTargetMark.left + size.cx + 10;
 		rcDrawTargetMark.bottom	= rcDrawTargetMark.top	+ size.cy;
 
@@ -473,7 +556,7 @@ void CNameBox::DrawMyName( float x, float y, float z, const char* pName, bool bT
 	int iHeightGuage	= 14;
 
 	float fGuageDrawX = x - iWidthBackImage / 2;
-	float fGuageDrawY = y - NAMEBOX_HEIGHT  / 2 + 4;
+	float fGuageDrawY = y - NAMEBOX_HEIGHT / 2 + 4 - PLAYER_NAMEPLATE_RAISE;
 
 	g_DrawImpl.Draw( fGuageDrawX, fGuageDrawY, z, 
 					IMAGE_RES_UI, CResourceMgr::GetInstance()->GetImageNID( IMAGE_RES_UI,"UI00_GUAGE_BG_AVATAR" ),
@@ -490,6 +573,70 @@ void CNameBox::DrawMyName( float x, float y, float z, const char* pName, bool bT
 
 	RECT rt = { 0, 0, iWidthGuage, iHeightGuage };
 	::drawFont( g_GameDATA.m_hFONT[ FONT_NORMAL_OUTLINE ], true, &rt, g_dwWHITE, DT_CENTER , pName );
+
+	short nTitleID = g_pAVATAR->GetPlayerTitleID();
+
+	if (
+		nTitleID > 0 &&
+		nTitleID < g_TblPLAYER_TITLES.m_nDataCnt &&
+		g_TblPLAYER_TITLES.m_nColCnt >= 5
+		)
+	{
+		const char* pszTitle =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][1].GetSTR();
+
+		int iRed =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][2].GetINT();
+
+		int iGreen =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][3].GetINT();
+
+		int iBlue =
+			g_TblPLAYER_TITLES.m_ppVALUE[nTitleID][4].GetINT();
+
+		if (pszTitle && pszTitle[0] != '\0')
+		{
+			if (iRed < 0) iRed = 0;
+			if (iRed > 255) iRed = 255;
+
+			if (iGreen < 0) iGreen = 0;
+			if (iGreen > 255) iGreen = 255;
+
+			if (iBlue < 0) iBlue = 0;
+			if (iBlue > 255) iBlue = 255;
+
+			DWORD dwTitleColor = D3DCOLOR_ARGB(
+				255,
+				iRed,
+				iGreen,
+				iBlue
+			);
+
+			RECT rtTitle = {
+				0,
+				18,
+				iWidthGuage,
+				34
+			};
+
+			char szTitleDisplay[256];
+
+			sprintf(
+				szTitleDisplay,
+				"<%s>",
+				pszTitle
+			);
+
+			::drawFont(
+				g_GameDATA.m_hFONT[FONT_NORMAL_OUTLINE],
+				true,
+				&rtTitle,
+				dwTitleColor,
+				DT_CENTER,
+				szTitleDisplay
+			);
+		}
+	}
 
 	
 
@@ -559,7 +706,7 @@ D3DVECTOR	CNameBox::GetClanMarkDrawPos( CObjCHAR* pChar, float x, float y, float
 	D3DVECTOR vDrawPos;
 
 	vDrawPos.x = x - size.cx / 2 - 25;
-	vDrawPos.y = y - NAMEBOX_HEIGHT / 2 - 20;
+	vDrawPos.y = y - NAMEBOX_HEIGHT / 2 - 20 - PLAYER_NAMEPLATE_RAISE;
 	vDrawPos.z = z;
 
 	return vDrawPos;

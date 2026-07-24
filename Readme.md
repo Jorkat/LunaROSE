@@ -89,3 +89,17 @@ Tooltip labels are now easier to distinguish, and empty gem sockets display a de
 Skill tooltips now have a clearer appearance, and the skill window hides the plus button when a skill has reached its maximum level.
 
 ![Improved Skill Window and Tooltips](images/improved-skill-window-and-tooltips.png)
+
+
+---
+
+
+### 10. Player Titles
+
+**Added:** A player title system with unlockable and selectable titles.
+
+Players can choose an unlocked title from the Character Information window. The active title is shown below the character name, is visible to nearby players, and remains saved after relogging.
+
+Players can select `None` to remove their active title. Staff-only titles are excluded from the normal title list.
+
+![Player titles](images/player-titles.png)

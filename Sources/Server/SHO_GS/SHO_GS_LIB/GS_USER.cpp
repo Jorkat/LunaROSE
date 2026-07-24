@@ -499,6 +499,268 @@ short classUSER::Parse_CheatCODE (char *szCode)
 			pArg3 = pStrVAR->GetTokenNext (pDelimiters);
 			nProcMODE = Cheat_del( pStrVAR, pArg1, pArg2, pArg3 );
 		}
+		if (!stricmp(pToken, "/TITLE"))
+		{
+			pArg2 = pStrVAR->GetTokenNext(pDelimiters);
+
+			if (!pArg1 || !pArg1[0] || !pArg2 || !pArg2[0])
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"Usage: /title [TitleID] [CharacterName]"
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			int iTitleID = atoi(pArg1);
+
+			if (iTitleID <= 0)
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"Invalid title ID."
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			if (iTitleID >= g_TblPLAYER_TITLES.m_nDataCnt)
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"That title ID does not exist."
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			if (g_TblPLAYER_TITLES.m_nColCnt < 5)
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"PLAYER_TITLES.STB has an invalid column count."
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			classUSER* pTargetUSER =
+				g_pUserLIST->Find_CHAR(pArg2);
+
+
+
+			if (!pTargetUSER)
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"Character not found or not online."
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+
+			char* szTitleName =
+				g_TblPLAYER_TITLES.m_ppVALUE[iTitleID][1].GetSTR();
+
+			int iRed =
+				g_TblPLAYER_TITLES.m_ppVALUE[iTitleID][2].GetINT();
+
+			int iGreen =
+				g_TblPLAYER_TITLES.m_ppVALUE[iTitleID][3].GetINT();
+
+			int iBlue =
+				g_TblPLAYER_TITLES.m_ppVALUE[iTitleID][4].GetINT();
+
+			if (!szTitleName || !szTitleName[0])
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"This title has no valid name."
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			if (iRed < 0)
+				iRed = 0;
+			else if (iRed > 255)
+				iRed = 255;
+
+			if (iGreen < 0)
+				iGreen = 0;
+			else if (iGreen > 255)
+				iGreen = 255;
+
+			if (iBlue < 0)
+				iBlue = 0;
+			else if (iBlue > 255)
+				iBlue = 255;
+
+			if (iTitleID >= 1 && iTitleID <= 10)
+			{
+				if (!pTargetUSER->C_Cheater() &&
+					!pTargetUSER->TWGM_Cheater())
+				{
+					this->Send_gsv_WHISPER(
+						"SERVER",
+						"Title IDs 1 through 10 are staff-only."
+					);
+
+					return CHEAT_NOLOG;
+				}
+			}
+
+			pTargetUSER->SetPlayerTitleID(
+				(short)iTitleID
+			);
+
+			pTargetUSER->Send_gsv_SET_PLAYER_TITLE();
+
+			g_pThreadSQL->Add_BackUpUSER(
+				pTargetUSER
+			);
+
+			char szMessage[256];
+
+			sprintf(
+				szMessage,
+				"Title <%s> (ID %d) has been assigned to %s.",
+				szTitleName,
+				iTitleID,
+				pTargetUSER->Get_NAME()
+			);
+
+			this->Send_gsv_WHISPER(
+				"SERVER",
+				szMessage
+			);
+
+			sprintf(
+				szMessage,
+				"Your active player title is now <%s>.",
+				szTitleName
+			);
+
+			pTargetUSER->Send_gsv_WHISPER(
+				"SERVER",
+				szMessage
+			);
+
+			return CHEAT_NOLOG;
+		}
+
+		if (!stricmp( pToken, "/GETTITLE"))
+		{
+
+			if (!pArg1 || !pArg1[0])
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"Usage: /gettitle [CharacterName]"
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			classUSER* pTargetUSER =
+				g_pUserLIST->Find_CHAR(pArg1);
+
+			if (!pTargetUSER)
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"Character not found or not online."
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			int iTitleID =
+				pTargetUSER->GetPlayerTitleID();
+
+			char szMessage[256];
+
+			if (iTitleID <= 0)
+			{
+				sprintf(
+					szMessage,
+					"%s currently has no active player title.",
+					pTargetUSER->Get_NAME()
+				);
+
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					szMessage
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			if (iTitleID >= g_TblPLAYER_TITLES.m_nDataCnt)
+			{
+				sprintf(
+					szMessage,
+					"%s has an invalid stored title ID: %d.",
+					pTargetUSER->Get_NAME(),
+					iTitleID
+				);
+
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					szMessage
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			if (g_TblPLAYER_TITLES.m_nColCnt < 5)
+			{
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					"PLAYER_TITLES.STB has an invalid column count."
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			char* szTitleName =
+				g_TblPLAYER_TITLES.m_ppVALUE[iTitleID][1].GetSTR();
+
+			if (!szTitleName || !szTitleName[0])
+			{
+				sprintf(
+					szMessage,
+					"%s has title ID %d, but the title name is missing.",
+					pTargetUSER->Get_NAME(),
+					iTitleID
+				);
+
+				this->Send_gsv_WHISPER(
+					"SERVER",
+					szMessage
+				);
+
+				return CHEAT_NOLOG;
+			}
+
+			sprintf(
+				szMessage,
+				"%s currently has title <%s> (ID %d).",
+				pTargetUSER->Get_NAME(),
+				szTitleName,
+				iTitleID
+			);
+
+			this->Send_gsv_WHISPER(
+				"SERVER",
+				szMessage
+			);
+
+			return CHEAT_NOLOG;
+		}
+
 		// 아이템 관련 치트코드...
 		if ( !strcmpi( pToken, "/ITEM" ) ) {
 			pArg2 = pStrVAR->GetTokenNext (pDelimiters);
@@ -5120,6 +5382,63 @@ short classUSER::Recv_cli_TELEPORT_REQ( t_PACKET *pPacket )
 	return this->Proc_TELEPORT( pEventPOS->m_nZoneNO, pEventPOS->m_Position );	// Recv_cli_TELEPORT_REQ
 }
 
+bool classUSER::Recv_cli_SET_PLAYER_TITLE(t_PACKET* pPacket)
+{
+	if (!pPacket)
+		return false;
+
+	if (pPacket->m_HEADER.m_nSize !=
+		sizeof(cli_SET_PLAYER_TITLE))
+	{
+		return false;
+	}
+
+	short nTitleID =
+		pPacket->m_cli_SET_PLAYER_TITLE.m_nPlayerTitleID;
+
+	if (nTitleID == GetPlayerTitleID())
+		return true;
+
+	if (nTitleID == 0)
+	{
+		SetPlayerTitleID(0);
+
+		Send_gsv_SET_PLAYER_TITLE();
+
+		g_pThreadSQL->Add_BackUpUSER(this);
+
+		return true;
+	}
+
+	if (nTitleID < 11)
+		return true;
+
+	if (nTitleID >= g_TblPLAYER_TITLES.m_nDataCnt)
+		return true;
+
+	if (g_TblPLAYER_TITLES.m_nColCnt < 2)
+		return true;
+
+	char* szTitleName =
+		g_TblPLAYER_TITLES
+		.m_ppVALUE[nTitleID][1]
+		.GetSTR();
+
+	if (!szTitleName || !szTitleName[0])
+		return true;
+
+	if (!HasUnlockedPlayerTitle(nTitleID))
+		return true;
+
+	SetPlayerTitleID(nTitleID);
+
+	Send_gsv_SET_PLAYER_TITLE();
+
+	g_pThreadSQL->Add_BackUpUSER(this);
+
+	return true;
+}
+
 
 //-------------------------------------------------------------------------------------------------
 /// 스탯 변경 요청 받음
@@ -9014,6 +9333,9 @@ int classUSER::Proc_ZonePACKET( t_PACKET *pPacket )
 
 		case CLI_USE_BPOINT_REQ :
 			return Recv_cli_USE_BPOINT_REQ( pPacket );
+
+		case CLI_SET_PLAYER_TITLE:
+			return Recv_cli_SET_PLAYER_TITLE(pPacket);
 /*
         case CLI_SKILL_LEARN_REQ :
             return Recv_cli_SKILL_LEARN_REQ ( pPacket->m_cli_SKILL_LEARN_REQ.m_nSkillIDX  );
@@ -9724,4 +10046,76 @@ void classUSER::LogCHAT( const char * szMSG , const char * pDestCHAR , const cha
 				pDestCHAR ? pDestCHAR : "",
 				this->Get_IP(), 
 				szMSG );
+}
+
+void classUSER::ClearUnlockedPlayerTitles()
+{
+	m_UnlockedPlayerTitles.clear();
+}
+
+bool classUSER::HasUnlockedPlayerTitle(short nTitleID) const
+{
+	for (
+		std::vector<short>::const_iterator it =
+		m_UnlockedPlayerTitles.begin();
+		it != m_UnlockedPlayerTitles.end();
+		++it
+		)
+	{
+		if (*it == nTitleID)
+			return true;
+	}
+
+	return false;
+}
+
+bool classUSER::AddUnlockedPlayerTitle(short nTitleID)
+{
+	if (nTitleID < 11)
+		return false;
+
+	if (nTitleID >= g_TblPLAYER_TITLES.m_nDataCnt)
+		return false;
+
+	if (HasUnlockedPlayerTitle(nTitleID))
+		return false;
+
+	m_UnlockedPlayerTitles.push_back(nTitleID);
+
+	return true;
+}
+
+bool classUSER::Send_gsv_PLAYER_TITLE_LIST()
+{
+	classPACKET* pCPacket = Packet_AllocNLock();
+
+	if (!pCPacket)
+		return false;
+
+	const std::vector<short>& Titles =
+		this->GetUnlockedPlayerTitles();
+
+	short nTitleCount = (short)Titles.size();
+
+	pCPacket->m_HEADER.m_wType =
+		GSV_PLAYER_TITLE_LIST;
+
+	pCPacket->m_HEADER.m_nSize =
+		sizeof(gsv_PLAYER_TITLE_LIST) +
+		(sizeof(short) * nTitleCount);
+
+	pCPacket->m_gsv_PLAYER_TITLE_LIST.m_nTitleCount =
+		nTitleCount;
+
+	for (short i = 0; i < nTitleCount; ++i)
+	{
+		pCPacket->m_gsv_PLAYER_TITLE_LIST.m_nTitleIDs[i] =
+			Titles[i];
+	}
+
+	this->SendPacket(pCPacket);
+
+	Packet_ReleaseNUnlock(pCPacket);
+
+	return true;
 }

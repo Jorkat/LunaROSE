@@ -4759,6 +4759,8 @@ int CObjNPC::Proc ()
 
 CObjAVT::CObjAVT()
 {
+	m_nPlayerTitleID	= 0;
+
 //	m_fScale  = 0.5;
 	m_dwSitTIME			= 0;
 	m_bIsFemale			= false;

@@ -11,6 +11,7 @@
 #include "../../GameData/CParty.h"
 #include "../../Util/Localizing.h"
 #include "../../GameProc/CaptureChatList.h"
+#include "../../../TGameCtrl/TComboBox.h"
 
 #include "TEditBox.h"
 #include "TListBox.h"

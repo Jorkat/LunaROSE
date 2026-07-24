@@ -12,6 +12,8 @@
 #include "ZoneLIST.h"
 #include "CThreadGUILD.h"
 
+#include <vector>
+
 #define	MAX_CHAR_PER_USER	5
 #define	DELETE_CHAR_WAIT_TIME  (5*60)	//	7일 24시간 60분 60초
 
@@ -46,7 +48,10 @@ enum AVTTBL_COL_IDX {
 	AVTTBL_REG_TIME,
 	AVTTBL_PARTY_IDX,
 	AVTTBL_ITEM_SN,
-	AVTTBL_DATA_VER
+	AVTTBL_DATA_VER,
+	AVTTBL_CHAR_NAME,
+	AVTTBL_SKILL_B,
+	AVTTBL_ACTIVE_TITLE_ID
 } ;
 
 enum BANKTBL_COL_IDX {
@@ -445,6 +450,7 @@ bool GS_CThreadSQL::UpdateUserRECORD (classUSER *pUSER)
 			MQ_PARAM_ADDSTR, ",btLEVEL=",		MQ_PARAM_INT,		pUSER->m_GrowAbility.m_nLevel,
 			MQ_PARAM_ADDSTR, ",intMoney=",		MQ_PARAM_INT64,		pUSER->GetCur_MONEY(),
 			MQ_PARAM_ADDSTR, ",intJOB=",		MQ_PARAM_INT,		pUSER->m_BasicINFO.m_nClass,
+			MQ_PARAM_ADDSTR, ",intActiveTitleID=", MQ_PARAM_INT,	pUSER->GetPlayerTitleID(),
 			MQ_PARAM_ADDSTR, ",dwRegTIME=",		MQ_PARAM_INT,		this->m_dwCurTIME,
 			MQ_PARAM_ADDSTR, ",dwPartyIDX=",	MQ_PARAM_INT,		pUSER->GetPARTY() ? pUSER->m_pPartyBUFF->m_wPartyWSID : 0,
 			MQ_PARAM_ADDSTR, ",dwItemSN=",		MQ_PARAM_INT,		pUSER->m_dwItemSN,
@@ -465,6 +471,7 @@ bool GS_CThreadSQL::UpdateUserRECORD (classUSER *pUSER)
 			MQ_PARAM_ADDSTR, ",btLEVEL=",		MQ_PARAM_INT,		pUSER->m_GrowAbility.m_nLevel,
 			MQ_PARAM_ADDSTR, ",intMoney=",		MQ_PARAM_INT64,		pUSER->GetCur_MONEY(),
 			MQ_PARAM_ADDSTR, ",intJOB=",		MQ_PARAM_INT,		pUSER->m_BasicINFO.m_nClass,
+			MQ_PARAM_ADDSTR, ",intActiveTitleID=", MQ_PARAM_INT,	pUSER->GetPlayerTitleID(),
 			MQ_PARAM_ADDSTR, ",dwRegTIME=",		MQ_PARAM_INT,		this->m_dwCurTIME,
 			MQ_PARAM_ADDSTR, ",dwPartyIDX=",	MQ_PARAM_INT,		pUSER->GetPARTY() ? pUSER->m_pPartyBUFF->m_wPartyWSID : 0,
 			MQ_PARAM_ADDSTR, ",dwItemSN=",		MQ_PARAM_INT,		pUSER->m_dwItemSN,
@@ -1005,9 +1012,21 @@ bool GS_CThreadSQL::Proc_cli_SELECT_CHAR( tagQueryDATA *pSqlPACKET )
 #endif
 			pUSER->m_dwDBID = this->m_pSQL->GetInteger( AVTTBL_CHARID );
 
+			pUSER->ClearUnlockedPlayerTitles();
+
 			pUSER->Set_NAME( pCharName );
 			pUSER->Set_RNAME( pCharName );
 			g_pUserLIST->Add_CHAR( pUSER );
+
+			int iActiveTitleID =
+				this->m_pSQL->GetInteger(AVTTBL_ACTIVE_TITLE_ID);
+
+			if (iActiveTitleID < 0)
+				iActiveTitleID = 0;
+
+			pUSER->SetPlayerTitleID(
+				(short)iActiveTitleID
+			);
 
 			tagBasicETC *pBE;
 			pBE = (tagBasicETC*)this->m_pSQL->GetDataPTR( AVTTBL_BASIC_ETC );
@@ -1228,6 +1247,8 @@ bool GS_CThreadSQL::Proc_cli_SELECT_CHAR( tagQueryDATA *pSqlPACKET )
 				pCPacket->m_gsv_SELECT_CHAR.m_PosSTART      = pUSER->m_PosCUR;
 				pCPacket->m_gsv_SELECT_CHAR.m_nReviveZoneNO = pUSER->m_nReviveZoneNO;
 				pCPacket->m_gsv_SELECT_CHAR.m_dwUniqueTAG	= pUSER->m_dwDBID;
+				pCPacket->m_gsv_SELECT_CHAR.m_nPlayerTitleID =
+					pUSER->GetPlayerTitleID();
 
 				::CopyMemory(  pCPacket->m_gsv_SELECT_CHAR.m_PartITEM,		pUSER->m_PartITEM,			sizeof(tagPartITEM)*MAX_BODY_PART );
 
@@ -1263,6 +1284,37 @@ bool GS_CThreadSQL::Proc_cli_SELECT_CHAR( tagQueryDATA *pSqlPACKET )
 				pUSER->m_btRideMODE = pPacket->m_cli_SELECT_CHAR.m_btRideMODE;
 				pUSER->Send_gsv_TELEPORT_REPLY( pUSER->m_PosCUR, pUSER->m_nZoneNO );
 			}
+
+			// Tweede resultset van gs_SelectCHAR:
+			// unlocked player titles laden.
+			if (this->m_pSQL->GetMoreRESULT())
+			{
+				if (this->m_pSQL->BindRESULT())
+				{
+					while (this->m_pSQL->GetNextRECORD())
+					{
+						int iTitleID =
+							this->m_pSQL->GetInteger(0);
+
+						if (iTitleID < 11)
+							continue;
+
+						if (
+							iTitleID >=
+							g_TblPLAYER_TITLES.m_nDataCnt
+							)
+						{
+							continue;
+						}
+
+						pUSER->AddUnlockedPlayerTitle(
+							(short)iTitleID
+						);
+					}
+				}
+			}
+
+			pUSER->Send_gsv_PLAYER_TITLE_LIST();
 
 			Packet_ReleaseNUnlock(pCPacket);
 

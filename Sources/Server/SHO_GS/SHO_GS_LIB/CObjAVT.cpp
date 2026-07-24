@@ -119,6 +119,11 @@ bool CObjAVT::Make_gsv_ADD_OBJECT( classPACKET *pCPacket )
 	pCPacket->m_gsv_AVT_CHAR.m_nJOB		= this->GetCur_JOB();
 	pCPacket->m_gsv_AVT_CHAR.m_btLEVEL	= this->GetCur_LEVEL();
 
+	classUSER* pUSER = (classUSER*)this;
+
+	pCPacket->m_gsv_AVT_CHAR.m_nPlayerTitleID =
+		pUSER->GetPlayerTitleID();
+
 	/*
 	if ( this->m_btRideMODE )
 		pCPacket->m_tag_ADD_CHAR.m_btMoveMODE = this->m_btRideMODE;
@@ -735,6 +740,39 @@ bool CObjAVT::Send_gsv_GODDNESS_MODE( BYTE btOnOff )
 	this->GetZONE()->SendPacketToSectors( this, pCPacket );
 
 	Packet_ReleaseNUnlock( pCPacket );
+
+	return true;
+}
+
+bool CObjAVT::Send_gsv_SET_PLAYER_TITLE()
+{
+	classPACKET* pCPacket = Packet_AllocNLock();
+
+	if (!pCPacket)
+		return false;
+
+	pCPacket->m_HEADER.m_wType =
+		GSV_SET_PLAYER_TITLE;
+
+	pCPacket->m_HEADER.m_nSize =
+		sizeof(gsv_SET_PLAYER_TITLE);
+
+	pCPacket->m_gsv_SET_PLAYER_TITLE.m_wObjectIDX =
+		this->Get_INDEX();
+
+	pCPacket->m_gsv_SET_PLAYER_TITLE.m_nPlayerTitleID =
+		((classUSER*)this)->GetPlayerTitleID();
+
+	this->GetZONE()->SendPacketToSectors(
+		this,
+		pCPacket
+	);
+
+	((classUSER*)this)->SendPacket(
+		pCPacket
+	);
+
+	Packet_ReleaseNUnlock(pCPacket);
 
 	return true;
 }

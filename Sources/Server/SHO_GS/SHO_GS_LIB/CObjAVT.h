@@ -464,6 +464,7 @@ public :
 	}
 
 	bool Send_gsv_GODDNESS_MODE( BYTE btOnOff );
+	bool Send_gsv_SET_PLAYER_TITLE();
 	bool Add_Goddess (void);
 	bool Del_Goddess (void);
 

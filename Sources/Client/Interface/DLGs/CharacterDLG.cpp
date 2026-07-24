@@ -15,6 +15,7 @@
 #include "../../gamecommon/item.h"
 #include "../../GameData/Event/CTEventItem.h"
 #include "../../GameData/CClan.h"
+#include "../../../TGameCtrl/TComboBox.h"
 
 #include "TabbedPane.h"
 #include "TGuage.h"
@@ -45,6 +46,34 @@ void CCharacterDLG::Draw()
 	{
 	case BASIC_INFO:
 		DrawBasicInfo();
+		{
+			CWinCtrl* pCtrl = Find(IID_TABBEDPANE);
+
+			if (pCtrl &&
+				pCtrl->GetControlType() == CTRL_TABBEDPANE)
+			{
+				CTabbedPane* pPane =
+					(CTabbedPane*)pCtrl;
+
+				CJContainer* pContainer =
+					pPane->GetTabContainer(IID_TABBASIC);
+
+				if (pContainer)
+				{
+					pCtrl =
+						pContainer->Find(
+							IID_COMBO_PLAYER_TITLE
+						);
+
+					if (pCtrl &&
+						pCtrl->GetControlType() ==
+						CTRL_COMBOBOX)
+					{
+						pCtrl->Draw();
+					}
+				}
+			}
+		}
 		break;
 	case ABILITY_INFO:
 		DrawAbilityInfo();
@@ -60,30 +89,44 @@ void CCharacterDLG::Draw()
 
 
 
-unsigned int  CCharacterDLG::Process(UINT uiMsg,WPARAM wParam,LPARAM lParam)
+unsigned int CCharacterDLG::Process(
+	UINT uiMsg,
+	WPARAM wParam,
+	LPARAM lParam)
 {
-	if( g_pAVATAR == NULL )
+	if (g_pAVATAR == NULL)
 		return 0;
 
+	if (!IsVision())
+		return 0;
 
-	if(!IsVision()) return 0;
+	unsigned iProcID =
+		CTDialog::Process(uiMsg, wParam, lParam);
 
-	unsigned iProcID = 0;
-	if( iProcID =  CTDialog::Process(uiMsg,wParam,lParam)) 
+	if (uiMsg == WM_LBUTTONUP)
 	{
-		switch(uiMsg)
+		CheckPlayerTitleComboSelection();
+	}
+
+	if (iProcID)
+	{
+		switch (uiMsg)
 		{
 		case WM_LBUTTONDOWN:
-			On_LButtonDN( iProcID, wParam, lParam );
+			On_LButtonDN(iProcID, wParam, lParam);
 			break;
+
 		case WM_LBUTTONUP:
-			On_LButtonUP( iProcID, wParam, lParam );
+			On_LButtonUP(iProcID, wParam, lParam);
 			break;
+
 		default:
 			break;
 		}
+
 		return uiMsg;
 	}
+
 	return 0;
 }
 
@@ -348,7 +391,7 @@ void CCharacterDLG::DrawBasicInfo()
 	::drawFont( g_GameDATA.m_hFONT[ FONT_NORMAL ], true, 59,88, D3DCOLOR_XRGB( 0, 210, 255), CStringManager::GetSingleton().GetJobName( g_pAVATAR->Get_JOB() ) );		
 
 	if( CClan::GetInstance().GetName() )
-		::drawFont( g_GameDATA.m_hFONT[ FONT_NORMAL ], true, 59,109, g_dwWHITE, CClan::GetInstance().GetName() );		
+		::drawFont( g_GameDATA.m_hFONT[ FONT_NORMAL ], true, 59,109, g_dwWHITE, CClan::GetInstance().GetName() );
 
 	//레벨	
 	::drawFontf( g_GameDATA.m_hFONT[ FONT_NORMAL_BOLD ], true, 59,172, D3DCOLOR_XRGB( 255, 255, 0 ), "%d", g_pAVATAR->Get_LEVEL());		
@@ -434,4 +477,136 @@ bool CCharacterDLG::Create( const char* IDD )
 		return true;
 	}
 	return false;
+}
+
+void CCharacterDLG::RefreshPlayerTitleCombo()
+{
+	CWinCtrl* pCtrl = Find(IID_TABBEDPANE);
+
+	if (!pCtrl || pCtrl->GetControlType() != CTRL_TABBEDPANE)
+		return;
+
+	CTabbedPane* pPane = (CTabbedPane*)pCtrl;
+
+	CJContainer* pContainer =
+		pPane->GetTabContainer(IID_TABBASIC);
+
+	if (!pContainer)
+		return;
+
+	pCtrl = pContainer->Find(IID_COMBO_PLAYER_TITLE);
+
+	if (!pCtrl || pCtrl->GetControlType() != CTRL_COMBOBOX)
+		return;
+
+	CTComboBox* pComboBox = (CTComboBox*)pCtrl;
+
+	pComboBox->ClearItem();
+	m_PlayerTitleIDs.clear();
+
+	pComboBox->AddItem("None");
+	m_PlayerTitleIDs.push_back(0);
+
+	short nSelectedIndex = 0;
+	short nCurrentTitleID = 0;
+
+	if (g_pAVATAR)
+		nCurrentTitleID = g_pAVATAR->GetPlayerTitleID();
+
+	const std::vector<short>& Titles =
+		CGame::GetInstance().GetUnlockedPlayerTitles();
+
+	for (std::vector<short>::const_iterator it = Titles.begin();
+		it != Titles.end();
+		++it)
+	{
+		short nTitleID = *it;
+
+		if (nTitleID < 11)
+			continue;
+
+		if (nTitleID >= g_TblPLAYER_TITLES.m_nDataCnt)
+			continue;
+
+		if (g_TblPLAYER_TITLES.m_nColCnt < 2)
+			continue;
+
+		char* pszTitle =
+			g_TblPLAYER_TITLES
+			.m_ppVALUE[nTitleID][1]
+			.GetSTR();
+
+		if (!pszTitle || !pszTitle[0])
+			continue;
+
+		pComboBox->AddItem(pszTitle);
+		m_PlayerTitleIDs.push_back(nTitleID);
+
+		if (nTitleID == nCurrentTitleID)
+		{
+			nSelectedIndex =
+				(short)(m_PlayerTitleIDs.size() - 1);
+		}
+	}
+
+	pComboBox->SetSelectedItem(nSelectedIndex);
+}
+
+void CCharacterDLG::Show()
+{
+	RefreshPlayerTitleCombo();
+	CTDialog::Show();
+}
+
+void CCharacterDLG::CheckPlayerTitleComboSelection()
+{
+	if (!g_pAVATAR)
+		return;
+
+	CWinCtrl* pCtrl = Find(IID_TABBEDPANE);
+
+	if (!pCtrl ||
+		pCtrl->GetControlType() != CTRL_TABBEDPANE)
+	{
+		return;
+	}
+
+	CTabbedPane* pPane =
+		(CTabbedPane*)pCtrl;
+
+	CJContainer* pContainer =
+		pPane->GetTabContainer(IID_TABBASIC);
+
+	if (!pContainer)
+		return;
+
+	pCtrl =
+		pContainer->Find(IID_COMBO_PLAYER_TITLE);
+
+	if (!pCtrl ||
+		pCtrl->GetControlType() != CTRL_COMBOBOX)
+	{
+		return;
+	}
+
+	CTComboBox* pComboBox =
+		(CTComboBox*)pCtrl;
+
+	short nSelectedIndex =
+		pComboBox->GetSelectedItemID();
+
+	if (nSelectedIndex < 0 ||
+		nSelectedIndex >=
+		(short)m_PlayerTitleIDs.size())
+	{
+		return;
+	}
+
+	short nTitleID =
+		m_PlayerTitleIDs[nSelectedIndex];
+
+	if (nTitleID == g_pAVATAR->GetPlayerTitleID())
+		return;
+
+	g_pNet->Send_cli_SET_PLAYER_TITLE(nTitleID);
 }

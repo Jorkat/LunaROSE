@@ -746,7 +746,6 @@ void CRecvPACKET::Recv_gsv_SELECT_CHAR ()
 
 	::CopyMemory ( &refGame.m_SelectedAvataInfo.m_BasicINFO,		&m_pRecvPacket->m_gsv_SELECT_CHAR.m_BasicINFO,		sizeof(tagBasicINFO)	);
 	::CopyMemory ( &refGame.m_SelectedAvataInfo.m_BasicAbility,	&m_pRecvPacket->m_gsv_SELECT_CHAR.m_BasicAbility,	sizeof(tagBasicAbility)	);
-	::CopyMemory ( &refGame.m_SelectedAvataInfo.m_BasicAbility,	&m_pRecvPacket->m_gsv_SELECT_CHAR.m_BasicAbility,	sizeof(tagBasicAbility)	);
 	::CopyMemory ( &refGame.m_SelectedAvataInfo.m_GrowAbility,	&m_pRecvPacket->m_gsv_SELECT_CHAR.m_GrowAbility,	sizeof(tagGrowAbility)	);
 	::CopyMemory ( &refGame.m_SelectedAvataInfo.m_Skill,			&m_pRecvPacket->m_gsv_SELECT_CHAR.m_Skill,			sizeof(tagSkillAbility)	);
 	::CopyMemory ( &refGame.m_SelectedAvataInfo.m_HotICONS,		&m_pRecvPacket->m_gsv_SELECT_CHAR.m_HotICONS,		sizeof(CHotICONS)		);
@@ -757,6 +756,8 @@ void CRecvPACKET::Recv_gsv_SELECT_CHAR ()
 	refGame.m_SelectedAvataInfo.m_PosSTART.y		= m_pRecvPacket->m_gsv_SELECT_CHAR.m_PosSTART.y;
 	refGame.m_SelectedAvataInfo.m_nReviveZoneNO	= m_pRecvPacket->m_gsv_SELECT_CHAR.m_nReviveZoneNO;
 	refGame.m_SelectedAvataInfo.m_dwUniqueTAG	= m_pRecvPacket->m_gsv_SELECT_CHAR.m_dwUniqueTAG;
+	refGame.m_SelectedAvataInfo.m_nPlayerTitleID =
+		m_pRecvPacket->m_gsv_SELECT_CHAR.m_nPlayerTitleID;
 
 
 }
@@ -1567,6 +1568,10 @@ void CRecvPACKET::Recv_gsv_AVT_CHAR ()
 	pNewAVT->SetTeamInfo( m_pRecvPacket->m_gsv_AVT_CHAR.m_iTeamNO );
 
 	pNewAVT->SetAvtLevel( m_pRecvPacket->m_gsv_AVT_CHAR.m_btLEVEL );
+
+	pNewAVT->SetPlayerTitleID(
+		m_pRecvPacket->m_gsv_AVT_CHAR.m_nPlayerTitleID
+	);
 	/// Job .. 추가..
 
 	//------------------------------------------------------------------------------------------
@@ -1659,6 +1664,90 @@ void CRecvPACKET::Recv_gsv_AVT_CHAR ()
 	//------------------------------------------------------------------------------------
 	goddessMgr.SetProcess((m_pRecvPacket->m_gsv_AVT_CHAR.m_dwSubFLAG & FLAG_SUB_ARUA_FAIRY),
 		m_pRecvPacket->m_gsv_AVT_CHAR.m_wObjectIDX,TRUE);
+}
+
+void CRecvPACKET::Recv_gsv_SET_PLAYER_TITLE()
+{
+	WORD wObjectIDX =
+		m_pRecvPacket->m_gsv_SET_PLAYER_TITLE.m_wObjectIDX;
+
+	short nTitleID =
+		m_pRecvPacket->m_gsv_SET_PLAYER_TITLE.m_nPlayerTitleID;
+
+	CObjAVT* pAVT =
+		g_pObjMGR->Get_ClientCharAVT(
+			wObjectIDX,
+			false
+		);
+
+	if (!pAVT)
+	{
+		LogString(
+			LOG_NORMAL,
+			"[PLAYER TITLE] Avatar not found. ServerObjIDX=%u\n",
+			wObjectIDX
+		);
+
+		return;
+	}
+
+	pAVT->SetPlayerTitleID(nTitleID);
+
+	LogString(
+		LOG_NORMAL,
+		"[PLAYER TITLE] Live update. ServerObjIDX=%u TitleID=%d\n",
+		wObjectIDX,
+		nTitleID
+	);
+}
+
+void CRecvPACKET::Recv_gsv_PLAYER_TITLE_LIST()
+{
+	CGame& refGame = CGame::GetInstance();
+
+	refGame.ClearUnlockedPlayerTitles();
+
+	short nTitleCount =
+		m_pRecvPacket->m_gsv_PLAYER_TITLE_LIST.m_nTitleCount;
+
+	if (nTitleCount < 0)
+		return;
+
+	int nExpectedSize =
+		sizeof(gsv_PLAYER_TITLE_LIST) +
+		(nTitleCount * sizeof(short));
+
+	if (m_pRecvPacket->m_HEADER.m_nSize < nExpectedSize)
+	{
+		LogString(
+			LOG_NORMAL,
+			"[PLAYER TITLE] Invalid title-list packet. Count=%d Size=%d Expected=%d\n",
+			nTitleCount,
+			m_pRecvPacket->m_HEADER.m_nSize,
+			nExpectedSize
+		);
+
+		return;
+	}
+
+	for (short i = 0; i < nTitleCount; ++i)
+	{
+		short nTitleID =
+			m_pRecvPacket
+			->m_gsv_PLAYER_TITLE_LIST
+			.m_nTitleIDs[i];
+
+		if (nTitleID < 11)
+			continue;
+
+		refGame.AddUnlockedPlayerTitle(nTitleID);
+	}
+
+	LogString(
+		LOG_NORMAL,
+		"[PLAYER TITLE] Received %d unlocked titles.\n",
+		nTitleCount
+	);
 }
 
 //-------------------------------------------------------------------------------------------------

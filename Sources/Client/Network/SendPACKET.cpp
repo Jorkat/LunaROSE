@@ -1093,6 +1093,21 @@ void CSendPACKET::Send_cli_USE_BPOINT_REQ (BYTE btAbilityTYPE)
 	this->Send_PACKET( m_pSendPacket );
 }
 
+void CSendPACKET::Send_cli_SET_PLAYER_TITLE(short nTitleID)
+{
+	m_pSendPacket->m_HEADER.m_wType =
+		CLI_SET_PLAYER_TITLE;
+
+	m_pSendPacket->m_HEADER.m_nSize =
+		sizeof(cli_SET_PLAYER_TITLE);
+
+	m_pSendPacket
+		->m_cli_SET_PLAYER_TITLE
+		.m_nPlayerTitleID = nTitleID;
+
+	Send_PACKET(m_pSendPacket);
+}
+
 
 //-------------------------------------------------------------------------------------------------
 void CSendPACKET::Send_cli_SKILL_LEVELUP_REQ (BYTE btSkillSLOT, short nNextLevelSkillIDX)

@@ -408,6 +408,12 @@ void CNetwork::Proc_ZonePacket ()
 			case GSV_AVT_CHAR :
 				Recv_gsv_AVT_CHAR ();
 				break;
+			case GSV_SET_PLAYER_TITLE:
+				Recv_gsv_SET_PLAYER_TITLE();
+				break;
+			case GSV_PLAYER_TITLE_LIST:
+				Recv_gsv_PLAYER_TITLE_LIST();
+				break;
 
 			case GSV_SUB_OBJECT :
 				Recv_gsv_SUB_OBJECT ();

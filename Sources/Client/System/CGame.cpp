@@ -633,6 +633,11 @@ bool CGame::Load_BasicDATA()
 	g_TblHitSound.Load	( "3DDATA\\STB\\LIST_HITSOUND.STB",	false, false );	
 	g_TblAVATAR.Load	( "3DDATA\\STB\\INIT_AVATAR.STB",	false, false );
 	g_TblRangeSet.Load	( "3DDATA\\STB\\RangeSet.STB",		false, false );
+	g_TblPLAYER_TITLES.Load2(
+		"3DDATA\\STB\\PLAYER_TITLES.STB",
+		false,
+		false
+	);
 
 	g_TblSTATE.Load2	( "3DData\\STB\\LIST_STATUS.STB",	false, false );	
 	g_TblUnion.Load2	( "3DDATA\\STB\\LIST_UNION.STB",	false, false );
@@ -900,6 +905,7 @@ void CGame::Free_BasicDATA ()
 	g_TblGEMITEM.Free();
 	g_TblJEWELITEM.Free();
 	g_TblStore.Free ();
+	g_TblPLAYER_TITLES.Free();
 	// *----------------------* //
 	g_TblClass.Free();
 	g_TblUnion.Free();
@@ -1103,7 +1109,6 @@ void CGame::CreateSelectedAvata()
 	g_pAVATAR->m_nReviveZoneNO = m_SelectedAvataInfo.m_nReviveZoneNO;
 	::CopyMemory ( &g_pAVATAR->m_BasicINFO,		&m_SelectedAvataInfo.m_BasicINFO,		sizeof(tagBasicINFO)	);
 	::CopyMemory ( &g_pAVATAR->m_BasicAbility,	&m_SelectedAvataInfo.m_BasicAbility,	sizeof(tagBasicAbility)	);
-	::CopyMemory ( &g_pAVATAR->m_BasicAbility,	&m_SelectedAvataInfo.m_BasicAbility,	sizeof(tagBasicAbility)	);
 	::CopyMemory ( &g_pAVATAR->m_GrowAbility,	&m_SelectedAvataInfo.m_GrowAbility,		sizeof(tagGrowAbility)	);
 	::CopyMemory ( &g_pAVATAR->m_Skills,		&m_SelectedAvataInfo.m_Skill,			sizeof(tagSkillAbility)	);
 	::CopyMemory ( &g_pAVATAR->m_Quests,		&m_QuestData.m_Quests,					sizeof(tagQuestData)	);
@@ -1162,6 +1167,9 @@ void CGame::CreateSelectedAvata()
 
 	g_pAVATAR->SetCur_MONEY ( m_SelectedAvataINV.m_INV.m_i64Money );
 	g_pAVATAR->SetUniqueTag( m_SelectedAvataInfo.m_dwUniqueTAG );
+	g_pAVATAR->SetPlayerTitleID(
+		m_SelectedAvataInfo.m_nPlayerTitleID
+	);
 
 
 	g_pAVATAR->UpdateAbility ();

@@ -75,6 +75,7 @@ public   :
 
 	// 보너스 포인트를 이용해서 기본 능력치를 향상 시킨다...
 	void Send_cli_USE_BPOINT_REQ (BYTE btAbilityTYPE);
+	void Send_cli_SET_PLAYER_TITLE(short nTitleID);
 
 	void Send_cli_TRADE_REQ (void);
 	void Send_cli_TRADE_REPLY (void);

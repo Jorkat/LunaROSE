@@ -604,7 +604,11 @@
 
 #define SRV_UPDATE_NAME				0x07ec
 #define PXY_UPDATE_NAME				0x07ed
+#define GSV_SET_PLAYER_TITLE		0x07ee
 #define PXY_SET_RIGHTS				0x07ef
+
+#define GSV_PLAYER_TITLE_LIST		0x07f0
+#define CLI_SET_PLAYER_TITLE		0x07f1
 
 
 //-------------------------------------------------------------------------------------------------
@@ -947,6 +951,7 @@ struct gsv_SELECT_CHAR : public t_PACKETHEADER {
 	CHotICONS			m_HotICONS;
 	DWORD				m_dwUniqueTAG;
 	//	char				szCharName[];
+	short				m_nPlayerTitleID;
 };
 
 
@@ -1114,6 +1119,23 @@ struct gsv_SET_EVENT_STATUS : public t_PACKETHEADER {
 	short	m_nEventSTATUS;
 };
 
+struct gsv_SET_PLAYER_TITLE : public t_PACKETHEADER
+{
+	WORD	m_wObjectIDX;
+	short	m_nPlayerTitleID;
+};
+
+struct gsv_PLAYER_TITLE_LIST : public t_PACKETHEADER
+{
+	short m_nTitleCount;
+	short m_nTitleIDs[0];
+};
+
+struct cli_SET_PLAYER_TITLE : public t_PACKETHEADER
+{
+	short m_nPlayerTitleID;
+};
+
 #define	MOVE_MODE_WALK		0x00	// 걷기 모드
 #define	MOVE_MODE_RUN		0x01	// 뛰기 모드
 #define	MOVE_MODE_DRIVE		0x02	// 운전 모드 : 자신이 타고 있다.
@@ -1224,6 +1246,7 @@ struct gsv_AVT_CHAR : public tag_ADD_CHAR {
 	tag_CLAN_ID	m_CLAN;	== NULL이 아니면 클랜정보 있음
 	// char m_szClanNAME[];
 	*/
+	short		m_nPlayerTitleID;
 };
 
 struct gsv_SUB_OBJECT : public t_PACKETHEADER {
@@ -3237,6 +3260,9 @@ struct t_PACKET {
 		wsv_CLANMARK_REG_TIME		m_wsv_CLANMARK_REG_TIME;
 
 		gsv_GODDNESS_MODE			m_gsv_GODDNESS_MODE;
+		gsv_SET_PLAYER_TITLE		m_gsv_SET_PLAYER_TITLE;
+		gsv_PLAYER_TITLE_LIST		m_gsv_PLAYER_TITLE_LIST;
+		cli_SET_PLAYER_TITLE		m_cli_SET_PLAYER_TITLE;
 
 		cli_SCREEN_SHOT_TIME		m_cli_SCREEN_SHOT_TIME;
 		gsv_SCREEN_SHOT_TIME		m_gsv_SCREEN_SHOT_TIME;

@@ -708,6 +708,7 @@ extern STBDATA  g_TblGEMITEM;		//보석 아이템
 extern STBDATA  g_TblNATUAL;		//원재료 
 extern STBDATA	g_TblUSEITEM;		//소모 아이템 
 extern STBDATA  g_TblBAGS;          // Custom bag/box rewards
+extern STBDATA	g_TblPLAYER_TITLES;
 
 
 extern STBDATA  g_TblEFFECT;		//효과 
